@@ -20,7 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if($this->app->environment('production')) {
+        // Força HTTPS em todos os ambientes exceto local
+        // Necessário para funcionar corretamente atrás do WAF do CREA-PR
+        if (config('app.env') !== 'local') {
             URL::forceScheme('https');
         }
     }
