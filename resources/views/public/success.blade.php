@@ -135,7 +135,7 @@
             <div class="bg-gray-50 px-8 py-6 border-t border-gray-200">
                 <div class="flex justify-center">
                     <div class="text-center">
-                        <img src="{{ asset('assets/img/logo-crea-pr-preto.png') }}" alt="CREA-PR" class="h-20 object-contain mx-auto mb-3">
+                        <img src="{{ asset('assets/img/logo-crea-pr-preto.png') }}" alt="CREA-PR" class="h-28 object-contain mx-auto mb-3">
                         <p class="text-gray-600 text-sm">
                             Conselho Regional de Engenharia e Agronomia do Paraná
                         </p>

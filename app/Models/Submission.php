@@ -8,6 +8,8 @@ class Submission extends Model
 {
     protected $fillable = [
         'protocolo',
+        'access_token',
+        'token_expires_at',
         'municipio_nome',
         'prefeito_nome',
         'prefeito_mandato',
@@ -48,6 +50,7 @@ class Submission extends Model
     ];
 
     protected $casts = [
+        'token_expires_at' => 'datetime',
         'possui_lei_inovacao' => 'boolean',
         'possui_fundo_inovacao' => 'boolean',
         'possui_conselho_cti' => 'boolean',

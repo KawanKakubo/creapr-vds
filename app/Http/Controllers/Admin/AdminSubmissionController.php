@@ -31,21 +31,28 @@ class AdminSubmissionController extends Controller
      */
     public function index(Request $request)
     {
+        // Validação dos inputs para prevenir SQL injection
+        $request->validate([
+            'municipio' => 'nullable|string|max:255',
+            'possui_lei_inovacao' => 'nullable|in:sim,nao',
+            'possui_fundo_inovacao' => 'nullable|in:sim,nao',
+        ]);
+        
         $query = Submission::query();
         
-        // Filtro por município
+        // Filtro por município (protegido contra SQL injection)
         if ($request->filled('municipio')) {
-            $query->where('municipio_nome', 'like', '%' . $request->municipio . '%');
+            $query->where('municipio_nome', 'like', '%' . $request->input('municipio') . '%');
         }
         
         // Filtro por possui lei de inovação
         if ($request->filled('possui_lei_inovacao')) {
-            $query->where('possui_lei_inovacao', $request->possui_lei_inovacao === 'sim');
+            $query->where('possui_lei_inovacao', $request->input('possui_lei_inovacao') === 'sim');
         }
         
         // Filtro por possui fundo de inovação
         if ($request->filled('possui_fundo_inovacao')) {
-            $query->where('possui_fundo_inovacao', $request->possui_fundo_inovacao === 'sim');
+            $query->where('possui_fundo_inovacao', $request->input('possui_fundo_inovacao') === 'sim');
         }
         
         // Filtro por data inicial

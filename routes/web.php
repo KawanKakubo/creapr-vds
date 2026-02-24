@@ -11,9 +11,20 @@ Route::get('/', function () {
 })->name('home');
 
 // Rotas Públicas - Formulário de Manifestação de Interesse
-Route::get('/manifestacao-interesse', [PublicFormController::class, 'show'])->name('manifestacao.show');
-Route::post('/manifestacao-interesse', [PublicFormController::class, 'store'])->name('manifestacao.store');
-Route::get('/inscricao-concluida/{protocolo}', [PublicFormController::class, 'success'])->name('inscricao.sucesso');
+// Rate limiting: 60 requisições por minuto
+Route::get('/manifestacao-interesse', [PublicFormController::class, 'show'])
+    ->middleware('throttle:60,1')
+    ->name('manifestacao.show');
+
+// Rate limiting: 5 submissões por hora para prevenir spam
+Route::post('/manifestacao-interesse', [PublicFormController::class, 'store'])
+    ->middleware('throttle:5,60')
+    ->name('manifestacao.store');
+
+// Rate limiting: 10 acessos por minuto para prevenir força bruta no token
+Route::get('/inscricao-concluida/{protocolo}/{token}', [PublicFormController::class, 'success'])
+    ->middleware('throttle:10,1')
+    ->name('inscricao.sucesso');
 
 // Rotas Administrativas (requerem autenticação)
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {

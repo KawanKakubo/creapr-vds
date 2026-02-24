@@ -94,4 +94,27 @@ class StoreSubmissionRequest extends FormRequest
             'relevancia_engenharias.in' => 'Selecione uma relevância válida.',
         ];
     }
+    
+    /**
+     * Sanitiza os dados após validação
+     *
+     * @return array
+     */
+    protected function passedValidation()
+    {
+        // Sanitiza campos de texto para remover scripts maliciosos
+        $textFields = [
+            'municipio_nome', 'prefeito_nome', 'prefeito_mandato', 'orgao_responsavel_cti',
+            'relevancia_engenharias_descricao', 'descricao_premio_relevante',
+            'ponto_focal_nome', 'ponto_focal_cargo', 'cnpj_fundo_inovacao'
+        ];
+        
+        foreach ($textFields as $field) {
+            if ($this->has($field)) {
+                $this->merge([
+                    $field => strip_tags($this->input($field))
+                ]);
+            }
+        }
+    }
 }

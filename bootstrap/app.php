@@ -15,6 +15,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->redirectGuestsTo('/login');
         $middleware->redirectUsersTo('/admin/dashboard');
         
+        // Headers de segurança globais
+        $middleware->append(\App\Http\Middleware\SecurityHeaders::class);
+        
         // Configuração do TrustProxies para funcionar atrás do WAF do CREA-PR
         // Confia em todos os proxies e utiliza todos os headers X-Forwarded
         $middleware->trustProxies(

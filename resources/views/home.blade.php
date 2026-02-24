@@ -20,7 +20,7 @@
             <div class="flex justify-between items-center h-16 md:h-20">
                 <!-- Logo -->
                 <div class="flex items-center space-x-2 md:space-x-4">
-                    <img src="{{ asset('assets/img/smart-crea-cities.png') }}" alt="Smart Crea Cities" class="h-8 md:h-12">
+                    <img src="{{ asset('assets/img/smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-12 md:h-16 lg:h-20">
                     <img src="{{ asset('assets/img/logo-crea-pr-preto.png') }}" alt="CREA-PR" class="h-7 md:h-10">
                 </div>
                 
@@ -103,7 +103,7 @@
                     </div>
                 </div>
                 <div class="relative order-first md:order-last">
-                    <img src="{{ asset('assets/img/card-smart-crea-cities.png') }}" alt="Smart Crea Cities Card" class="w-full rounded-2xl shadow-2xl">
+                    <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities Card" class="w-full rounded-2xl shadow-2xl">
                 </div>
             </div>
         </div>
@@ -509,7 +509,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8">
                 <div>
-                    <img src="{{ asset('assets/img/smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-10 md:h-12 mb-3 md:mb-4">
+                    <img src="{{ asset('assets/img/smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-16 md:h-20 mb-3 md:mb-4">
                     <p class="text-gray-400 text-xs md:text-sm">
                         Programa institucional do CREA-PR para transformação de municípios paranaenses em Territórios Inteligentes.
                     </p>

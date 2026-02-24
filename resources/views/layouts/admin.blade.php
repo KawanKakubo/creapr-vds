@@ -16,7 +16,7 @@
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <img src="{{ asset('assets/img/logo-crea-pr-preto.png') }}" alt="CREA-PR" class="h-12 object-contain bg-white rounded-lg px-2 py-1 shadow-md">
+                        <img src="{{ asset('assets/img/logo-crea-pr-preto.png') }}" alt="CREA-PR" class="h-16 object-contain bg-white rounded-lg px-3 py-2 shadow-md">
                     </div>
                     <div class="ml-4">
                         <h1 class="text-white font-bold text-xl">Painel Administrativo</h1>

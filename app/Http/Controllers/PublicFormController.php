@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Submission;
 use App\Http\Requests\StoreSubmissionRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
 
 class PublicFormController extends Controller
 {
@@ -29,8 +31,14 @@ class PublicFormController extends Controller
         $sequence = $lastSubmission ? ((int) substr($lastSubmission->protocolo, -4)) + 1 : 1;
         $protocolo = sprintf('CREA-%s-%04d', $year, $sequence);
         
-        // Adiciona o protocolo aos dados validados
+        // Gera token único de acesso (válido por 30 dias)
+        $accessToken = Str::random(64);
+        $tokenExpiresAt = now()->addDays(30);
+        
+        // Adiciona o protocolo e token aos dados validados
         $validated['protocolo'] = $protocolo;
+        $validated['access_token'] = $accessToken;
+        $validated['token_expires_at'] = $tokenExpiresAt;
         
         // Converte valores booleanos de string para boolean
         $booleanFields = [
@@ -57,15 +65,45 @@ class PublicFormController extends Controller
         // Cria a submissão
         $submission = Submission::create($validated);
         
-        return redirect()->route('inscricao.sucesso', ['protocolo' => $protocolo]);
+        return redirect()->route('inscricao.sucesso', [
+            'protocolo' => $protocolo,
+            'token' => $accessToken
+        ]);
     }
 
     /**
-     * Exibe a página de confirmação com o protocolo
+     * Exibe a página de confirmação com o protocolo e token
      */
-    public function success($protocolo)
+    public function success($protocolo, $token)
     {
-        $submission = Submission::where('protocolo', $protocolo)->firstOrFail();
+        // Validação básica dos parâmetros
+        if (strlen($token) !== 64 || !ctype_alnum($token)) {
+            Log::warning('Tentativa de acesso com token inválido', [
+                'protocolo' => $protocolo,
+                'ip' => request()->ip(),
+            ]);
+            abort(404);
+        }
+        
+        // Busca com hash_equals para prevenir timing attacks
+        $submission = Submission::where('protocolo', $protocolo)->first();
+        
+        if (!$submission || !hash_equals($submission->access_token, $token)) {
+            Log::warning('Tentativa de acesso com token incorreto', [
+                'protocolo' => $protocolo,
+                'ip' => request()->ip(),
+            ]);
+            abort(404);
+        }
+        
+        // Verifica se o token está expirado
+        if ($submission->token_expires_at && $submission->token_expires_at->isPast()) {
+            Log::info('Acesso com token expirado', [
+                'protocolo' => $protocolo,
+                'ip' => request()->ip(),
+            ]);
+            abort(410, 'Este link de acesso expirou.');
+        }
         
         return view('public.success', compact('submission'));
     }
