@@ -5,10 +5,10 @@ use App\Http\Controllers\PublicFormController;
 use App\Http\Controllers\Admin\AdminSubmissionController;
 use Illuminate\Support\Facades\Route;
 
-// Página inicial - Redireciona para o formulário
+// Página inicial - Nova Homepage
 Route::get('/', function () {
-    return redirect()->route('manifestacao.show');
-});
+    return view('home');
+})->name('home');
 
 // Rotas Públicas - Formulário de Manifestação de Interesse
 Route::get('/manifestacao-interesse', [PublicFormController::class, 'show'])->name('manifestacao.show');
