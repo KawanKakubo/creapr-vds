@@ -18,7 +18,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
                         </svg>
                     </a>
-                    <img src="{{ asset('assets/img/card-smart-crea-cities.png') }}" alt="Smart Crea Cities" class="h-12 w-auto object-contain">
+                    <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-12 w-auto object-contain">
                     <div class="border-l border-gray-300 h-10"></div>
                     <div>
                         <p class="text-sm text-gray-600">Diagnóstico</p>
@@ -105,7 +105,7 @@
                                                :name="'answer_{{ $question->id }}'" 
                                                value="yes" 
                                                x-model="selected"
-                                               @change="updateAnswer({{ $question->id }}, 'yes_no', 'yes')"
+                                               @change="updateAnswer({{ $question->id }}, '{{ $question->type }}', 'yes')"
                                                class="w-4 h-4 text-green-600">
                                         <span class="ml-3 font-semibold text-gray-900">Sim</span>
                                     </label>
@@ -116,7 +116,7 @@
                                                :name="'answer_{{ $question->id }}'" 
                                                value="no" 
                                                x-model="selected"
-                                               @change="updateAnswer({{ $question->id }}, 'yes_no', 'no')"
+                                               @change="updateAnswer({{ $question->id }}, '{{ $question->type }}', 'no')"
                                                class="w-4 h-4 text-red-600">
                                         <span class="ml-3 font-semibold text-gray-900">Não</span>
                                     </label>
@@ -191,10 +191,11 @@
 
             <!-- Botões de Ação -->
             <div class="bg-white rounded-xl shadow-lg p-6 flex justify-between items-center">
-                <a href="{{ route('municipality.dashboard') }}" 
-                   class="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition font-semibold">
+                <button type="button"
+                        @click="saveAndExit()"
+                        class="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition font-semibold">
                     Salvar e Sair
-                </a>
+                </button>
 
                 <button type="submit" 
                         class="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition font-bold shadow-lg flex items-center">
@@ -219,25 +220,35 @@
                     @foreach($existingAnswers as $questionId => $answer)
                         this.answers[{{ $questionId }}] = {
                             type: '{{ $answer->question->type }}',
-                            answer: '{{ $answer->answer_yes_no }}',
+                            answer: '{{ $answer->answer_yes_no ?? '' }}',
                             checkboxes: @json($answer->answer_checkboxes ?? []),
                             inputs: @json($answer->answer_multiple_input ?? []),
-                            text: '{{ $answer->answer_text }}',
-                            evidence_url: '{{ $answer->evidence_url }}'
+                            text: '{{ $answer->answer_text ?? '' }}',
+                            evidence_url: '{{ $answer->evidence_url ?? '' }}'
                         };
                     @endforeach
                     
                     this.updateAnsweredCount();
+                    console.log('Respostas carregadas:', this.answers);
                 },
                 
                 updateAnswer(questionId, type, value) {
                     if (!this.answers[questionId]) {
-                        this.answers[questionId] = { type };
+                        this.answers[questionId] = { 
+                            type: type,
+                            answer: null,
+                            checkboxes: [],
+                            inputs: {},
+                            text: '',
+                            evidence_url: ''
+                        };
                     }
                     
-                    if (type === 'yes_no') {
+                    if (type === 'yes_no' || type === 'yes_no_evidence') {
+                        this.answers[questionId].type = type;
                         this.answers[questionId].answer = value;
                     } else if (type === 'text') {
+                        this.answers[questionId].type = type;
                         this.answers[questionId].text = value;
                     }
                     
@@ -246,7 +257,14 @@
                 
                 updateCheckbox(questionId, option, checked) {
                     if (!this.answers[questionId]) {
-                        this.answers[questionId] = { type: 'checkbox', checkboxes: [] };
+                        this.answers[questionId] = { 
+                            type: 'checkbox', 
+                            checkboxes: [],
+                            answer: null,
+                            inputs: {},
+                            text: '',
+                            evidence_url: ''
+                        };
                     }
                     
                     if (!this.answers[questionId].checkboxes) {
@@ -269,7 +287,14 @@
                 
                 updateMultipleInput(questionId, key, value) {
                     if (!this.answers[questionId]) {
-                        this.answers[questionId] = { type: 'multiple_input', inputs: {} };
+                        this.answers[questionId] = { 
+                            type: 'multiple_input', 
+                            inputs: {},
+                            answer: null,
+                            checkboxes: [],
+                            text: '',
+                            evidence_url: ''
+                        };
                     }
                     
                     if (!this.answers[questionId].inputs) {
@@ -282,7 +307,14 @@
                 
                 updateEvidence(questionId, value) {
                     if (!this.answers[questionId]) {
-                        this.answers[questionId] = {};
+                        this.answers[questionId] = {
+                            type: 'yes_no_evidence',
+                            answer: null,
+                            checkboxes: [],
+                            inputs: {},
+                            text: '',
+                            evidence_url: ''
+                        };
                     }
                     this.answers[questionId].evidence_url = value;
                 },
@@ -290,15 +322,53 @@
                 updateAnsweredCount() {
                     this.answeredCount = Object.keys(this.answers).filter(id => {
                         const answer = this.answers[id];
-                        if (answer.type === 'yes_no' && answer.answer) return true;
+                        if ((answer.type === 'yes_no' || answer.type === 'yes_no_evidence') && answer.answer) return true;
                         if (answer.type === 'checkbox' && answer.checkboxes && answer.checkboxes.length > 0) return true;
                         if (answer.type === 'multiple_input' && answer.inputs && Object.keys(answer.inputs).length > 0) return true;
-                        if (answer.type === 'text' && answer.text) return true;
+                        if (answer.type === 'text' && answer.text && answer.text.trim() !== '') return true;
                         return false;
                     }).length;
                 },
                 
+                saveAndExit() {
+                    console.log('Salvando respostas parciais:', this.answers);
+                    console.log('Total de respostas:', Object.keys(this.answers).length);
+                    
+                    // Salva respostas parciais e redireciona
+                    if (Object.keys(this.answers).length === 0) {
+                        // Se não há respostas, apenas volta para o dashboard
+                        window.location.href = '{{ route("municipality.dashboard") }}';
+                        return;
+                    }
+                    
+                    fetch('{{ route("municipality.diagnostic.store", $category) }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({ 
+                            answers: this.answers,
+                            partial: true // Indica que é salvamento parcial
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Redireciona independente do resultado
+                        window.location.href = '{{ route("municipality.dashboard") }}';
+                    })
+                    .catch(error => {
+                        console.error('Erro:', error);
+                        // Mesmo com erro, redireciona
+                        window.location.href = '{{ route("municipality.dashboard") }}';
+                    });
+                },
+                
                 submitDiagnostic() {
+                    console.log('Finalizando diagnóstico:', this.answers);
+                    console.log('Total de respostas:', Object.keys(this.answers).length);
+                    console.log('Respostas contadas:', this.answeredCount);
+                    
                     if (this.answeredCount < this.totalQuestions) {
                         if (!confirm(`Você respondeu ${this.answeredCount} de ${this.totalQuestions} perguntas. Deseja continuar mesmo assim?`)) {
                             return;

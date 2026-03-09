@@ -9,6 +9,7 @@ class DiagnosticAnswer extends Model
     protected $fillable = [
         'submission_id',
         'diagnostic_question_id',
+        'category',
         'answer_yes_no',
         'answer_checkboxes',
         'answer_multiple_input',

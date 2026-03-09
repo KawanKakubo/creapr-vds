@@ -83,7 +83,10 @@ class DiagnosticController extends Controller
         $validated = $request->validate([
             'answers' => 'required|array',
             'answers.*' => 'array',
+            'partial' => 'nullable|boolean',
         ]);
+        
+        $isPartial = $validated['partial'] ?? false;
         
         DB::beginTransaction();
         
@@ -102,6 +105,7 @@ class DiagnosticController extends Controller
                 $answerRecord = [
                     'submission_id' => $submission->id,
                     'diagnostic_question_id' => $questionId,
+                    'category' => $category,
                     'answer_yes_no' => null,
                     'answer_checkboxes' => null,
                     'answer_multiple_input' => null,
@@ -140,17 +144,21 @@ class DiagnosticController extends Controller
             
             // Atualiza pontuação na submission
             $scoreField = "pontuacao_{$category}";
-            $completedField = "diagnostico_{$category}_concluido_em";
-            
             $submission->$scoreField = round($totalPoints);
-            $submission->$completedField = now();
+            
+            // Só marca como concluído se não for salvamento parcial
+            if (!$isPartial) {
+                $completedField = "diagnostico_{$category}_concluido_em";
+                $submission->$completedField = now();
+            }
+            
             $submission->save();
             
             DB::commit();
             
             return response()->json([
                 'success' => true,
-                'message' => 'Diagnóstico salvo com sucesso!',
+                'message' => $isPartial ? 'Respostas salvas com sucesso!' : 'Diagnóstico finalizado com sucesso!',
                 'score' => round($totalPoints),
                 'redirect' => route('municipality.dashboard')
             ]);

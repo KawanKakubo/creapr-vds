@@ -9,7 +9,7 @@
         <div class="bg-white shadow-xl rounded-2xl p-8 mb-8 border-t-4 border-blue-600">
             <div class="text-center">
                 <div class="flex justify-center space-x-4 mb-6">
-                    <img src="{{ asset('assets/img/card-smart-crea-cities.png') }}" alt="Smart Crea Cities" class="h-24 object-contain">
+                    <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-24 object-contain">
                     <img src="{{ asset('assets/img/logo-crea-pr-preto.png') }}" alt="CREA-PR" class="h-24 object-contain">
                 </div>
                 <h1 class="text-4xl font-extrabold text-gray-900 mb-3">

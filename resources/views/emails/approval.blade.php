@@ -156,7 +156,7 @@
         
         <p>É com grande satisfação que informamos que a manifestação de interesse do município <strong>{{ $submission->municipio_nome }}</strong> foi <strong style="color: #16a34a;">APROVADA</strong> pelo CREA-PR!</p>
 
-        <p>Agora você tem acesso liberado para realizar os diagnósticos de maturidade tecnológica nos <strong>3 E's</strong>:</p>
+        <p>Agora você tem acesso liberado para realizar os diagnósticos de maturidade nos <strong>3 E's</strong>:</p>
 
         <div class="diagnostic-cards">
             <div class="diagnostic-card estimulo">

@@ -129,7 +129,7 @@ class AdminSubmissionController extends Controller
      */
     public function show(Submission $submission)
     {
-        $submission->load(['user', 'committeeMembers', 'diagnosticAnswers.diagnosticQuestion']);
+        $submission->load(['user', 'committeeMembers', 'diagnosticAnswers.question']);
         
         return view('admin.submissions.show', compact('submission'));
     }

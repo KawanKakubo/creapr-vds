@@ -13,7 +13,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center space-x-4">
-                    <img src="{{ asset('assets/img/card-smart-crea-cities.png') }}" alt="Smart Crea Cities" class="h-12 w-auto object-contain">
+                    <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-12 w-auto object-contain">
                     <div class="border-l border-gray-300 h-10"></div>
                     <div>
                         <p class="text-sm text-gray-600">Manifestação</p>
@@ -95,7 +95,14 @@
                         <div class="col-span-2">
                             <p class="text-sm text-gray-600">Setores Econômicos</p>
                             <div class="flex flex-wrap gap-2 mt-1">
-                                @foreach($submission->setores_economicos ?? [] as $setor)
+                                @php
+                                    $setores = $submission->setores_economicos;
+                                    if (is_string($setores)) {
+                                        $setores = json_decode($setores, true) ?? [];
+                                    }
+                                    $setores = $setores ?? [];
+                                @endphp
+                                @foreach($setores as $setor)
                                     <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full">{{ $setor }}</span>
                                 @endforeach
                             </div>
@@ -202,7 +209,7 @@
 
                 <!-- Diagnósticos -->
                 <div class="bg-white rounded-xl shadow-md p-6">
-                    <h2 class="text-xl font-bold text-gray-900 mb-4">Diagnósticos de Maturidade Tecnológica</h2>
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">Diagnósticos de Maturidade</h2>
                     
                     <div class="grid grid-cols-3 gap-4">
                         <!-- Estímulo -->
@@ -256,6 +263,121 @@
                         <p class="text-4xl font-bold text-gray-900 mt-2">{{ $submission->getTotalScore() }} <span class="text-2xl text-gray-500">/ 300</span></p>
                     </div>
                 </div>
+
+                <!-- Detalhamento das Respostas -->
+                @if($submission->diagnosticAnswers->count() > 0)
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+                        </svg>
+                        Detalhamento das Respostas ({{ $submission->diagnosticAnswers->count() }} respostas)
+                    </h2>
+                    
+                    @php
+                        $answersByCategory = $submission->diagnosticAnswers->groupBy('category');
+                    @endphp
+
+                    @foreach(['estimulo' => 'Estímulo', 'educacao' => 'Educação', 'estruturas' => 'Estruturas'] as $categoryKey => $categoryName)
+                        @if(isset($answersByCategory[$categoryKey]) && $answersByCategory[$categoryKey]->count() > 0)
+                            <div class="mb-6 border-t pt-6 first:border-t-0 first:pt-0">
+                                <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                                    @if($categoryKey === 'estimulo')
+                                        <span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
+                                    @elseif($categoryKey === 'educacao')
+                                        <span class="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
+                                    @else
+                                        <span class="w-3 h-3 bg-purple-500 rounded-full mr-2"></span>
+                                    @endif
+                                    {{ $categoryName }}
+                                    <span class="ml-2 text-sm font-normal text-gray-500">({{ $answersByCategory[$categoryKey]->count() }} respostas)</span>
+                                </h3>
+                                
+                                <div class="space-y-4">
+                                    @foreach($answersByCategory[$categoryKey] as $answer)
+                                        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+                                            <div class="flex items-start justify-between mb-2">
+                                                <p class="font-semibold text-gray-900 flex-1">{{ $answer->question->question }}</p>
+                                                <span class="ml-3 px-3 py-1 bg-blue-100 text-blue-800 text-xs font-bold rounded-full whitespace-nowrap">
+                                                    {{ number_format($answer->points_earned, 0) }} pts
+                                                </span>
+                                            </div>
+                                            
+                                            <div class="mt-3">
+                                                @if($answer->question->type === 'yes_no' || $answer->question->type === 'yes_no_evidence')
+                                                    <div class="flex items-center">
+                                                        <span class="text-sm text-gray-600 mr-2">Resposta:</span>
+                                                        @if($answer->answer_yes_no === 'yes')
+                                                            <span class="px-3 py-1 bg-green-100 text-green-800 text-sm font-semibold rounded-full">✓ Sim</span>
+                                                        @elseif($answer->answer_yes_no === 'no')
+                                                            <span class="px-3 py-1 bg-red-100 text-red-800 text-sm font-semibold rounded-full">✗ Não</span>
+                                                        @endif
+                                                    </div>
+                                                    
+                                                    @if($answer->evidence_url)
+                                                        <div class="mt-2 flex items-center text-sm">
+                                                            <svg class="w-4 h-4 mr-1 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+                                                            </svg>
+                                                            <span class="text-gray-600 mr-2">Evidência:</span>
+                                                            <a href="{{ $answer->evidence_url }}" target="_blank" class="text-blue-600 hover:underline truncate max-w-md">
+                                                                {{ $answer->evidence_url }}
+                                                            </a>
+                                                        </div>
+                                                    @endif
+
+                                                @elseif($answer->question->type === 'checkbox')
+                                                    <div>
+                                                        <span class="text-sm text-gray-600">Opções selecionadas:</span>
+                                                        <div class="flex flex-wrap gap-2 mt-2">
+                                                            @if(is_array($answer->answer_checkboxes))
+                                                                @foreach($answer->answer_checkboxes as $option)
+                                                                    <span class="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-full">{{ $option }}</span>
+                                                                @endforeach
+                                                            @endif
+                                                        </div>
+                                                    </div>
+
+                                                @elseif($answer->question->type === 'multiple_input')
+                                                    <div>
+                                                        <span class="text-sm text-gray-600">Valores informados:</span>
+                                                        <div class="mt-2 bg-gray-50 rounded-lg p-3">
+                                                            @if(is_array($answer->answer_multiple_input))
+                                                                @foreach($answer->answer_multiple_input as $key => $value)
+                                                                    <div class="text-sm mb-1">
+                                                                        <span class="font-medium text-gray-700">{{ $key }}:</span>
+                                                                        <span class="text-gray-900">{{ $value }}</span>
+                                                                    </div>
+                                                                @endforeach
+                                                            @endif
+                                                        </div>
+                                                    </div>
+
+                                                @elseif($answer->question->type === 'text')
+                                                    <div>
+                                                        <span class="text-sm text-gray-600">Resposta:</span>
+                                                        <div class="mt-2 bg-gray-50 rounded-lg p-3">
+                                                            <p class="text-sm text-gray-900 whitespace-pre-wrap">{{ $answer->answer_text }}</p>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            
+                                            <div class="mt-3 pt-3 border-t border-gray-100">
+                                                <p class="text-xs text-gray-500">
+                                                    ID da Questão: {{ $answer->question->id }} • 
+                                                    Tipo: {{ $answer->question->type }} • 
+                                                    Peso: {{ $answer->question->weight }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+                @endif
             </div>
 
             <!-- Coluna Lateral - Painel de Revisão -->

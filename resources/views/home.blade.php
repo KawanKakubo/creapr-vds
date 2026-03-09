@@ -20,7 +20,7 @@
             <div class="flex justify-between items-center h-14 sm:h-16 md:h-20">
                 <!-- Logo -->
                 <div class="flex items-center space-x-2 md:space-x-3">
-                    <img src="{{ asset('assets/img/card-smart-crea-cities.png') }}" alt="Smart Crea Cities" class="h-10 sm:h-12 md:h-16 w-auto object-contain">
+                    <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-10 sm:h-12 md:h-16 w-auto object-contain">
                     <div class="hidden sm:block w-px h-8 md:h-12 bg-gray-300"></div>
                     <img src="{{ asset('assets/img/logo-crea-pr-preto.png') }}" alt="CREA-PR" class="h-6 sm:h-8 md:h-10 w-auto object-contain">
                 </div>
@@ -107,7 +107,7 @@
                     </div>
                 </div>
                 <div class="relative order-first md:order-last">
-                    <img src="{{ asset('assets/img/card-smart-crea-cities.png') }}" alt="Smart Crea Cities Card" class="w-full rounded-2xl shadow-2xl">
+                    <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities Card" class="w-full rounded-2xl shadow-2xl">
                 </div>
             </div>
         </div>
