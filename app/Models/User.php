@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'is_temporary_password',
+        'must_change_password',
     ];
 
     /**
@@ -43,6 +46,40 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_temporary_password' => 'boolean',
+            'must_change_password' => 'boolean',
         ];
+    }
+    
+    /**
+     * Relacionamento com Submission
+     */
+    public function submission()
+    {
+        return $this->hasOne(Submission::class);
+    }
+    
+    /**
+     * Verifica se o usuário é admin
+     */
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+    
+    /**
+     * Verifica se o usuário é município
+     */
+    public function isMunicipality()
+    {
+        return $this->role === 'municipality';
+    }
+    
+    /**
+     * Verifica se o usuário precisa trocar a senha
+     */
+    public function mustChangePassword()
+    {
+        return $this->must_change_password || $this->is_temporary_password;
     }
 }

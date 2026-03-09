@@ -3,11 +3,14 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicFormController;
 use App\Http\Controllers\Admin\AdminSubmissionController;
+use App\Http\Controllers\Admin\QuestionController;
+use App\Http\Controllers\Auth\ChangePasswordController;
+use App\Http\Controllers\Auth\AdminLoginController;
 use Illuminate\Support\Facades\Route;
 
-// Página inicial - Nova Homepage
+// Página inicial - Landing Page com Vídeo
 Route::get('/', function () {
-    return view('home');
+    return view('landing');
 })->name('home');
 
 // Rotas Públicas - Formulário de Manifestação de Interesse
@@ -16,9 +19,9 @@ Route::get('/manifestacao-interesse', [PublicFormController::class, 'show'])
     ->middleware('throttle:60,1')
     ->name('manifestacao.show');
 
-// Rate limiting: 5 submissões por hora para prevenir spam
+// Rate limiting: 60 submissões por hora durante testes (alterar para 5 em produção)
 Route::post('/manifestacao-interesse', [PublicFormController::class, 'store'])
-    ->middleware('throttle:5,60')
+    ->middleware('throttle:60,60')
     ->name('manifestacao.store');
 
 // Rate limiting: 10 acessos por minuto para prevenir força bruta no token
@@ -26,8 +29,17 @@ Route::get('/inscricao-concluida/{protocolo}/{token}', [PublicFormController::cl
     ->middleware('throttle:10,1')
     ->name('inscricao.sucesso');
 
-// Rotas Administrativas (requerem autenticação)
-Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+// Rotas de Login Administrativo (guest only)
+Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/login', [AdminLoginController::class, 'create'])->name('login');
+    Route::post('/login', [AdminLoginController::class, 'store'])->name('login.store');
+});
+
+// Rotas Administrativas (requerem autenticação e role admin)
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    // Logout
+    Route::post('/logout', [AdminLoginController::class, 'destroy'])->name('logout');
+    
     // Dashboard
     Route::get('/dashboard', [AdminSubmissionController::class, 'dashboard'])->name('dashboard');
     
@@ -35,6 +47,36 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('/submissoes', [AdminSubmissionController::class, 'index'])->name('submissoes.index');
     Route::get('/submissoes/exportar', [AdminSubmissionController::class, 'export'])->name('submissoes.export');
     Route::get('/submissoes/{submission}', [AdminSubmissionController::class, 'show'])->name('submissoes.show');
+    Route::patch('/submissoes/{submission}/status', [AdminSubmissionController::class, 'updateStatus'])->name('submissoes.updateStatus');
+    
+    // Gerenciamento de Questões Diagnósticas
+    Route::resource('questions', QuestionController::class)->except(['show']);
+    Route::post('/questions/reorder', [QuestionController::class, 'reorder'])->name('questions.reorder');
+    Route::post('/questions/bulk-toggle', [QuestionController::class, 'bulkToggle'])->name('questions.bulkToggle');
+});
+
+// Rotas do Município (requerem autenticação e role municipality)
+Route::middleware(['auth', 'municipality', \App\Http\Middleware\CheckMustChangePassword::class])->prefix('municipality')->name('municipality.')->group(function () {
+    // Dashboard
+    Route::get('/dashboard', [\App\Http\Controllers\Municipality\DashboardController::class, 'index'])->name('dashboard');
+    
+    // Gerenciamento de Comitê
+    Route::post('/committee', [\App\Http\Controllers\Municipality\CommitteeController::class, 'store'])->name('committee.store');
+    Route::delete('/committee/{id}', [\App\Http\Controllers\Municipality\CommitteeController::class, 'destroy'])->name('committee.destroy');
+    
+    // Diagnósticos
+    Route::get('/diagnostic/estimulo', [\App\Http\Controllers\Municipality\DiagnosticController::class, 'estimulo'])->name('diagnostic.estimulo');
+    Route::get('/diagnostic/educacao', [\App\Http\Controllers\Municipality\DiagnosticController::class, 'educacao'])->name('diagnostic.educacao');
+    Route::get('/diagnostic/estruturas', [\App\Http\Controllers\Municipality\DiagnosticController::class, 'estruturas'])->name('diagnostic.estruturas');
+    
+    // Salvar diagnósticos
+    Route::post('/diagnostic/{category}', [\App\Http\Controllers\Municipality\DiagnosticController::class, 'store'])->name('diagnostic.store');
+});
+
+// Rotas de Mudança de Senha (requerem autenticação)
+Route::middleware('auth')->group(function () {
+    Route::get('/change-password', [ChangePasswordController::class, 'show'])->name('change-password.show');
+    Route::post('/change-password', [ChangePasswordController::class, 'update'])->name('change-password.update');
 });
 
 // Rotas de Perfil (Breeze)

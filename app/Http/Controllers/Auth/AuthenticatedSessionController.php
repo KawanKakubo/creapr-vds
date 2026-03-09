@@ -28,7 +28,19 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('admin.dashboard', absolute: false));
+        // Redirect based on user role
+        $user = Auth::user();
+        
+        if ($user->role === 'admin') {
+            // Admins should not login through municipality login
+            Auth::logout();
+            return redirect()->route('login')->withErrors([
+                'email' => 'Administradores devem usar o login administrativo.',
+            ]);
+        }
+
+        // Municipality users go to their dashboard
+        return redirect()->intended(route('municipality.dashboard', absolute: false));
     }
 
     /**

@@ -15,11 +15,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Criar usuário admin do sistema (se não existir)
+        User::firstOrCreate(
+            ['email' => 'admin@crea-pr.org.br'],
+            [
+                'name' => 'Admin CREA-PR',
+                'password' => bcrypt('admin123'),
+                'role' => 'admin',
+                'is_temporary_password' => false,
+                'must_change_password' => false,
+            ]
+        );
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Criar usuário município de teste com submissão
+        $this->call(TestMunicipalitySeeder::class);
+
+        // Popular perguntas diagnósticas
+        $this->call(DiagnosticQuestionsSeeder::class);
     }
 }

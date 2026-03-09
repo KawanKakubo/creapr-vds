@@ -17,25 +17,26 @@
     <!-- Navbar -->
     <nav class="bg-white shadow-sm fixed w-full top-0 z-50" x-data="{ mobileMenuOpen: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16 md:h-20">
+            <div class="flex justify-between items-center h-14 sm:h-16 md:h-20">
                 <!-- Logo -->
-                <div class="flex items-center space-x-2 md:space-x-4">
-                    <img src="{{ asset('assets/img/smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-12 md:h-16 lg:h-20">
-                    <img src="{{ asset('assets/img/logo-crea-pr-preto.png') }}" alt="CREA-PR" class="h-7 md:h-10">
+                <div class="flex items-center space-x-2 md:space-x-3">
+                    <img src="{{ asset('assets/img/card-smart-crea-cities.png') }}" alt="Smart Crea Cities" class="h-10 sm:h-12 md:h-16 w-auto object-contain">
+                    <div class="hidden sm:block w-px h-8 md:h-12 bg-gray-300"></div>
+                    <img src="{{ asset('assets/img/logo-crea-pr-preto.png') }}" alt="CREA-PR" class="h-6 sm:h-8 md:h-10 w-auto object-contain">
                 </div>
                 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                <div class="hidden md:flex items-center space-x-4 lg:space-x-6">
                     <a href="#sobre" class="text-gray-700 hover:text-blue-600 font-medium transition text-sm lg:text-base">Sobre</a>
                     <a href="#objetivos" class="text-gray-700 hover:text-blue-600 font-medium transition text-sm lg:text-base">Objetivos</a>
                     <a href="#etapas" class="text-gray-700 hover:text-blue-600 font-medium transition text-sm lg:text-base">Etapas</a>
                     <a href="#piloto" class="text-gray-700 hover:text-blue-600 font-medium transition text-sm lg:text-base">Piloto</a>
-                    <a href="{{ route('manifestacao.show') }}" class="bg-blue-600 text-white px-4 lg:px-6 py-2 lg:py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md hover:shadow-lg text-sm lg:text-base">
+                    <a href="{{ route('manifestacao.show') }}" class="bg-blue-600 text-white px-4 lg:px-5 py-2 lg:py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md hover:shadow-lg text-sm lg:text-base">
                         Manifestar Interesse
                     </a>
-                    @auth
-                        <a href="{{ route('admin.dashboard') }}" class="text-gray-700 hover:text-blue-600 font-medium transition text-sm lg:text-base">Admin</a>
-                    @endauth
+                    <a href="{{ route('login') }}" class="border-2 border-blue-600 text-blue-600 px-4 lg:px-5 py-2 lg:py-2.5 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition shadow-sm hover:shadow-md text-sm lg:text-base">
+                        Login
+                    </a>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -68,42 +69,45 @@
                 <a href="{{ route('manifestacao.show') }}" class="block px-4 py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition text-center shadow-md">
                     Manifestar Interesse
                 </a>
-                @auth
-                    <a href="{{ route('admin.dashboard') }}" @click="mobileMenuOpen = false" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition">Painel Admin</a>
-                @endauth
+                <a href="{{ route('login') }}" class="block px-4 py-3 rounded-lg border-2 border-blue-600 text-blue-600 font-semibold hover:bg-blue-600 hover:text-white transition text-center">
+                    Login na Plataforma
+                </a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-24 md:pt-32 pb-12 md:pb-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <section class="pt-16 md:pt-20 pb-8 md:pb-12 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                 <div>
                     <div class="inline-block bg-blue-100 text-blue-800 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-semibold mb-4 md:mb-6">
                         Programa CREA-PR 2026
                     </div>
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
                         Smart Crea <span class="text-blue-600">Cities</span>
                     </h1>
-                    <p class="text-base sm:text-lg md:text-xl text-gray-600 mb-6 md:mb-8 leading-relaxed">
+                    <p class="text-sm sm:text-base md:text-lg text-gray-600 mb-4 md:mb-6 leading-relaxed">
                         Transformando municípios paranaenses em <strong>Territórios Inteligentes</strong> 
                         através de apoio técnico, metodologia avançada e gestão orientada a resultados.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-3 md:gap-4">
-                        <a href="{{ route('manifestacao.show') }}" class="inline-flex items-center justify-center bg-blue-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-base md:text-lg hover:bg-blue-700 transition shadow-lg hover:shadow-xl">
+                        <a href="{{ route('manifestacao.show') }}" class="inline-flex items-center justify-center bg-blue-600 text-white px-5 md:px-6 py-2.5 md:py-3 rounded-lg font-bold text-sm md:text-base hover:bg-blue-700 transition shadow-lg hover:shadow-xl">
                             Manifestar Interesse
                             <svg class="w-4 h-4 md:w-5 md:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                             </svg>
                         </a>
-                        <a href="#sobre" class="inline-flex items-center justify-center border-2 border-gray-300 text-gray-700 px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-base md:text-lg hover:border-blue-600 hover:text-blue-600 transition">
-                            Saiba Mais
+                        <a href="{{ route('login') }}" class="inline-flex items-center justify-center border-2 border-blue-600 text-blue-600 px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-base md:text-lg hover:bg-blue-600 hover:text-white transition">
+                            Login na Plataforma
+                            <svg class="w-4 h-4 md:w-5 md:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
+                            </svg>
                         </a>
                     </div>
                 </div>
                 <div class="relative order-first md:order-last">
-                    <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities Card" class="w-full rounded-2xl shadow-2xl">
+                    <img src="{{ asset('assets/img/card-smart-crea-cities.png') }}" alt="Smart Crea Cities Card" class="w-full rounded-2xl shadow-2xl">
                 </div>
             </div>
         </div>
@@ -114,17 +118,17 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 text-center text-white">
                 <div class="p-4">
-                    <div class="text-4xl md:text-5xl font-bold mb-2">8</div>
+                    <div class="text-2xl md:text-3xl font-bold mb-2">8</div>
                     <div class="text-lg md:text-xl opacity-90">Municípios no Piloto</div>
                     <div class="text-xs md:text-sm opacity-75 mt-1">1 por regional do CREA-PR</div>
                 </div>
                 <div class="p-4">
-                    <div class="text-4xl md:text-5xl font-bold mb-2">20</div>
+                    <div class="text-2xl md:text-3xl font-bold mb-2">20</div>
                     <div class="text-lg md:text-xl opacity-90">Etapas Programáticas</div>
                     <div class="text-xs md:text-sm opacity-75 mt-1">Do diagnóstico à certificação</div>
                 </div>
                 <div class="p-4">
-                    <div class="text-4xl md:text-5xl font-bold mb-2">2026</div>
+                    <div class="text-2xl md:text-3xl font-bold mb-2">2026</div>
                     <div class="text-lg md:text-xl opacity-90">Ciclo Inaugural</div>
                     <div class="text-xs md:text-sm opacity-75 mt-1">Início imediato</div>
                 </div>
@@ -136,7 +140,7 @@
     <section id="sobre" class="py-12 md:py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">Sobre o Programa</h2>
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 md:mb-3">Sobre o Programa</h2>
                 <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
                     Uma iniciativa institucional do CREA-PR com finalidade pública e caráter estratégico
                 </p>
@@ -144,7 +148,7 @@
 
             <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center mb-12 md:mb-16">
                 <div>
-                    <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6">O que é um Território Inteligente?</h3>
+                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4">O que é um Território Inteligente?</h3>
                     <p class="text-base md:text-lg text-gray-700 mb-4 leading-relaxed">
                         É o município que, ao longo do Programa, organiza capacidades e processos de 
                         <strong>governança, planejamento, inovação e execução</strong>, com base em 
@@ -199,7 +203,7 @@
     <section id="objetivos" class="py-12 md:py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">Objetivos do Programa</h2>
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 md:mb-3">Objetivos do Programa</h2>
                 <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
                     Cinco pilares fundamentais para transformação municipal
                 </p>
@@ -285,7 +289,7 @@
     <section id="etapas" class="py-12 md:py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">Etapas do Programa</h2>
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 md:mb-3">Etapas do Programa</h2>
                 <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
                     Uma jornada completa de transformação territorial em etapas integradas
                 </p>
@@ -392,7 +396,7 @@
                 <div class="inline-block bg-white bg-opacity-20 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-semibold mb-3 md:mb-4">
                     Fase Inaugural
                 </div>
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">Projeto Piloto 2026</h2>
+                <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">Projeto Piloto 2026</h2>
                 <p class="text-base md:text-lg lg:text-xl opacity-90 max-w-3xl mx-auto px-4">
                     Validação metodológica com até 8 municípios paranaenses
                 </p>

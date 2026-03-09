@@ -1,183 +1,337 @@
-@extends('layouts.admin')
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard Admin | Smart Crea Cities</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <nav class="bg-white shadow-lg border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-4">
+                    <img src="{{ asset('assets/img/card-smart-crea-cities.png') }}" alt="Smart Crea Cities" class="h-12 w-auto object-contain">
+                    <div class="border-l border-gray-300 h-10"></div>
+                    <div>
+                        <p class="text-sm text-gray-600">Painel</p>
+                        <p class="font-bold text-blue-900">Administrativo CREA-PR</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="{{ route('admin.submissoes.index') }}" class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
+                        Ver Submissões
+                    </a>
+                    <span class="text-gray-300">|</span>
+                    <a href="{{ route('admin.questions.index') }}" class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
+                        Gerenciar Questões
+                    </a>
+                    <div class="text-right">
+                        <p class="text-sm text-gray-600">{{ Auth::user()->name }}</p>
+                        <p class="text-xs text-gray-500">Administrador</p>
+                    </div>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="text-red-600 hover:text-red-800 font-semibold text-sm">
+                            Sair
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-@section('title', 'Dashboard - Admin CREA-PR')
-
-@section('content')
-<div class="min-h-screen bg-gray-100 py-8 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto">
-        <!-- Header -->
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Título -->
         <div class="mb-8">
-            <h1 class="text-4xl font-bold text-gray-900 mb-2">Dashboard</h1>
-            <p class="text-gray-600">Visão geral das manifestações de interesse recebidas</p>
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Dashboard - Smart Crea Cities</h1>
+            <p class="text-gray-600">Visão geral do programa de maturidade tecnológica municipal</p>
         </div>
 
-        <!-- Stats Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <!-- Total de Manifestações -->
-            <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg p-6 text-white transform hover:scale-105 transition duration-200">
+        <!-- Cards de Estatísticas -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Total de Submissões -->
+            <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-500">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-blue-100 text-sm font-semibold uppercase tracking-wide">Total de Manifestações</p>
-                        <p class="text-5xl font-extrabold mt-2">{{ $totalSubmissoes }}</p>
-                        <p class="text-blue-100 text-xs mt-2">Submissões recebidas</p>
+                        <p class="text-sm text-gray-600 font-medium">Total de Manifestações</p>
+                        <p class="text-3xl font-bold text-blue-900 mt-2">{{ $totalSubmissoes }}</p>
                     </div>
-                    <div class="bg-blue-400 bg-opacity-50 rounded-full p-4">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    <div class="bg-blue-100 rounded-full p-3">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
                     </div>
                 </div>
             </div>
 
-            <!-- Com Lei de Inovação -->
-            <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-xl shadow-lg p-6 text-white transform hover:scale-105 transition duration-200">
+            <!-- Pendentes -->
+            <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-yellow-500">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-green-100 text-sm font-semibold uppercase tracking-wide">Lei de Inovação</p>
-                        <p class="text-5xl font-extrabold mt-2">{{ $comLeiInovacao }}</p>
-                        <p class="text-green-100 text-xs mt-2">Municípios com lei</p>
+                        <p class="text-sm text-gray-600 font-medium">Aguardando Análise</p>
+                        <p class="text-3xl font-bold text-yellow-900 mt-2">{{ $pendentes }}</p>
                     </div>
-                    <div class="bg-green-400 bg-opacity-50 rounded-full p-4">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    <div class="bg-yellow-100 rounded-full p-3">
+                        <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                     </div>
                 </div>
             </div>
 
-            <!-- Com Fundo de Inovação -->
-            <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl shadow-lg p-6 text-white transform hover:scale-105 transition duration-200">
+            <!-- Aprovadas -->
+            <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-green-500">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-purple-100 text-sm font-semibold uppercase tracking-wide">Fundo de Inovação</p>
-                        <p class="text-5xl font-extrabold mt-2">{{ $comFundoInovacao }}</p>
-                        <p class="text-purple-100 text-xs mt-2">Municípios com fundo</p>
+                        <p class="text-sm text-gray-600 font-medium">Aprovadas</p>
+                        <p class="text-3xl font-bold text-green-900 mt-2">{{ $aprovadas }}</p>
                     </div>
-                    <div class="bg-purple-400 bg-opacity-50 rounded-full p-4">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    <div class="bg-green-100 rounded-full p-3">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                     </div>
                 </div>
             </div>
+
+            <!-- Diagnósticos Completos -->
+            <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-purple-500">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-600 font-medium">Diagnósticos Completos</p>
+                        <p class="text-3xl font-bold text-purple-900 mt-2">{{ $diagnosticosCompletos }}</p>
+                    </div>
+                    <div class="bg-purple-100 rounded-full p-3">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mais Engenharia e Médias -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <!-- Mais Engenharia -->
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Programa Mais Engenharia</h2>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-700">Participantes</span>
+                        <span class="font-bold text-2xl text-green-600">{{ $maisEngenharia }}</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3">
+                        <div class="bg-green-500 h-3 rounded-full" style="width: {{ $totalSubmissoes > 0 ? ($maisEngenharia / $totalSubmissoes) * 100 : 0 }}%"></div>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600">Não Participantes</span>
+                        <span class="font-semibold text-gray-700">{{ $naoMaisEngenharia }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Médias de Pontuação -->
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Médias de Pontuação (0-100)</h2>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-sm text-gray-700">Estímulo</span>
+                            <span class="font-bold text-blue-600">{{ number_format($mediaPontuacaoEstimulo, 1) }}</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-blue-500 h-2 rounded-full" style="width: {{ $mediaPontuacaoEstimulo }}%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-sm text-gray-700">Educação</span>
+                            <span class="font-bold text-green-600">{{ number_format($mediaPontuacaoEducacao, 1) }}</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-green-500 h-2 rounded-full" style="width: {{ $mediaPontuacaoEducacao }}%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-sm text-gray-700">Estruturas</span>
+                            <span class="font-bold text-purple-600">{{ number_format($mediaPontuacaoEstruturas, 1) }}</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-purple-500 h-2 rounded-full" style="width: {{ $mediaPontuacaoEstruturas }}%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gráficos -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <!-- Status das Submissões -->
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Status das Manifestações</h2>
+                <canvas id="statusChart"></canvas>
+            </div>
+
+            <!-- Distribuição por Regional -->
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Top 5 Regionais</h2>
+                <canvas id="regionalChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-4">Timeline de Manifestações (Últimos 6 Meses)</h2>
+            <canvas id="timelineChart"></canvas>
         </div>
 
         <!-- Últimas Submissões -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4">
-                <h2 class="text-2xl font-bold text-white flex items-center">
-                    <svg class="w-7 h-7 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    Últimas 5 Submissões
-                </h2>
-            </div>
-
+        <div class="bg-white rounded-xl shadow-md p-6">
+            <h2 class="text-xl font-bold text-gray-900 mb-4">Últimas Manifestações</h2>
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">
-                                Protocolo
-                            </th>
-                            <th class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">
-                                Município
-                            </th>
-                            <th class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">
-                                Ponto Focal
-                            </th>
-                            <th class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">
-                                Data
-                            </th>
-                            <th class="px-6 py-3 text-center text-xs font-bold text-gray-600 uppercase tracking-wider">
-                                Ações
-                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Protocolo</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Município</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Regional</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        @forelse($ultimasSubmissoes as $submission)
-                        <tr class="hover:bg-blue-50 transition duration-150">
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <span class="text-sm font-mono font-bold text-blue-600">
-                                    {{ $submission->protocolo }}
-                                </span>
+                        @foreach($ultimasSubmissoes as $sub)
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-mono font-semibold text-blue-600">
+                                {{ $sub->protocolo }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {{ $sub->municipio_nome }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                {{ $sub->regional_creapr }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm font-semibold text-gray-900">{{ $submission->municipio_nome }}</div>
-                                <div class="text-xs text-gray-500">{{ $submission->prefeito_nome }}</div>
+                                @if($sub->status === 'pending')
+                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">Pendente</span>
+                                @elseif($sub->status === 'approved')
+                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Aprovado</span>
+                                @elseif($sub->status === 'under_review')
+                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">Em Análise</span>
+                                @elseif($sub->status === 'rejected')
+                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">Rejeitado</span>
+                                @endif
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{ $submission->ponto_focal_nome }}</div>
-                                <div class="text-xs text-gray-500">{{ $submission->ponto_focal_email }}</div>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                {{ $sub->created_at->format('d/m/Y') }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {{ $submission->created_at->format('d/m/Y H:i') }}
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                <a href="{{ route('admin.submissoes.show', $submission) }}" 
-                                    class="inline-flex items-center px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition duration-150">
-                                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                    </svg>
-                                    Ver
+                            <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                <a href="{{ route('admin.submissoes.show', $sub) }}" class="text-blue-600 hover:text-blue-800 font-semibold">
+                                    Ver Detalhes →
                                 </a>
                             </td>
                         </tr>
-                        @empty
-                        <tr>
-                            <td colspan="5" class="px-6 py-12 text-center">
-                                <div class="flex flex-col items-center justify-center text-gray-400">
-                                    <svg class="w-16 h-16 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
-                                    </svg>
-                                    <p class="text-lg font-semibold">Nenhuma submissão registrada</p>
-                                    <p class="text-sm mt-1">As manifestações aparecerão aqui</p>
-                                </div>
-                            </td>
-                        </tr>
-                        @endforelse
+                        @endforeach
                     </tbody>
                 </table>
             </div>
-
-            @if($ultimasSubmissoes->count() > 0)
-            <div class="bg-gray-50 px-6 py-4 border-t border-gray-200">
-                <a href="{{ route('admin.submissoes.index') }}" 
-                    class="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold transition">
-                    Ver todas as submissões
-                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                    </svg>
+            <div class="mt-4 text-center">
+                <a href="{{ route('admin.submissoes.index') }}" class="text-blue-600 hover:text-blue-800 font-semibold">
+                    Ver Todas as Manifestações →
                 </a>
             </div>
-            @endif
-        </div>
-
-        <!-- Ações Rápidas -->
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <a href="{{ route('admin.submissoes.index') }}" 
-                class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition duration-200 border-l-4 border-blue-500 flex items-center justify-between group">
-                <div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Gerenciar Submissões</h3>
-                    <p class="text-gray-600 text-sm">Visualize e gerencie todas as manifestações</p>
-                </div>
-                <svg class="w-12 h-12 text-blue-500 group-hover:text-blue-600 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-                </svg>
-            </a>
-
-            <a href="{{ route('manifestacao.show') }}" 
-                class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition duration-200 border-l-4 border-green-500 flex items-center justify-between group">
-                <div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Formulário Público</h3>
-                    <p class="text-gray-600 text-sm">Acesse o formulário de manifestação</p>
-                </div>
-                <svg class="w-12 h-12 text-green-500 group-hover:text-green-600 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-            </a>
         </div>
     </div>
-</div>
-@endsection
+
+    <script>
+        // Status Chart
+        const statusCtx = document.getElementById('statusChart').getContext('2d');
+        new Chart(statusCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Pendentes', 'Aprovadas', 'Em Análise', 'Rejeitadas'],
+                datasets: [{
+                    data: [{{ $pendentes }}, {{ $aprovadas }}, {{ $emAnalise }}, {{ $rejeitadas }}],
+                    backgroundColor: ['#eab308', '#22c55e', '#3b82f6', '#ef4444'],
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    }
+                }
+            }
+        });
+
+        // Regional Chart
+        const regionalCtx = document.getElementById('regionalChart').getContext('2d');
+        new Chart(regionalCtx, {
+            type: 'bar',
+            data: {
+                labels: {!! json_encode($porRegional->take(5)->pluck('regional_creapr')) !!},
+                datasets: [{
+                    label: 'Manifestações',
+                    data: {!! json_encode($porRegional->take(5)->pluck('total')) !!},
+                    backgroundColor: '#3b82f6',
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+
+        // Timeline Chart
+        const timelineCtx = document.getElementById('timelineChart').getContext('2d');
+        new Chart(timelineCtx, {
+            type: 'line',
+            data: {
+                labels: {!! json_encode($timeline->pluck('mes')) !!},
+                datasets: [{
+                    label: 'Manifestações por Mês',
+                    data: {!! json_encode($timeline->pluck('total')) !!},
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
