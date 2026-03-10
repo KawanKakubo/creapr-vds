@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
@@ -22,7 +22,7 @@
                 </div>
                 <div class="flex items-center space-x-4">
                     <a href="{{ route('admin.events.index') }}" class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
-                        â† Voltar
+                        ← Voltar
                     </a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
@@ -42,10 +42,10 @@
             <form method="POST" action="{{ route('admin.events.store') }}">
                 @csrf
 
-                <!-- TÃ­tulo -->
+                <!-- Título -->
                 <div class="mb-6">
                     <label for="title" class="block text-sm font-semibold text-gray-700 mb-2">
-                        TÃ­tulo do Evento *
+                        Título do Evento *
                     </label>
                     <input type="text" name="title" id="title" required
                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -56,10 +56,10 @@
                     @enderror
                 </div>
 
-                <!-- DescriÃ§Ã£o -->
+                <!-- Descrição -->
                 <div class="mb-6">
                     <label for="description" class="block text-sm font-semibold text-gray-700 mb-2">
-                        DescriÃ§Ã£o
+                        Descrição
                     </label>
                     <textarea name="description" id="description" rows="4"
                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -85,7 +85,7 @@
 
                     <div>
                         <label for="event_time" class="block text-sm font-semibold text-gray-700 mb-2">
-                            HorÃ¡rio (opcional)
+                            Horário (opcional)
                         </label>
                         <input type="time" name="event_time" id="event_time"
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -105,9 +105,9 @@
                         <select name="type" id="type" required
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             <option value="workshop" {{ old('type') == 'workshop' ? 'selected' : '' }}>Workshop</option>
-                            <option value="reuniao" {{ old('type') == 'reuniao' ? 'selected' : '' }}>ReuniÃ£o</option>
-                            <option value="capacitacao" {{ old('type') == 'capacitacao' ? 'selected' : '' }}>CapacitaÃ§Ã£o</option>
-                            <option value="avaliacao" {{ old('type') == 'avaliacao' ? 'selected' : '' }}>AvaliaÃ§Ã£o</option>
+                            <option value="reuniao" {{ old('type') == 'reuniao' ? 'selected' : '' }}>Reunião</option>
+                            <option value="capacitacao" {{ old('type') == 'capacitacao' ? 'selected' : '' }}>Capacitação</option>
+                            <option value="avaliacao" {{ old('type') == 'avaliacao' ? 'selected' : '' }}>Avaliação</option>
                             <option value="outro" {{ old('type') == 'outro' ? 'selected' : '' }}>Outro</option>
                         </select>
                         @error('type')
@@ -135,13 +135,13 @@
                         <input type="checkbox" name="is_published" value="1" {{ old('is_published') ? 'checked' : '' }}
                             class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
                         <span class="ml-3 text-sm font-semibold text-gray-700">
-                            Publicar evento (visÃ­vel para os municÃ­pios)
+                            Publicar evento (visível para os municípios)
                         </span>
                     </label>
-                    <p class="mt-2 text-xs text-gray-500">Se desmarcado, o evento ficarÃ¡ como rascunho</p>
+                    <p class="mt-2 text-xs text-gray-500">Se desmarcado, o evento ficará como rascunho</p>
                 </div>
 
-                <!-- BotÃµes -->
+                <!-- Botões -->
                 <div class="flex items-center justify-end gap-4">
                     <a href="{{ route('admin.events.index') }}" 
                         class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-semibold">

@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Smart Crea Cities 2026 | CREA-PR</title>
-        <meta name="description" content="Programa Smart Crea Cities 2026 - Iniciativa do CREA-PR para apoio tÃ©cnico e metodolÃ³gico a municÃ­pios paranaenses na estruturaÃ§Ã£o de TerritÃ³rios Inteligentes.">
+        <meta name="description" content="Programa Smart Crea Cities 2026 - Iniciativa do CREA-PR para apoio técnico e metodológico a municípios paranaenses na estruturação de Territórios Inteligentes.">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">

@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ManifestaÃ§Ã£o Registrada - Smart Crea Cities</title>
+    <title>Manifestação Registrada - Smart Crea Cities</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -120,65 +120,65 @@
     <div class="container">
         <div class="header">
             <div class="logo">Smart Crea Cities</div>
-            <p style="color: #64748b; margin: 5px 0 0 0;">CREA-PR - Conselho Regional de Engenharia e Agronomia do ParanÃ¡</p>
+            <p style="color: #64748b; margin: 5px 0 0 0;">CREA-PR - Conselho Regional de Engenharia e Agronomia do Paraná</p>
         </div>
 
-        <h1>âœ… ManifestaÃ§Ã£o Registrada com Sucesso!</h1>
+        <h1>✅ Manifestação Registrada com Sucesso!</h1>
         
-        <p>OlÃ¡,</p>
+        <p>Olá,</p>
         
-        <p>A manifestaÃ§Ã£o de interesse do municÃ­pio <strong>{{ $municipioNome }}</strong> foi recebida e registrada com sucesso em nosso sistema.</p>
+        <p>A manifestação de interesse do município <strong>{{ $municipioNome }}</strong> foi recebida e registrada com sucesso em nosso sistema.</p>
 
         <div class="protocol-box">
-            <div class="protocol-label">ðŸ“‹ NÃšMERO DO PROTOCOLO</div>
+            <div class="protocol-label">📋 NÚMERO DO PROTOCOLO</div>
             <div class="protocol-value">{{ $protocol }}</div>
         </div>
 
-        <p>Guarde este nÃºmero de protocolo para futuras consultas e acompanhamento.</p>
+        <p>Guarde este número de protocolo para futuras consultas e acompanhamento.</p>
 
         <div class="highlight">
-            <strong>ðŸ”” PrÃ³ximos Passos</strong><br>
-            Nossa equipe do CREA-PR entrarÃ¡ em contato em breve para dar continuidade ao processo de integraÃ§Ã£o ao programa Smart Crea Cities.
+            <strong>🔔 Próximos Passos</strong><br>
+            Nossa equipe do CREA-PR entrará em contato em breve para dar continuidade ao processo de integração ao programa Smart Crea Cities.
         </div>
 
         <div class="info-box">
-            <h2>ðŸ“Œ InformaÃ§Ãµes Importantes</h2>
+            <h2>📌 Informações Importantes</h2>
             
             <div class="info-item">
-                <span class="info-icon">ðŸ“§</span>
+                <span class="info-icon">📧</span>
                 <div>
                     <strong>Contato</strong><br>
-                    VocÃª receberÃ¡ informaÃ§Ãµes e orientaÃ§Ãµes por e-mail sobre os prÃ³ximos passos do programa.
+                    Você receberá informações e orientações por e-mail sobre os próximos passos do programa.
                 </div>
             </div>
             
             <div class="info-item">
-                <span class="info-icon">ðŸ“Š</span>
+                <span class="info-icon">📊</span>
                 <div>
-                    <strong>AvaliaÃ§Ã£o</strong><br>
-                    Sua manifestaÃ§Ã£o serÃ¡ analisada pela nossa equipe tÃ©cnica do CREA-PR.
+                    <strong>Avaliação</strong><br>
+                    Sua manifestação será analisada pela nossa equipe técnica do CREA-PR.
                 </div>
             </div>
             
             <div class="info-item">
-                <span class="info-icon">ðŸ™ï¸</span>
+                <span class="info-icon">🏙️</span>
                 <div>
                     <strong>Programa</strong><br>
-                    O Smart Crea Cities visa desenvolver a maturidade tecnolÃ³gica dos municÃ­pios paranaenses.
+                    O Smart Crea Cities visa desenvolver a maturidade tecnológica dos municípios paranaenses.
                 </div>
             </div>
             
             <div class="info-item">
-                <span class="info-icon">ðŸ“ž</span>
+                <span class="info-icon">📞</span>
                 <div>
-                    <strong>DÃºvidas</strong><br>
-                    Em caso de dÃºvidas, entre em contato atravÃ©s dos nossos canais oficiais.
+                    <strong>Dúvidas</strong><br>
+                    Em caso de dúvidas, entre em contato através dos nossos canais oficiais.
                 </div>
             </div>
         </div>
 
         <p style="text-align: center; color: #64748b; font-style: italic;">
-            Agradecemos o interesse do municÃ­pio em participar do Smart Crea Cities!
+            Agradecemos o interesse do município em participar do Smart Crea Cities!
         </p>
 
         <div style="text-align: center;">
@@ -186,9 +186,9 @@
         </div>
 
         <div class="footer">
-            <p><strong>CREA-PR - Conselho Regional de Engenharia e Agronomia do ParanÃ¡</strong></p>
+            <p><strong>CREA-PR - Conselho Regional de Engenharia e Agronomia do Paraná</strong></p>
             <p>Smart Crea Cities - Trilha Formativa dos 3'Es</p>
-            <p style="margin-top: 10px;">Este Ã© um e-mail automÃ¡tico. Por favor, nÃ£o responda.</p>
+            <p style="margin-top: 10px;">Este é um e-mail automático. Por favor, não responda.</p>
         </div>
     </div>
 </body>

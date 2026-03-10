@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'MunicÃ­pio | Smart Crea Cities')</title>
+    <title>@yield('title', 'Município | Smart Crea Cities')</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -19,7 +19,7 @@
                     <div class="border-l border-gray-300 h-10"></div>
                     <div>
                         <p class="text-sm text-gray-600">Painel</p>
-                        <p class="font-bold text-blue-900">MunicÃ­pio</p>
+                        <p class="font-bold text-blue-900">Município</p>
                     </div>
                 </div>
 
@@ -29,11 +29,11 @@
                     </a>
                     <span class="text-gray-300">|</span>
                     <a href="{{ route('municipality.dashboard') }}#repositorio-documentos" class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
-                        RepositÃ³rio
+                        Repositório
                     </a>
                     <div class="text-right">
                         <p class="text-sm text-gray-600">{{ Auth::user()->name }}</p>
-                        <p class="text-xs text-gray-500">MunicÃ­pio</p>
+                        <p class="text-xs text-gray-500">Município</p>
                     </div>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf

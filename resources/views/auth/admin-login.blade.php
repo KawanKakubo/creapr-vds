@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
@@ -31,15 +31,15 @@
                          class="h-20 sm:h-24 md:h-28 w-auto object-contain">
                 </a>
                 
-                <!-- BotÃµes -->
+                <!-- Botões -->
                 <div class="flex items-center space-x-4">
                     <a href="{{ route('login') }}" 
                        class="px-4 md:px-6 py-2 md:py-2.5 border-2 border-red-600 text-red-600 rounded-lg font-semibold hover:bg-red-50 transition text-sm md:text-base">
-                        Login MunicÃ­pio
+                        Login Município
                     </a>
                     <a href="{{ route('home') }}" 
                        class="px-4 md:px-6 py-2 md:py-2.5 border-2 border-gray-600 text-gray-600 rounded-lg font-semibold hover:bg-gray-50 transition text-sm md:text-base">
-                        Voltar ao InÃ­cio
+                        Voltar ao Início
                     </a>
                 </div>
             </div>
@@ -50,7 +50,7 @@
         <div class="max-w-md w-full">
             <!-- Card de Login -->
             <div class="bg-white rounded-xl shadow-2xl p-6 md:p-8">
-                <!-- CabeÃ§alho -->
+                <!-- Cabeçalho -->
                 <div class="text-center mb-6">
                     <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
                         <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -58,7 +58,7 @@
                         </svg>
                     </div>
                     <h1 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Acesso Administrativo</h1>
-                    <p class="text-sm text-gray-600">Ãrea restrita para administradores CREA-PR</p>
+                    <p class="text-sm text-gray-600">Área restrita para administradores CREA-PR</p>
                 </div>
 
                 <!-- Session Status -->
@@ -74,7 +74,7 @@
                     </div>
                 @endif
 
-                <!-- FormulÃ¡rio -->
+                <!-- Formulário -->
                 <form method="POST" action="{{ route('admin.login.store') }}" class="space-y-6">
                     @csrf
 
@@ -107,7 +107,7 @@
                             </div>
                             <input id="password" type="password" name="password" required
                                    class="pl-10 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition @error('password') border-red-500 @enderror"
-                                   placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢">
+                                   placeholder="••••••••">
                         </div>
                         @error('password')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -128,30 +128,30 @@
                     </button>
                 </form>
 
-                <!-- Aviso de SeguranÃ§a -->
+                <!-- Aviso de Segurança -->
                 <div class="mt-6 p-4 bg-amber-50 border-l-4 border-amber-500 rounded-lg">
                     <div class="flex items-start">
                         <svg class="w-5 h-5 text-amber-600 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
                         </svg>
                         <div class="text-xs text-amber-800">
-                            <strong>Ãrea Restrita:</strong> Esta Ã© uma Ã¡rea de acesso exclusivo para administradores do sistema CREA-PR. 
-                            Todos os acessos sÃ£o monitorados e registrados.
+                            <strong>Área Restrita:</strong> Esta é uma área de acesso exclusivo para administradores do sistema CREA-PR. 
+                            Todos os acessos são monitorados e registrados.
                         </div>
                     </div>
                 </div>
 
-                <!-- Link para login de municÃ­pio -->
+                <!-- Link para login de município -->
                 <div class="mt-6 text-center">
                     <p class="text-sm text-gray-600">
-                        Ã‰ um municÃ­pio? 
+                        É um município? 
                         <a href="{{ route('login') }}" class="text-red-600 font-semibold hover:text-red-700 transition">Acesse aqui</a>
                     </p>
                 </div>
             </div>
 
             <div class="text-center mt-6">
-                <p class="text-sm text-gray-600">Â© {{ date('Y') }} Smart Crea Cities - CREA-PR</p>
+                <p class="text-sm text-gray-600">© {{ date('Y') }} Smart Crea Cities - CREA-PR</p>
             </div>
         </div>
     </div>

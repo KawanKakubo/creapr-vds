@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -50,7 +50,7 @@
     <main class="flex-1 flex items-center justify-center px-4 pt-28 md:pt-36 lg:pt-40 pb-8">
         <div class="max-w-md w-full">
 
-        <!-- Card de MudanÃ§a de Senha -->
+        <!-- Card de Mudança de Senha -->
         <div class="bg-white rounded-lg shadow-xl p-8" x-data="{ 
             showCurrent: false, 
             showNew: false, 
@@ -76,7 +76,7 @@
                     this.strengthText = 'Fraca';
                 } else if (strength === 2) {
                     this.strengthColor = 'bg-yellow-500';
-                    this.strengthText = 'MÃ©dia';
+                    this.strengthText = 'Média';
                 } else if (strength === 3) {
                     this.strengthColor = 'bg-blue-500';
                     this.strengthText = 'Boa';
@@ -90,7 +90,7 @@
 
             <h2 class="text-2xl font-bold text-gray-800 mb-6">Alterar Senha</h2>
             
-            <!-- Alerta de SeguranÃ§a -->
+            <!-- Alerta de Segurança -->
             <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
                 <div class="flex">
                     <div class="flex-shrink-0">
@@ -100,7 +100,7 @@
                     </div>
                     <div class="ml-3">
                         <p class="text-sm text-yellow-700">
-                            <strong>SeguranÃ§a:</strong> Por favor, altere sua senha temporÃ¡ria.
+                            <strong>Segurança:</strong> Por favor, altere sua senha temporária.
                         </p>
                     </div>
                 </div>
@@ -126,14 +126,14 @@
                 </div>
             @endif
 
-            <!-- FormulÃ¡rio -->
+            <!-- Formulário -->
             <form method="POST" action="{{ route('change-password.update') }}">
                 @csrf
 
                 <!-- Senha Atual -->
                 <div class="mb-5">
                     <label for="current_password" class="block text-sm font-medium text-gray-700 mb-2">
-                        Senha Atual (TemporÃ¡ria)
+                        Senha Atual (Temporária)
                     </label>
                     <div class="relative">
                         <input 
@@ -191,10 +191,10 @@
                         </button>
                     </div>
                     
-                    <!-- Indicador de ForÃ§a da Senha -->
+                    <!-- Indicador de Força da Senha -->
                     <div class="mt-2" x-show="password.length > 0">
                         <div class="flex items-center justify-between mb-1">
-                            <span class="text-xs text-gray-600">ForÃ§a da senha:</span>
+                            <span class="text-xs text-gray-600">Força da senha:</span>
                             <span class="text-xs font-medium" :class="{'text-gray-500': passwordStrength === 0, 'text-red-500': passwordStrength === 1, 'text-yellow-500': passwordStrength === 2, 'text-blue-500': passwordStrength === 3, 'text-green-500': passwordStrength === 4}" x-text="strengthText"></span>
                         </div>
                         <div class="w-full bg-gray-200 rounded-full h-2">
@@ -241,19 +241,19 @@
                             <svg class="h-4 w-4 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                             </svg>
-                            MÃ­nimo de 8 caracteres
+                            Mínimo de 8 caracteres
                         </li>
                         <li class="flex items-center">
                             <svg class="h-4 w-4 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                             </svg>
-                            Letras maiÃºsculas e minÃºsculas
+                            Letras maiúsculas e minúsculas
                         </li>
                         <li class="flex items-center">
                             <svg class="h-4 w-4 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                             </svg>
-                            Pelo menos um nÃºmero
+                            Pelo menos um número
                         </li>
                         <li class="flex items-center">
                             <svg class="h-4 w-4 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
@@ -264,7 +264,7 @@
                     </ul>
                 </div>
 
-                <!-- BotÃ£o de Submit -->
+                <!-- Botão de Submit -->
                 <button 
                     type="submit" 
                     class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 transform hover:scale-[1.02]"
@@ -278,9 +278,9 @@
     <!-- Footer -->
     <footer class="py-6 text-center text-sm text-gray-600 bg-white border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-4">
-            <p class="font-semibold">Â© {{ date('Y') }} Smart Crea Cities - CREA-PR</p>
-            <p class="text-xs mt-1">Conselho Regional de Engenharia e Agronomia do ParanÃ¡</p>
-            <p class="text-xs mt-1">Programa de Maturidade TecnolÃ³gica Municipal</p>
+            <p class="font-semibold">© {{ date('Y') }} Smart Crea Cities - CREA-PR</p>
+            <p class="text-xs mt-1">Conselho Regional de Engenharia e Agronomia do Paraná</p>
+            <p class="text-xs mt-1">Programa de Maturidade Tecnológica Municipal</p>
         </div>
     </footer>
 </body>

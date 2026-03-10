@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
@@ -17,13 +17,13 @@
                     <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-20 sm:h-24 md:h-28 w-auto object-contain">
                     <div class="border-l border-gray-300 h-10"></div>
                     <div>
-                        <p class="text-sm text-gray-600">CalendÃ¡rio</p>
+                        <p class="text-sm text-gray-600">Calendário</p>
                         <p class="font-bold text-blue-900">Eventos do Programa</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
                     <a href="{{ route('admin.dashboard') }}" class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
-                        â† Dashboard
+                        ← Dashboard
                     </a>
                     <div class="text-right">
                         <p class="text-sm text-gray-600">{{ Auth::user()->name }}</p>
@@ -41,11 +41,11 @@
     </nav>
 
     <div class="max-w-7xl mx-auto px-4 py-8">
-        <!-- CabeÃ§alho -->
+        <!-- Cabeçalho -->
         <div class="mb-8 flex items-center justify-between">
             <div>
                 <h1 class="text-3xl font-bold text-gray-900 mb-2">Eventos do Programa</h1>
-                <p class="text-gray-600">Gerencie o calendÃ¡rio de eventos que aparecerÃ¡ para os municÃ­pios</p>
+                <p class="text-gray-600">Gerencie o calendário de eventos que aparecerá para os municípios</p>
             </div>
             <a href="{{ route('admin.events.create') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all flex items-center gap-2">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,11 +69,11 @@
                     <thead class="bg-gray-50">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data/Hora</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">TÃ­tulo</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Título</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipo</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Local</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">AÃ§Ãµes</th>
+                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -102,9 +102,9 @@
                                 ];
                                 $typeLabels = [
                                     'workshop' => 'Workshop',
-                                    'reuniao' => 'ReuniÃ£o',
-                                    'capacitacao' => 'CapacitaÃ§Ã£o',
-                                    'avaliacao' => 'AvaliaÃ§Ã£o',
+                                    'reuniao' => 'Reunião',
+                                    'capacitacao' => 'Capacitação',
+                                    'avaliacao' => 'Avaliação',
                                     'outro' => 'Outro',
                                 ];
                                 @endphp
@@ -113,7 +113,7 @@
                                 </span>
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-600">
-                                {{ $event->location ?? 'â€”' }}
+                                {{ $event->location ?? '—' }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 @if($event->is_published)
@@ -148,7 +148,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                                 </svg>
                                 <p class="text-lg font-medium">Nenhum evento cadastrado</p>
-                                <p class="mt-2">Clique em "Novo Evento" para adicionar um evento ao calendÃ¡rio</p>
+                                <p class="mt-2">Clique em "Novo Evento" para adicionar um evento ao calendário</p>
                             </td>
                         </tr>
                         @endforelse
@@ -157,7 +157,7 @@
             </div>
         </div>
 
-        <!-- PaginaÃ§Ã£o -->
+        <!-- Paginação -->
         @if($events->hasPages())
         <div class="mt-6">
             {{ $events->links() }}

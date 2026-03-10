@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Smart Crea Cities 2026 | CREA-PR</title>
-    <meta name="description" content="Programa Smart Crea Cities 2026 - Transformando municÃ­pios paranaenses em TerritÃ³rios Inteligentes">
+    <meta name="description" content="Programa Smart Crea Cities 2026 - Transformando municípios paranaenses em Territórios Inteligentes">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
             overflow: hidden;
         }
         
-        /* VÃ­deo apenas em desktop */
+        /* Vídeo apenas em desktop */
         .video-background {
             position: absolute;
             top: 50%;
@@ -97,7 +97,7 @@
             background-clip: text;
         }
         
-        /* BotÃµes modernos */
+        /* Botões modernos */
         .btn-primary {
             background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -130,7 +130,7 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
         }
         
-        /* BotÃ£o navbar style */
+        /* Botão navbar style */
         .nav-btn {
             transition: all 0.3s ease;
             position: relative;
@@ -152,7 +152,7 @@
             width: 100%;
         }
         
-        /* AnimaÃ§Ãµes suaves */
+        /* Animações suaves */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -180,14 +180,14 @@
     <nav class="fixed w-full top-0 z-50 header-blur">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-22 md:h-26 lg:h-30">
-                <!-- Logo Simplificada (sem texto secundÃ¡rio) -->
+                <!-- Logo Simplificada (sem texto secundário) -->
                 <div class="flex items-center">
                     <img src="{{ asset('assets/img/smart-crea-cities-negativo.png') }}" 
                          alt="Smart Crea Cities" 
                          class="h-20 sm:h-24 md:h-28 w-auto object-contain">
                 </div>
                 
-                <!-- BotÃµes Desktop -->
+                <!-- Botões Desktop -->
                 <div class="hidden md:flex items-center gap-6">
                     <a href="{{ asset('assets/pdfs/Smart_Crea_Cities_2026_Regulamento_Termo_Manual_COMPLETO.pdf') }}" 
                        target="_blank"
@@ -207,7 +207,7 @@
                     </a>
                 </div>
                 
-                <!-- BotÃµes Mobile Compactos -->
+                <!-- Botões Mobile Compactos -->
                 <div class="flex md:hidden items-center gap-1.5">
                     <a href="{{ asset('assets/pdfs/Smart_Crea_Cities_2026_Regulamento_Termo_Manual_COMPLETO.pdf') }}" 
                        target="_blank"
@@ -231,7 +231,7 @@
 
     <!-- Hero Section -->
     <section class="hero-container">
-        <!-- VÃ­deo para Desktop -->
+        <!-- Vídeo para Desktop -->
         <video autoplay muted loop playsinline class="video-background">
             <source src="{{ asset('assets/videos/cidade-smart.mp4') }}" type="video/mp4">
         </video>
@@ -244,23 +244,23 @@
         <!-- Overlay com gradiente melhorado -->
         <div class="hero-overlay"></div>
         
-        <!-- ConteÃºdo Central com padding-top ajustado para navbar maior -->
+        <!-- Conteúdo Central com padding-top ajustado para navbar maior -->
         <div class="content-overlay min-h-screen flex items-center justify-center px-4 pt-28 md:pt-32 lg:pt-36 pb-16 md:pb-20">
             <div class="text-center max-w-5xl mx-auto">
                 
-                <!-- TÃ­tulo Principal -->
+                <!-- Título Principal -->
                 <h1 class="hero-title text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-3 md:mb-5 animate-fade-in-up">
                     Smart Crea Cities
                 </h1>
                 
-                <!-- SubtÃ­tulo -->
+                <!-- Subtítulo -->
                 <p class="hero-subtitle text-base sm:text-xl md:text-2xl lg:text-3xl text-white/90 mb-2 font-light animate-fade-in-up delay-100">
-                    Transformando MunicÃ­pios em
+                    Transformando Municípios em
                 </p>
                 
                 <!-- Destaque -->
                 <p class="hero-highlight text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-8 md:mb-10 lg:mb-14 animate-fade-in-up delay-200">
-                    TerritÃ³rios Inteligentes
+                    Territórios Inteligentes
                 </p>
                 
                 <!-- CTAs -->
@@ -298,7 +298,7 @@
                              alt="CREA-PR" 
                              class="h-10 sm:h-12 md:h-14 w-auto opacity-90">
                         <p class="text-slate-700 text-xs md:text-sm text-center max-w-md leading-relaxed">
-                            Uma iniciativa do Conselho Regional de Engenharia e Agronomia do ParanÃ¡
+                            Uma iniciativa do Conselho Regional de Engenharia e Agronomia do Paraná
                         </p>
                     </div>
                 </div>

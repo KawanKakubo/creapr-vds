@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Smart Crea Cities 2026 | CREA-PR</title>
-    <meta name="description" content="Programa Smart Crea Cities 2026 - Transformando municÃ­pios paranaenses em TerritÃ³rios Inteligentes">
+    <meta name="description" content="Programa Smart Crea Cities 2026 - Transformando municípios paranaenses em Territórios Inteligentes">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
@@ -89,8 +89,8 @@
                         Smart Crea <span class="text-blue-600">Cities</span>
                     </h1>
                     <p class="text-sm sm:text-base md:text-lg text-gray-600 mb-4 md:mb-6 leading-relaxed">
-                        Transformando municÃ­pios paranaenses em <strong>TerritÃ³rios Inteligentes</strong> 
-                        atravÃ©s de apoio tÃ©cnico, metodologia avanÃ§ada e gestÃ£o orientada a resultados.
+                        Transformando municípios paranaenses em <strong>Territórios Inteligentes</strong> 
+                        através de apoio técnico, metodologia avançada e gestão orientada a resultados.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-3 md:gap-4">
                         <a href="{{ route('manifestacao.show') }}" class="inline-flex items-center justify-center bg-blue-600 text-white px-5 md:px-6 py-2.5 md:py-3 rounded-lg font-bold text-sm md:text-base hover:bg-blue-700 transition shadow-lg hover:shadow-xl">
@@ -120,18 +120,18 @@
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 text-center text-white">
                 <div class="p-4">
                     <div class="text-2xl md:text-3xl font-bold mb-2">8</div>
-                    <div class="text-lg md:text-xl opacity-90">MunicÃ­pios no Piloto</div>
+                    <div class="text-lg md:text-xl opacity-90">Municípios no Piloto</div>
                     <div class="text-xs md:text-sm opacity-75 mt-1">1 por regional do CREA-PR</div>
                 </div>
                 <div class="p-4">
                     <div class="text-2xl md:text-3xl font-bold mb-2">20</div>
-                    <div class="text-lg md:text-xl opacity-90">Etapas ProgramÃ¡ticas</div>
-                    <div class="text-xs md:text-sm opacity-75 mt-1">Do diagnÃ³stico Ã  certificaÃ§Ã£o</div>
+                    <div class="text-lg md:text-xl opacity-90">Etapas Programáticas</div>
+                    <div class="text-xs md:text-sm opacity-75 mt-1">Do diagnóstico à certificação</div>
                 </div>
                 <div class="p-4">
                     <div class="text-2xl md:text-3xl font-bold mb-2">2026</div>
                     <div class="text-lg md:text-xl opacity-90">Ciclo Inaugural</div>
-                    <div class="text-xs md:text-sm opacity-75 mt-1">InÃ­cio imediato</div>
+                    <div class="text-xs md:text-sm opacity-75 mt-1">Início imediato</div>
                 </div>
             </div>
         </div>
@@ -143,56 +143,56 @@
             <div class="text-center mb-10 md:mb-16">
                 <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 md:mb-3">Sobre o Programa</h2>
                 <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-                    Uma iniciativa institucional do CREA-PR com finalidade pÃºblica e carÃ¡ter estratÃ©gico
+                    Uma iniciativa institucional do CREA-PR com finalidade pública e caráter estratégico
                 </p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center mb-12 md:mb-16">
                 <div>
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4">O que Ã© um TerritÃ³rio Inteligente?</h3>
+                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4">O que é um Território Inteligente?</h3>
                     <p class="text-base md:text-lg text-gray-700 mb-4 leading-relaxed">
-                        Ã‰ o municÃ­pio que, ao longo do Programa, organiza capacidades e processos de 
-                        <strong>governanÃ§a, planejamento, inovaÃ§Ã£o e execuÃ§Ã£o</strong>, com base em 
-                        diagnÃ³stico, metas e indicadores claros.
+                        É o município que, ao longo do Programa, organiza capacidades e processos de 
+                        <strong>governança, planejamento, inovação e execução</strong>, com base em 
+                        diagnóstico, metas e indicadores claros.
                     </p>
                     <p class="text-base md:text-lg text-gray-700 leading-relaxed">
-                        O programa integra o portfÃ³lio de aÃ§Ãµes do CREA-PR observando diretrizes de 
-                        <strong>eficiÃªncia, transparÃªncia, integridade, foco em resultados, inovaÃ§Ã£o 
+                        O programa integra o portfólio de ações do CREA-PR observando diretrizes de 
+                        <strong>eficiência, transparência, integridade, foco em resultados, inovação 
                         e sustentabilidade</strong>.
                     </p>
                 </div>
                 <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 md:p-8 rounded-2xl">
-                    <h4 class="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6">PrincÃ­pios Norteadores</h4>
+                    <h4 class="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6">Princípios Norteadores</h4>
                     <ul class="space-y-3 md:space-y-4">
                         <li class="flex items-start">
                             <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600 mr-2 md:mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-sm md:text-base text-gray-700">Legalidade, impessoalidade e eficiÃªncia</span>
+                            <span class="text-sm md:text-base text-gray-700">Legalidade, impessoalidade e eficiência</span>
                         </li>
                         <li class="flex items-start">
                             <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600 mr-2 md:mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-sm md:text-base text-gray-700">TransparÃªncia e rastreabilidade</span>
+                            <span class="text-sm md:text-base text-gray-700">Transparência e rastreabilidade</span>
                         </li>
                         <li class="flex items-start">
                             <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600 mr-2 md:mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-sm md:text-base text-gray-700">CooperaÃ§Ã£o interinstitucional</span>
+                            <span class="text-sm md:text-base text-gray-700">Cooperação interinstitucional</span>
                         </li>
                         <li class="flex items-start">
                             <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600 mr-2 md:mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-sm md:text-base text-gray-700">Sustentabilidade e visÃ£o de futuro</span>
+                            <span class="text-sm md:text-base text-gray-700">Sustentabilidade e visão de futuro</span>
                         </li>
                         <li class="flex items-start">
                             <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600 mr-2 md:mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-sm md:text-base text-gray-700">ValorizaÃ§Ã£o da engenharia na gestÃ£o pÃºblica</span>
+                            <span class="text-sm md:text-base text-gray-700">Valorização da engenharia na gestão pública</span>
                         </li>
                     </ul>
                 </div>
@@ -206,7 +206,7 @@
             <div class="text-center mb-10 md:mb-16">
                 <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 md:mb-3">Objetivos do Programa</h2>
                 <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-                    Cinco pilares fundamentais para transformaÃ§Ã£o municipal
+                    Cinco pilares fundamentais para transformação municipal
                 </p>
             </div>
 
@@ -217,9 +217,9 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">DiagnÃ³stico Baseado em EvidÃªncias</h3>
+                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">Diagnóstico Baseado em Evidências</h3>
                     <p class="text-sm md:text-base text-gray-600">
-                        ConstruÃ§Ã£o de diagnÃ³stico municipal orientado por evidÃªncias e indicadores concretos
+                        Construção de diagnóstico municipal orientado por evidências e indicadores concretos
                     </p>
                 </div>
 
@@ -229,9 +229,9 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">Letramento e CapacitaÃ§Ã£o</h3>
+                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">Letramento e Capacitação</h3>
                     <p class="text-sm md:text-base text-gray-600">
-                        PromoÃ§Ã£o de letramento em gestÃ£o antecipatÃ³ria e meta-governanÃ§a
+                        Promoção de letramento em gestão antecipatória e meta-governança
                     </p>
                 </div>
 
@@ -241,9 +241,9 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">Cultura de InovaÃ§Ã£o</h3>
+                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">Cultura de Inovação</h3>
                     <p class="text-sm md:text-base text-gray-600">
-                        EstÃ­mulo Ã  cultura de inovaÃ§Ã£o e colaboraÃ§Ã£o entre atores do territÃ³rio
+                        Estímulo à cultura de inovação e colaboração entre atores do território
                     </p>
                 </div>
 
@@ -253,9 +253,9 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">Plano Diretor do TerritÃ³rio</h3>
+                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">Plano Diretor do Território</h3>
                     <p class="text-sm md:text-base text-gray-600">
-                        EstruturaÃ§Ã£o do Plano Diretor e ativaÃ§Ã£o de metas prioritÃ¡rias
+                        Estruturação do Plano Diretor e ativação de metas prioritárias
                     </p>
                 </div>
 
@@ -265,9 +265,9 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">CertificaÃ§Ã£o MultinÃ­vel</h3>
+                    <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">Certificação Multinível</h3>
                     <p class="text-sm md:text-base text-gray-600">
-                        Reconhecimento e certificaÃ§Ã£o da evoluÃ§Ã£o em nÃ­veis progressivos de maturidade
+                        Reconhecimento e certificação da evolução em níveis progressivos de maturidade
                     </p>
                 </div>
 
@@ -279,7 +279,7 @@
                     </div>
                     <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">Resultados Concretos</h3>
                     <p class="text-sm md:text-base opacity-90">
-                        GestÃ£o orientada a resultados com impacto real nos territÃ³rios participantes
+                        Gestão orientada a resultados com impacto real nos territórios participantes
                     </p>
                 </div>
             </div>
@@ -292,7 +292,7 @@
             <div class="text-center mb-10 md:mb-16">
                 <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 md:mb-3">Etapas do Programa</h2>
                 <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-                    Uma jornada completa de transformaÃ§Ã£o territorial em etapas integradas
+                    Uma jornada completa de transformação territorial em etapas integradas
                 </p>
             </div>
 
@@ -301,8 +301,8 @@
                     <div class="flex items-start">
                         <div class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base">1</div>
                         <div class="ml-3 md:ml-4 flex-1">
-                            <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Buy-in dos MunicÃ­pios</h3>
-                            <p class="text-sm md:text-base text-gray-700">SensibilizaÃ§Ã£o, engajamento e adesÃ£o formal com palestra explicativa sobre propÃ³sito, escopo, benefÃ­cios e cronograma.</p>
+                            <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Buy-in dos Municípios</h3>
+                            <p class="text-sm md:text-base text-gray-700">Sensibilização, engajamento e adesão formal com palestra explicativa sobre propósito, escopo, benefícios e cronograma.</p>
                         </div>
                     </div>
                 </div>
@@ -311,8 +311,8 @@
                     <div class="flex items-start">
                         <div class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base">2</div>
                         <div class="ml-3 md:ml-4 flex-1">
-                            <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">DiagnÃ³stico Municipal</h3>
-                            <p class="text-sm md:text-base text-gray-700">Levantamento e anÃ¡lise da realidade local com blocos analÃ­ticos e formatos de entrega focados em apoio Ã  decisÃ£o.</p>
+                            <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Diagnóstico Municipal</h3>
+                            <p class="text-sm md:text-base text-gray-700">Levantamento e análise da realidade local com blocos analíticos e formatos de entrega focados em apoio à decisão.</p>
                         </div>
                     </div>
                 </div>
@@ -322,7 +322,7 @@
                         <div class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base">3</div>
                         <div class="ml-3 md:ml-4 flex-1">
                             <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Maturidade da Comunidade</h3>
-                            <p class="text-sm md:text-base text-gray-700">ClassificaÃ§Ã£o do nÃ­vel de maturidade e agrupamento por portes com diretrizes por nÃ­vel.</p>
+                            <p class="text-sm md:text-base text-gray-700">Classificação do nível de maturidade e agrupamento por portes com diretrizes por nível.</p>
                         </div>
                     </div>
                 </div>
@@ -332,7 +332,7 @@
                         <div class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base">4</div>
                         <div class="ml-3 md:ml-4 flex-1">
                             <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Workshop de Cidades</h3>
-                            <p class="text-sm md:text-base text-gray-700">ArticulaÃ§Ã£o tÃ©cnica com ComitÃª TÃ©cnico, oficina com os trÃªs melhores territÃ³rios e oficina para engenheiros.</p>
+                            <p class="text-sm md:text-base text-gray-700">Articulação técnica com Comitê Técnico, oficina com os três melhores territórios e oficina para engenheiros.</p>
                         </div>
                     </div>
                 </div>
@@ -341,8 +341,8 @@
                     <div class="flex items-start">
                         <div class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base">5</div>
                         <div class="ml-3 md:ml-4 flex-1">
-                            <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Letramento em GestÃ£o AntecipatÃ³ria</h3>
-                            <p class="text-sm md:text-base text-gray-700">CapacitaÃ§Ã£o com imersÃ£o de 8 horas e oficina prÃ¡tica para estruturaÃ§Ã£o do Plano Diretor.</p>
+                            <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Letramento em Gestão Antecipatória</h3>
+                            <p class="text-sm md:text-base text-gray-700">Capacitação com imersão de 8 horas e oficina prática para estruturação do Plano Diretor.</p>
                         </div>
                     </div>
                 </div>
@@ -351,8 +351,8 @@
                     <div class="flex items-start">
                         <div class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-pink-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base">6</div>
                         <div class="ml-3 md:ml-4 flex-1">
-                            <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Letramento em Meta-GovernanÃ§a</h3>
-                            <p class="text-sm md:text-base text-gray-700">ImersÃ£o de 8 horas sobre governanÃ§a responsiva e transformacional com papÃ©is e mecanismos de prestaÃ§Ã£o de contas.</p>
+                            <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Letramento em Meta-Governança</h3>
+                            <p class="text-sm md:text-base text-gray-700">Imersão de 8 horas sobre governança responsiva e transformacional com papéis e mecanismos de prestação de contas.</p>
                         </div>
                     </div>
                 </div>
@@ -362,7 +362,7 @@
                         <div class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base">7</div>
                         <div class="ml-3 md:ml-4 flex-1">
                             <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Jornada de Desafios & Hackathon</h3>
-                            <p class="text-sm md:text-base text-gray-700">MobilizaÃ§Ã£o com hackathon voltado Ã  cultura de inovaÃ§Ã£o no sistema educacional e priorizaÃ§Ã£o de projetos.</p>
+                            <p class="text-sm md:text-base text-gray-700">Mobilização com hackathon voltado à cultura de inovação no sistema educacional e priorização de projetos.</p>
                         </div>
                     </div>
                 </div>
@@ -372,7 +372,7 @@
                         <div class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base">8</div>
                         <div class="ml-3 md:ml-4 flex-1">
                             <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">LaunchPad do Framework</h3>
-                            <p class="text-sm md:text-base text-gray-700">AtivaÃ§Ã£o da primeira meta estabelecida no Plano Diretor com plano de execuÃ§Ã£o e acompanhamento por indicadores.</p>
+                            <p class="text-sm md:text-base text-gray-700">Ativação da primeira meta estabelecida no Plano Diretor com plano de execução e acompanhamento por indicadores.</p>
                         </div>
                     </div>
                 </div>
@@ -381,8 +381,8 @@
                     <div class="flex items-start">
                         <div class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-teal-600 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base">9</div>
                         <div class="ml-3 md:ml-4 flex-1">
-                            <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">CertificaÃ§Ã£o do TerritÃ³rio Inteligente</h3>
-                            <p class="text-sm md:text-base text-gray-700">Reconhecimento institucional multinÃ­vel conforme evoluÃ§Ã£o e cumprimento das metas do Plano Diretor.</p>
+                            <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-2">Certificação do Território Inteligente</h3>
+                            <p class="text-sm md:text-base text-gray-700">Reconhecimento institucional multinível conforme evolução e cumprimento das metas do Plano Diretor.</p>
                         </div>
                     </div>
                 </div>
@@ -399,38 +399,38 @@
                 </div>
                 <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">Projeto Piloto 2026</h2>
                 <p class="text-base md:text-lg lg:text-xl opacity-90 max-w-3xl mx-auto px-4">
-                    ValidaÃ§Ã£o metodolÃ³gica com atÃ© 8 municÃ­pios paranaenses
+                    Validação metodológica com até 8 municípios paranaenses
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12">
                 <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 md:p-8 rounded-xl">
-                    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">ðŸŽ¯ Objetivos do Piloto</h3>
+                    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">🎯 Objetivos do Piloto</h3>
                     <ul class="space-y-2 md:space-y-3 text-sm md:text-base lg:text-lg opacity-90">
                         <li class="flex items-start">
-                            <span class="mr-2">â€¢</span>
-                            <span>ValidaÃ§Ã£o metodolÃ³gica completa</span>
+                            <span class="mr-2">•</span>
+                            <span>Validação metodológica completa</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="mr-2">â€¢</span>
-                            <span>ConsolidaÃ§Ã£o de instrumentos</span>
+                            <span class="mr-2">•</span>
+                            <span>Consolidação de instrumentos</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="mr-2">â€¢</span>
+                            <span class="mr-2">•</span>
                             <span>Refino de indicadores</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="mr-2">â€¢</span>
-                            <span>PreparaÃ§Ã£o para escalabilidade</span>
+                            <span class="mr-2">•</span>
+                            <span>Preparação para escalabilidade</span>
                         </li>
                     </ul>
                 </div>
 
                 <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 md:p-8 rounded-xl">
-                    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">ðŸ“ DistribuiÃ§Ã£o Regional</h3>
+                    <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">📍 Distribuição Regional</h3>
                     <div class="space-y-3 md:space-y-4">
                         <div class="flex items-center justify-between bg-white bg-opacity-10 p-3 md:p-4 rounded-lg">
-                            <span class="text-sm md:text-base lg:text-lg font-semibold">AtÃ© 1 municÃ­pio</span>
+                            <span class="text-sm md:text-base lg:text-lg font-semibold">Até 1 município</span>
                             <span class="text-lg md:text-xl lg:text-2xl font-bold">por regional</span>
                         </div>
                         <div class="flex items-center justify-between bg-white bg-opacity-10 p-3 md:p-4 rounded-lg">
@@ -438,32 +438,32 @@
                             <span class="text-3xl md:text-4xl font-bold">8</span>
                         </div>
                         <div class="text-center text-xs md:text-sm opacity-75 mt-3 md:mt-4">
-                            DistribuiÃ§Ã£o equitativa para representatividade regional do ParanÃ¡
+                            Distribuição equitativa para representatividade regional do Paraná
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="bg-white text-gray-900 p-6 md:p-8 rounded-2xl shadow-2xl">
-                <h3 class="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-center">Responsabilidades do MunicÃ­pio Participante</h3>
+                <h3 class="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-center">Responsabilidades do Município Participante</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                     <div class="flex items-start">
                         <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600 mr-2 md:mr-3 flex-shrink-0 mt-0.5 md:mt-1" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                         </svg>
-                        <span class="text-sm md:text-base">Designar equipe responsÃ¡vel pela interlocuÃ§Ã£o</span>
+                        <span class="text-sm md:text-base">Designar equipe responsável pela interlocução</span>
                     </div>
                     <div class="flex items-start">
                         <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600 mr-2 md:mr-3 flex-shrink-0 mt-0.5 md:mt-1" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                         </svg>
-                        <span class="text-sm md:text-base">Fornecer dados e informaÃ§Ãµes necessÃ¡rias</span>
+                        <span class="text-sm md:text-base">Fornecer dados e informações necessárias</span>
                     </div>
                     <div class="flex items-start">
                         <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600 mr-2 md:mr-3 flex-shrink-0 mt-0.5 md:mt-1" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                         </svg>
-                        <span class="text-sm md:text-base">Participar de capacitaÃ§Ãµes e oficinas</span>
+                        <span class="text-sm md:text-base">Participar de capacitações e oficinas</span>
                     </div>
                     <div class="flex items-start">
                         <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600 mr-2 md:mr-3 flex-shrink-0 mt-0.5 md:mt-1" fill="currentColor" viewBox="0 0 20 20">
@@ -475,13 +475,13 @@
                         <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600 mr-2 md:mr-3 flex-shrink-0 mt-0.5 md:mt-1" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                         </svg>
-                        <span class="text-sm md:text-base">Executar meta prioritÃ¡ria pactuada</span>
+                        <span class="text-sm md:text-base">Executar meta prioritária pactuada</span>
                     </div>
                     <div class="flex items-start">
                         <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600 mr-2 md:mr-3 flex-shrink-0 mt-0.5 md:mt-1" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                         </svg>
-                        <span class="text-sm md:text-base">Cooperar com publicidade e prestaÃ§Ã£o de contas</span>
+                        <span class="text-sm md:text-base">Cooperar com publicidade e prestação de contas</span>
                     </div>
                 </div>
             </div>
@@ -492,10 +492,10 @@
     <section class="py-12 md:py-20 bg-gradient-to-r from-blue-600 to-indigo-600">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
-                Transforme seu municÃ­pio em um TerritÃ³rio Inteligente
+                Transforme seu município em um Território Inteligente
             </h2>
             <p class="text-base md:text-lg lg:text-xl text-white opacity-90 mb-6 md:mb-10">
-                Manifeste interesse e faÃ§a parte do Projeto Piloto 2026
+                Manifeste interesse e faça parte do Projeto Piloto 2026
             </p>
             <a href="{{ route('manifestacao.show') }}" class="inline-flex items-center bg-white text-blue-600 px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-lg font-bold text-base sm:text-lg md:text-xl hover:bg-gray-100 transition shadow-2xl hover:shadow-3xl transform hover:-translate-y-1">
                 Manifestar Interesse Agora
@@ -504,7 +504,7 @@
                 </svg>
             </a>
             <p class="text-white opacity-75 mt-4 md:mt-6 text-xs md:text-sm">
-                Sem custo de adesÃ£o â€¢ Apoio tÃ©cnico completo â€¢ CertificaÃ§Ã£o multinÃ­vel
+                Sem custo de adesão • Apoio técnico completo • Certificação multinível
             </p>
         </div>
     </section>
@@ -516,11 +516,11 @@
                 <div>
                     <img src="{{ asset('assets/img/smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-16 md:h-20 mb-3 md:mb-4">
                     <p class="text-gray-400 text-xs md:text-sm">
-                        Programa institucional do CREA-PR para transformaÃ§Ã£o de municÃ­pios paranaenses em TerritÃ³rios Inteligentes.
+                        Programa institucional do CREA-PR para transformação de municípios paranaenses em Territórios Inteligentes.
                     </p>
                 </div>
                 <div>
-                    <h3 class="font-bold text-base md:text-lg mb-3 md:mb-4">Links RÃ¡pidos</h3>
+                    <h3 class="font-bold text-base md:text-lg mb-3 md:mb-4">Links Rápidos</h3>
                     <ul class="space-y-2 text-gray-400 text-sm md:text-base">
                         <li><a href="#sobre" class="hover:text-white transition">Sobre o Programa</a></li>
                         <li><a href="#objetivos" class="hover:text-white transition">Objetivos</a></li>
@@ -533,7 +533,7 @@
                     <h3 class="font-bold text-base md:text-lg mb-3 md:mb-4">Contato CREA-PR</h3>
                     <ul class="space-y-1 md:space-y-2 text-gray-400 text-xs md:text-sm">
                         <li>Conselho Regional de Engenharia</li>
-                        <li>e Agronomia do ParanÃ¡</li>
+                        <li>e Agronomia do Paraná</li>
                         <li class="pt-1 md:pt-2">Autarquia Federal</li>
                         <li class="pt-1 md:pt-2">
                             <a href="https://crea-pr.org.br" target="_blank" class="hover:text-white transition">
@@ -545,7 +545,7 @@
             </div>
             <div class="border-t border-gray-800 pt-6 md:pt-8 text-center text-gray-400 text-xs md:text-sm">
                 <p>&copy; 2026 CREA-PR - Smart Crea Cities. Todos os direitos reservados.</p>
-                <p class="mt-2">Programa com finalidade pÃºblica e carÃ¡ter estratÃ©gico institucional.</p>
+                <p class="mt-2">Programa com finalidade pública e caráter estratégico institucional.</p>
             </div>
         </div>
     </footer>

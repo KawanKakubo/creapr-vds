@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -27,12 +27,12 @@
                 <div class="flex items-center space-x-4">
                     <a href="{{ route('admin.dashboard') }}" 
                         class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
-                        SubmissÃµes
+                        Submissões
                     </a>
                     <span class="text-gray-300">|</span>
                     <a href="{{ route('admin.questions.index') }}" 
                         class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
-                        QuestÃµes
+                        Questões
                     </a>
                     <span class="text-gray-300">|</span>
                     <a href="{{ route('admin.events.index') }}" 
@@ -42,7 +42,7 @@
                     <span class="text-gray-300">|</span>
                     <a href="{{ route('admin.repository.index') }}" 
                         class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
-                        RepositÃ³rio
+                        Repositório
                     </a>
                     
                     @auth
@@ -62,7 +62,7 @@
         </div>
     </nav>
 
-    <!-- ConteÃºdo -->
+    <!-- Conteúdo -->
     <main>
         @yield('content')
     </main>
