@@ -134,8 +134,10 @@ class PublicFormController extends Controller
             // FLUXO COMPLETO: Cria usuário e dá acesso à plataforma
             
             try {
+                $normalizedResponsibleEmail = Str::lower(trim($validated['responsavel_email']));
+
                 // Verifica se o usuário já existe com esse email
-                $user = User::where('email', $validated['responsavel_email'])->first();
+                $user = User::where('email', $normalizedResponsibleEmail)->first();
                 $isNewUser = false;
                 
                 if ($user) {
@@ -170,7 +172,7 @@ class PublicFormController extends Controller
                     
                     $user = User::create([
                         'name' => $validated['responsavel_nome'],
-                        'email' => $validated['responsavel_email'],
+                        'email' => $normalizedResponsibleEmail,
                         'password' => Hash::make($temporaryPassword),
                         'role' => 'municipality',
                         'is_temporary_password' => true,
