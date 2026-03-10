@@ -46,10 +46,6 @@ class ChangePasswordController extends Controller
             'current_password.required' => 'A senha atual é obrigatória.',
             'new_password.required' => 'A nova senha é obrigatória.',
             'new_password.confirmed' => 'A confirmação da nova senha não corresponde.',
-            'new_password.min' => 'A nova senha deve ter no mínimo 8 caracteres.',
-            'new_password.mixed' => 'A nova senha deve conter letras maiúsculas e minúsculas.',
-            'new_password.numbers' => 'A nova senha deve conter pelo menos um número.',
-            'new_password.symbols' => 'A nova senha deve conter pelo menos um símbolo (ex: @, #, !, $, %, etc).',
         ]);
 
         // Verifica se a senha atual está correta
