@@ -52,8 +52,8 @@ class RepositoryController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string|max:1000',
             'category' => 'required|in:oficio,decreto,lei,template,outro',
-            'file' => 'required|file|mimes:pdf,doc,docx,xls,xlsx,zip|max:10240', // 10MB max
-            'is_active' => 'boolean',
+            'file' => 'required|file|mimes:pdf,doc,docx,xls,xlsx,zip|max:102400', // 100MB max
+            'is_active' => 'nullable|boolean',
         ]);
 
         // Upload file
@@ -70,7 +70,7 @@ class RepositoryController extends Controller
             'file_name' => $file->getClientOriginalName(),
             'file_size' => $file->getSize(),
             'uploaded_by' => Auth::id(),
-            'is_active' => $request->has('is_active'),
+            'is_active' => $request->boolean('is_active'),
         ]);
 
         return redirect()->route('admin.repository.index')
@@ -94,15 +94,15 @@ class RepositoryController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string|max:1000',
             'category' => 'required|in:oficio,decreto,lei,template,outro',
-            'file' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx,zip|max:10240',
-            'is_active' => 'boolean',
+            'file' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx,zip|max:102400',
+            'is_active' => 'nullable|boolean',
         ]);
 
         $data = [
             'title' => $validated['title'],
             'description' => $validated['description'] ?? null,
             'category' => $validated['category'],
-            'is_active' => $request->has('is_active'),
+            'is_active' => $request->boolean('is_active'),
         ];
 
         // If new file uploaded, replace old one

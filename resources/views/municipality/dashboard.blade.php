@@ -402,7 +402,7 @@
         </div>
 
         <!-- Repositório de Documentos -->
-        <div class="bg-white rounded-xl shadow-lg p-6 mt-8">
+        <div id="repositorio-documentos" class="bg-white rounded-xl shadow-lg p-6 mt-8">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-xl font-bold text-gray-900 flex items-center">
                     <svg class="w-6 h-6 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -410,14 +410,11 @@
                     </svg>
                     Repositório de Documentos
                 </h3>
-                <a href="{{ route('municipality.repository.index') }}" class="text-sm bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition font-semibold">
-                    Ver Todos
-                </a>
             </div>
 
-            @if($recentDocuments && $recentDocuments->count() > 0)
+            @if($repositoryDocuments && $repositoryDocuments->count() > 0)
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    @foreach($recentDocuments as $document)
+                    @foreach($repositoryDocuments as $document)
                         <div class="border border-gray-200 rounded-lg p-4 hover:border-purple-400 hover:bg-purple-50 transition">
                             <div class="flex items-start justify-between mb-2">
                                 <span class="inline-block px-2 py-1 text-xs font-semibold rounded-full

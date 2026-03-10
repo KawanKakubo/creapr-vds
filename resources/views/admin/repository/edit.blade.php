@@ -4,6 +4,17 @@
 <div class="container mx-auto px-4 py-8 max-w-3xl">
     <h1 class="text-3xl font-bold text-gray-900 mb-6">Editar Documento</h1>
 
+    @if($errors->any())
+        <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+            <p class="text-red-700 font-semibold mb-2">Não foi possível atualizar o documento:</p>
+            <ul class="list-disc list-inside text-sm text-red-700 space-y-1">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form method="POST" action="{{ route('admin.repository.update', $repository) }}" enctype="multipart/form-data" class="bg-white rounded-lg shadow p-6">
         @csrf
         @method('PUT')
@@ -42,15 +53,16 @@
             </div>
             <label class="block text-sm font-medium text-gray-700 mb-2">Substituir Arquivo (opcional)</label>
             <input type="file" name="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.zip" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500">
-            <p class="text-xs text-gray-500 mt-1">Deixe em branco para manter o arquivo atual</p>
+            <p class="text-xs text-gray-500 mt-1">Deixe em branco para manter o arquivo atual (máx. 100MB)</p>
             @error('file')<p class="text-red-600 text-sm mt-1">{{ $message }}</p>@enderror
         </div>
 
         <div class="mb-6">
             <label class="flex items-center">
-                <input type="checkbox" name="is_active" {{ old('is_active', $repository->is_active) ? 'checked' : '' }} class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                <input type="checkbox" name="is_active" value="1" {{ old('is_active', $repository->is_active) ? 'checked' : '' }} class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
                 <span class="ml-2 text-sm text-gray-700">Documento ativo (visível para municípios)</span>
             </label>
+            @error('is_active')<p class="text-red-600 text-sm mt-1">{{ $message }}</p>@enderror
         </div>
 
         <div class="flex justify-between">

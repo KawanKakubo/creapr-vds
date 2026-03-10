@@ -29,9 +29,9 @@ class RepositoryController extends Controller
             });
         }
 
-        $documents = $query->paginate(12);
+        $repositories = $query->paginate(12);
 
-        return view('municipality.repository.index', compact('documents'));
+        return view('municipality.repository.index', compact('repositories'));
     }
 
     /**

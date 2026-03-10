@@ -68,10 +68,9 @@ class DashboardController extends Controller
         // Carrega membros do comitê
         $committeeMembers = $submission->committeeMembers;
         
-        // Carrega documentos recentes do repositório
-        $recentDocuments = Repository::active()
+        // Carrega todos os documentos ativos do repositório
+        $repositoryDocuments = Repository::active()
             ->latest()
-            ->take(3)
             ->get();
         
         return view('municipality.dashboard', compact(
@@ -82,7 +81,7 @@ class DashboardController extends Controller
             'totalQuestionsEstimulo',
             'totalQuestionsEducacao',
             'totalQuestionsEstruturas',
-            'recentDocuments'
+            'repositoryDocuments'
         ));
     }
 }

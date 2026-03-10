@@ -9,56 +9,52 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body class="bg-gray-100">
-    <!-- Navbar -->
-    <nav class="bg-gradient-to-r from-blue-600 to-indigo-600 shadow-lg">
+<body class="bg-gray-50">
+    <!-- Header -->
+    <nav class="bg-white shadow-lg border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-22 md:h-26 lg:h-30">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <img src="{{ asset('assets/img/logo-crea-pr-preto.png') }}" alt="CREA-PR" class="h-20 sm:h-24 md:h-28 object-contain bg-white rounded-lg px-3 py-2 shadow-md">
-                    </div>
-                    <div class="ml-4">
-                        <h1 class="text-white font-bold text-xl">Painel Administrativo</h1>
-                        <p class="text-blue-100 text-xs">Trilha dos 3E's</p>
+                <div class="flex items-center space-x-4">
+                    <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-20 sm:h-24 md:h-28 w-auto object-contain">
+                    <div class="border-l border-gray-300 h-10"></div>
+                    <div>
+                        <p class="text-sm text-gray-600">Painel</p>
+                        <p class="font-bold text-blue-900">Administrativo CREA-PR</p>
                     </div>
                 </div>
                 
                 <div class="flex items-center space-x-4">
                     <a href="{{ route('admin.dashboard') }}" 
-                        class="text-white hover:bg-blue-700 px-4 py-2 rounded-lg transition font-medium">
-                        Dashboard
-                    </a>
-                    <a href="{{ route('admin.submissoes.index') }}" 
-                        class="text-white hover:bg-blue-700 px-4 py-2 rounded-lg transition font-medium">
+                        class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
                         Submissões
                     </a>
+                    <span class="text-gray-300">|</span>
                     <a href="{{ route('admin.questions.index') }}" 
-                        class="text-white hover:bg-blue-700 px-4 py-2 rounded-lg transition font-medium">
+                        class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
                         Questões
                     </a>
+                    <span class="text-gray-300">|</span>
                     <a href="{{ route('admin.events.index') }}" 
-                        class="text-white hover:bg-blue-700 px-4 py-2 rounded-lg transition font-medium">
+                        class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
                         Eventos
                     </a>
+                    <span class="text-gray-300">|</span>
                     <a href="{{ route('admin.repository.index') }}" 
-                        class="text-white hover:bg-blue-700 px-4 py-2 rounded-lg transition font-medium">
+                        class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
                         Repositório
                     </a>
                     
                     @auth
-                    <div class="border-l border-blue-400 pl-4">
-                        <form method="POST" action="{{ route('logout') }}" class="inline">
+                        <div class="text-right">
+                            <p class="text-sm text-gray-600">{{ Auth::user()->name }}</p>
+                            <p class="text-xs text-gray-500">Administrador</p>
+                        </div>
+                        <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <button type="submit" 
-                                class="text-white hover:bg-red-600 px-4 py-2 rounded-lg transition font-medium flex items-center">
-                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
-                                </svg>
+                            <button type="submit" class="text-red-600 hover:text-red-800 font-semibold text-sm">
                                 Sair
                             </button>
                         </form>
-                    </div>
                     @endauth
                 </div>
             </div>
@@ -70,13 +66,5 @@
         @yield('content')
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-white shadow-lg mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <p class="text-center text-gray-600 text-sm">
-                © {{ date('Y') }} CREA-PR - Conselho Regional de Engenharia e Agronomia do Paraná
-            </p>
-        </div>
-    </footer>
 </body>
 </html>
