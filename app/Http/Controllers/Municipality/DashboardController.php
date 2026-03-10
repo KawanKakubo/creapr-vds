@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Submission;
 use App\Models\ProgramEvent;
 use App\Models\DiagnosticQuestion;
+use App\Models\Repository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -67,6 +68,12 @@ class DashboardController extends Controller
         // Carrega membros do comitê
         $committeeMembers = $submission->committeeMembers;
         
+        // Carrega documentos recentes do repositório
+        $recentDocuments = Repository::active()
+            ->latest()
+            ->take(3)
+            ->get();
+        
         return view('municipality.dashboard', compact(
             'submission',
             'upcomingEvents',
@@ -74,7 +81,8 @@ class DashboardController extends Controller
             'committeeMembers',
             'totalQuestionsEstimulo',
             'totalQuestionsEducacao',
-            'totalQuestionsEstruturas'
+            'totalQuestionsEstruturas',
+            'recentDocuments'
         ));
     }
 }

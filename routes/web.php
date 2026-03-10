@@ -5,6 +5,7 @@ use App\Http\Controllers\PublicFormController;
 use App\Http\Controllers\Admin\AdminSubmissionController;
 use App\Http\Controllers\Admin\AdminEventsController;
 use App\Http\Controllers\Admin\QuestionController;
+use App\Http\Controllers\Admin\RepositoryController;
 use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use Illuminate\Support\Facades\Route;
@@ -57,6 +58,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     
     // Gerenciamento de Eventos do Programa
     Route::resource('events', AdminEventsController::class)->except(['show']);
+    
+    // Gerenciamento de Repositório de Documentos
+    Route::resource('repository', RepositoryController::class)->except(['show']);
 });
 
 // Rotas do Município (requerem autenticação e role municipality)
@@ -75,6 +79,10 @@ Route::middleware(['auth', 'municipality', \App\Http\Middleware\CheckMustChangeP
     
     // Salvar diagnósticos
     Route::post('/diagnostic/{category}', [\App\Http\Controllers\Municipality\DiagnosticController::class, 'store'])->name('diagnostic.store');
+    
+    // Repositório de Documentos
+    Route::get('/repository', [\App\Http\Controllers\Municipality\RepositoryController::class, 'index'])->name('repository.index');
+    Route::get('/repository/download/{repository}', [\App\Http\Controllers\Municipality\RepositoryController::class, 'download'])->name('repository.download');
 });
 
 // Rotas de Mudança de Senha (requerem autenticação)

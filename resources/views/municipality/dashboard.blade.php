@@ -400,6 +400,56 @@
                 </div>
             </div>
         </div>
+
+        <!-- Repositório de Documentos -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mt-8">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-gray-900 flex items-center">
+                    <svg class="w-6 h-6 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    Repositório de Documentos
+                </h3>
+                <a href="{{ route('municipality.repository.index') }}" class="text-sm bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition font-semibold">
+                    Ver Todos
+                </a>
+            </div>
+
+            @if($recentDocuments && $recentDocuments->count() > 0)
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    @foreach($recentDocuments as $document)
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-purple-400 hover:bg-purple-50 transition">
+                            <div class="flex items-start justify-between mb-2">
+                                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-full
+                                    @if($document->category === 'oficio') bg-blue-100 text-blue-800
+                                    @elseif($document->category === 'decreto') bg-purple-100 text-purple-800
+                                    @elseif($document->category === 'lei') bg-green-100 text-green-800
+                                    @elseif($document->category === 'template') bg-yellow-100 text-yellow-800
+                                    @else bg-gray-100 text-gray-800 @endif">
+                                    {{ $document->category_label }}
+                                </span>
+                                <span class="text-xs text-gray-500">{{ $document->formatted_size }}</span>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 mb-2 line-clamp-2">{{ $document->title }}</h4>
+                            <a href="{{ route('municipality.repository.download', $document) }}" class="inline-flex items-center text-sm text-purple-600 hover:text-purple-800 font-semibold">
+                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                                </svg>
+                                Baixar
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="text-center py-8 text-gray-500">
+                    <svg class="w-16 h-16 mx-auto mb-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    <p class="font-semibold">Em breve</p>
+                    <p class="text-sm">Documentos e templates serão disponibilizados aqui</p>
+                </div>
+            @endif
+        </div>
     </div>
 
     <script>

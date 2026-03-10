@@ -33,6 +33,18 @@
                         class="text-white hover:bg-blue-700 px-4 py-2 rounded-lg transition font-medium">
                         Submissões
                     </a>
+                    <a href="{{ route('admin.questions.index') }}" 
+                        class="text-white hover:bg-blue-700 px-4 py-2 rounded-lg transition font-medium">
+                        Questões
+                    </a>
+                    <a href="{{ route('admin.events.index') }}" 
+                        class="text-white hover:bg-blue-700 px-4 py-2 rounded-lg transition font-medium">
+                        Eventos
+                    </a>
+                    <a href="{{ route('admin.repository.index') }}" 
+                        class="text-white hover:bg-blue-700 px-4 py-2 rounded-lg transition font-medium">
+                        Repositório
+                    </a>
                     
                     @auth
                     <div class="border-l border-blue-400 pl-4">
