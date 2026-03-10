@@ -292,11 +292,11 @@
                 
                 <!-- Badge CREA-PR Compacto -->
                 <div class="animate-fade-in-up delay-400 opacity-0" style="animation-fill-mode: forwards;">
-                    <div class="inline-flex flex-col items-center gap-2 md:gap-3 px-6 py-4 md:px-8 md:py-5 rounded-xl bg-white/5 backdrop-blur-md border border-white/10">
+                    <div class="inline-flex flex-col items-center gap-2 md:gap-3 px-6 py-4 md:px-8 md:py-5 rounded-xl bg-slate-50/70 backdrop-blur-md border border-slate-200 shadow-sm">
                         <img src="{{ asset('assets/img/logo-crea-pr-preto.png') }}" 
                              alt="CREA-PR" 
                              class="h-10 sm:h-12 md:h-14 w-auto opacity-90">
-                        <p class="text-white/80 text-xs md:text-sm text-center max-w-md leading-relaxed">
+                        <p class="text-slate-700 text-xs md:text-sm text-center max-w-md leading-relaxed">
                             Uma iniciativa do Conselho Regional de Engenharia e Agronomia do Paraná
                         </p>
                     </div>

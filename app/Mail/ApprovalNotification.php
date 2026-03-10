@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Submission;
 
-class ApprovalNotification extends Mailable
+class ApprovalNotification extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 

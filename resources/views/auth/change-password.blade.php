@@ -6,14 +6,48 @@
     <title>Alterar Senha - Smart Crea Cities</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=inter:300,400,600,700,800,900" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        .header-blur {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+    </style>
 </head>
-<body class="bg-gradient-to-br from-blue-50 to-blue-100 min-h-screen flex items-center justify-center p-4">
-    <div class="max-w-md w-full">
-        <!-- Logo e Header -->
-        <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-blue-600 mb-2">Smart Crea Cities</h1>
-            <p class="text-gray-600">CREA-PR</p>
+<body class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 header-blur shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-22 md:h-26 lg:h-30">
+                <a href="{{ route('home') }}" class="flex items-center transition-opacity hover:opacity-80">
+                    <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-20 sm:h-24 md:h-28 w-auto object-contain">
+                </a>
+                <div class="flex items-center gap-4">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="px-4 md:px-6 py-2 md:py-2.5 border-2 border-red-600 text-red-600 rounded-lg font-semibold hover:bg-red-50 transition text-sm md:text-base">Sair</button>
+                    </form>
+                </div>
+            </div>
         </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex items-center justify-center px-4 pt-28 md:pt-36 lg:pt-40 pb-8">
+        <div class="max-w-md w-full">
 
         <!-- Card de Mudança de Senha -->
         <div class="bg-white rounded-lg shadow-xl p-8" x-data="{ 
@@ -51,6 +85,10 @@
                 }
             }
         }">
+
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Alterar Senha</h2>
+            
             <!-- Alerta de Segurança -->
             <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
                 <div class="flex">
@@ -66,8 +104,6 @@
                     </div>
                 </div>
             </div>
-
-            <h2 class="text-2xl font-bold text-gray-800 mb-6">Alterar Senha</h2>
 
             <!-- Mensagens de Erro -->
             @if ($errors->any())
@@ -235,23 +271,16 @@
                     Alterar Senha e Continuar
                 </button>
             </form>
-
-            <!-- Link de Logout -->
-            <div class="mt-6 text-center">
-                <form method="POST" action="{{ route('logout') }}" class="inline">
-                    @csrf
-                    <button type="submit" class="text-sm text-gray-600 hover:text-gray-800">
-                        Sair da plataforma
-                    </button>
-                </form>
-            </div>
         </div>
+    </main>
 
-        <!-- Footer -->
-        <div class="text-center mt-8 text-sm text-gray-600">
-            <p>Smart Crea Cities - CREA-PR</p>
+    <!-- Footer -->
+    <footer class="py-6 text-center text-sm text-gray-600 bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="font-semibold">© {{ date('Y') }} Smart Crea Cities - CREA-PR</p>
+            <p class="text-xs mt-1">Conselho Regional de Engenharia e Agronomia do Paraná</p>
             <p class="text-xs mt-1">Programa de Maturidade Tecnológica Municipal</p>
         </div>
-    </div>
+    </footer>
 </body>
 </html>

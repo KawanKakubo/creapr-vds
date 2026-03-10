@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Submission;
 use App\Models\DiagnosticQuestion;
+use App\Models\ProgramEvent;
 use App\Mail\ApprovalNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -67,6 +68,9 @@ class AdminSubmissionController extends Controller
             ->orderBy('mes')
             ->get();
         
+        // Próximos eventos
+        $upcomingEvents = ProgramEvent::upcoming()->take(5)->get();
+        
         return view('admin.dashboard', compact(
             'totalSubmissoes',
             'pendentes',
@@ -81,7 +85,8 @@ class AdminSubmissionController extends Controller
             'mediaPontuacaoEstruturas',
             'porRegional',
             'ultimasSubmissoes',
-            'timeline'
+            'timeline',
+            'upcomingEvents'
         ));
     }
 

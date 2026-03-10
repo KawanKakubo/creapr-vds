@@ -66,13 +66,13 @@
     <!-- Header Moderno e Compacto -->
     <nav class="fixed w-full top-0 z-50 header-blur">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-14 sm:h-16 md:h-20">
+            <div class="flex justify-between items-center h-22 md:h-26 lg:h-30">
                 <!-- Logo Simplificada (sem texto secundário) -->
                 <div class="flex items-center">
                     <a href="{{ route('home') }}">
                         <img src="{{ asset('assets/img/smart-crea-cities-negativo.png') }}" 
                              alt="Smart Crea Cities" 
-                             class="h-10 sm:h-12 md:h-16 w-auto object-contain">
+                             class="h-20 sm:h-24 md:h-28 w-auto object-contain">
                     </a>
                 </div>
                 
@@ -119,7 +119,7 @@
     </nav>
 
     <!-- Formulário Multi-Step -->
-    <div class="max-w-4xl mx-auto px-4 pt-16 md:pt-20 pb-8" x-data="manifestacaoForm()">
+    <div class="max-w-4xl mx-auto px-4 pt-28 md:pt-36 lg:pt-40 pb-8" x-data="manifestacaoForm()">
         <!-- Indicadores de Step -->
         <div class="mb-6">
             <div class="flex justify-between items-center">
@@ -575,12 +575,16 @@
                     // Avança para próximo step se validação passou
                     if (this.currentStep < 4) {
                         this.currentStep++;
+                        // Scroll suave para o topo
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
                 },
                 
                 previousStep() {
                     if (this.currentStep > 1) {
                         this.currentStep--;
+                        // Scroll suave para o topo
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
                 },
                 

@@ -24,9 +24,9 @@
     <!-- Header -->
     <nav class="bg-white shadow-lg border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
+            <div class="flex justify-between items-center h-22 md:h-26 lg:h-30">
                 <div class="flex items-center space-x-4">
-                    <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-12 w-auto object-contain">
+                    <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-20 sm:h-24 md:h-28 w-auto object-contain">
                     <div class="border-l border-gray-300 h-10"></div>
                     <div>
                         <p class="text-sm text-gray-600">Município</p>
@@ -110,7 +110,7 @@
 
         <!-- Diagnósticos - 3 Gauge Charts -->
         <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <h2 class="text-2xl font-bold text-gray-900 mb-6">Diagnóstico de Maturidade Tecnológica</h2>
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Diagnóstico da Trilha Formativa dos 3'Es</h2>
             
             @if(!$submission->isApproved())
                 <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-6">
@@ -266,10 +266,37 @@
                 @if($upcomingEvents->count() > 0)
                     <div class="space-y-3">
                         @foreach($upcomingEvents as $event)
-                            <div class="border-l-4 border-blue-500 pl-4 py-2 hover:bg-blue-50 transition">
-                                <p class="font-semibold text-gray-900">{{ $event->title }}</p>
-                                <p class="text-sm text-gray-600">{{ $event->formatted_date }} às {{ $event->formatted_time }}</p>
-                                <p class="text-xs text-gray-500 mt-1">{{ $event->location }}</p>
+                            <div class="flex items-start space-x-3 p-3 border border-gray-200 rounded-lg hover:border-blue-400 hover:bg-blue-50 transition">
+                                <div class="flex-shrink-0 text-center bg-blue-600 text-white rounded-lg p-2 min-w-[60px]">
+                                    <div class="text-xl font-bold">{{ $event->event_date->format('d') }}</div>
+                                    <div class="text-xs uppercase">{{ $event->event_date->locale('pt_BR')->format('M') }}</div>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="font-semibold text-gray-900">{{ $event->title }}</p>
+                                    <div class="flex items-center gap-2 mt-1 text-sm text-gray-600">
+                                        @if($event->event_time)
+                                        <span class="flex items-center gap-1">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                            </svg>
+                                            {{ \Carbon\Carbon::parse($event->event_time)->format('H:i') }}
+                                        </span>
+                                        @endif
+                                        @if($event->location)
+                                        <span class="text-gray-400">•</span>
+                                        <span class="flex items-center gap-1 truncate">
+                                            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                            </svg>
+                                            {{ $event->location }}
+                                        </span>
+                                        @endif
+                                    </div>
+                                    @if($event->description)
+                                    <p class="text-xs text-gray-500 mt-2 line-clamp-2">{{ $event->description }}</p>
+                                    @endif
+                                </div>
                             </div>
                         @endforeach
                     </div>
@@ -279,7 +306,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                         </svg>
                         <p class="font-semibold">Em breve</p>
-                        <p class="text-sm">Novos eventos serão  publicados aqui</p>
+                        <p class="text-sm">Novos eventos serão publicados aqui</p>
                     </div>
                 @endif
             </div>

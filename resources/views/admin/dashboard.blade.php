@@ -11,9 +11,9 @@
     <!-- Header -->
     <nav class="bg-white shadow-lg border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
+            <div class="flex justify-between items-center h-22 md:h-26 lg:h-30">
                 <div class="flex items-center space-x-4">
-                    <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-12 w-auto object-contain">
+                    <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-20 sm:h-24 md:h-28 w-auto object-contain">
                     <div class="border-l border-gray-300 h-10"></div>
                     <div>
                         <p class="text-sm text-gray-600">Painel</p>
@@ -22,11 +22,15 @@
                 </div>
                 <div class="flex items-center space-x-4">
                     <a href="{{ route('admin.submissoes.index') }}" class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
-                        Ver Submissões
+                        Submissões
                     </a>
                     <span class="text-gray-300">|</span>
                     <a href="{{ route('admin.questions.index') }}" class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
-                        Gerenciar Questões
+                        Questões
+                    </a>
+                    <span class="text-gray-300">|</span>
+                    <a href="{{ route('admin.events.index') }}" class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
+                        Eventos
                     </a>
                     <div class="text-right">
                         <p class="text-sm text-gray-600">{{ Auth::user()->name }}</p>
@@ -47,7 +51,7 @@
         <!-- Título -->
         <div class="mb-8">
             <h1 class="text-3xl font-bold text-gray-900 mb-2">Dashboard - Smart Crea Cities</h1>
-            <p class="text-gray-600">Visão geral do programa de maturidade tecnológica municipal</p>
+            <p class="text-gray-600">Visão geral da Trilha Formativa dos 3E's</p>
         </div>
 
         <!-- Cards de Estatísticas -->
@@ -183,10 +187,54 @@
             </div>
         </div>
 
-        <!-- Timeline -->
+        <!-- Próximos Eventos -->
         <div class="bg-white rounded-xl shadow-md p-6 mb-8">
-            <h2 class="text-xl font-bold text-gray-900 mb-4">Timeline de Manifestações (Últimos 6 Meses)</h2>
-            <canvas id="timelineChart"></canvas>
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-gray-900">Próximos Eventos do Programa</h2>
+                <a href="{{ route('admin.events.index') }}" class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
+                    Gerenciar Eventos →
+                </a>
+            </div>
+            
+            @if(isset($upcomingEvents) && $upcomingEvents->count() > 0)
+            <div class="space-y-3">
+                @foreach($upcomingEvents->take(5) as $event)
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                    <div class="flex items-center space-x-4">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-blue-600">{{ $event->event_date->format('d') }}</div>
+                            <div class="text-xs text-gray-500 uppercase">{{ $event->event_date->format('M') }}</div>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">{{ $event->title }}</h3>
+                            <div class="flex items-center gap-2 mt-1">
+                                @if($event->event_time)
+                                <span class="text-sm text-gray-600">{{ \Carbon\Carbon::parse($event->event_time)->format('H:i') }}</span>
+                                @endif
+                                @if($event->location)
+                                <span class="text-sm text-gray-400">•</span>
+                                <span class="text-sm text-gray-600">{{ $event->location }}</span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <span class="px-3 py-1 text-xs font-semibold rounded-full {{ $event->is_published ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800' }}">
+                        {{ $event->is_published ? 'Publicado' : 'Rascunho' }}
+                    </span>
+                </div>
+                @endforeach
+            </div>
+            @else
+            <div class="text-center py-8 text-gray-500">
+                <svg class="mx-auto h-12 w-12 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+                <p class="font-medium">Nenhum evento programado</p>
+                <a href="{{ route('admin.events.create') }}" class="text-blue-600 hover:text-blue-800 font-semibold text-sm mt-2 inline-block">
+                    Criar primeiro evento →
+                </a>
+            </div>
+            @endif
         </div>
 
         <!-- Últimas Submissões -->
@@ -280,39 +328,6 @@
                     label: 'Manifestações',
                     data: {!! json_encode($porRegional->take(5)->pluck('total')) !!},
                     backgroundColor: '#3b82f6',
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            stepSize: 1
-                        }
-                    }
-                }
-            }
-        });
-
-        // Timeline Chart
-        const timelineCtx = document.getElementById('timelineChart').getContext('2d');
-        new Chart(timelineCtx, {
-            type: 'line',
-            data: {
-                labels: {!! json_encode($timeline->pluck('mes')) !!},
-                datasets: [{
-                    label: 'Manifestações por Mês',
-                    data: {!! json_encode($timeline->pluck('total')) !!},
-                    borderColor: '#3b82f6',
-                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                    fill: true,
-                    tension: 0.4
                 }]
             },
             options: {

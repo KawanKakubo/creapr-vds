@@ -136,18 +136,36 @@ class PublicFormController extends Controller
             try {
                 // Verifica se o usuário já existe com esse email
                 $user = User::where('email', $validated['responsavel_email'])->first();
+                $isNewUser = false;
                 
                 if ($user) {
-                    // Usuário já existe - apenas vincula à nova submission
-                    Log::info('Usuário existente vinculado à nova manifestação', [
-                        'protocolo' => $protocolo,
-                        'user_id' => $user->id,
-                        'email' => $user->email,
-                    ]);
-                    
-                    $temporaryPassword = null; // Não gera nova senha
+                    // Usuário já existe - verifica se precisa resetar senha
+                    if ($user->is_temporary_password || $user->must_change_password) {
+                        // Usuário tem senha temporária - gera nova senha e reenvia
+                        $temporaryPassword = Str::random(12) . rand(10, 99);
+                        $user->password = Hash::make($temporaryPassword);
+                        $user->is_temporary_password = true;
+                        $user->must_change_password = true;
+                        $user->save();
+                        
+                        Log::info('Senha temporária regenerada para usuário existente', [
+                            'protocolo' => $protocolo,
+                            'user_id' => $user->id,
+                            'email' => $user->email,
+                        ]);
+                    } else {
+                        // Usuário já definiu senha própria - não gera nova
+                        $temporaryPassword = null;
+                        
+                        Log::info('Usuário existente vinculado (senha já definida)', [
+                            'protocolo' => $protocolo,
+                            'user_id' => $user->id,
+                            'email' => $user->email,
+                        ]);
+                    }
                 } else {
                     // Cria novo usuário
+                    $isNewUser = true;
                     $temporaryPassword = Str::random(12) . rand(10, 99);
                     
                     $user = User::create([
@@ -170,23 +188,24 @@ class PublicFormController extends Controller
                 $submission->user_id = $user->id;
                 $submission->save();
                 
-                // Envia email com credenciais (somente se for novo usuário)
+                // Envia email apropriado
                 try {
                     if ($temporaryPassword) {
-                        // Novo usuário - envia credenciais
+                        // Novo usuário OU senha resetada - envia credenciais
                         Mail::to($validated['responsavel_email'])->send(
                             new CredentialsEmail($user, $temporaryPassword, $protocolo, $validated['municipio_nome'])
                         );
                         Log::info('Email de credenciais enviado', [
                             'protocolo' => $protocolo,
                             'email' => $user->email,
+                            'is_new_user' => $isNewUser,
                         ]);
                     } else {
-                        // Usuário existente - envia apenas confirmação
+                        // Usuário existente com senha própria - envia apenas confirmação
                         Mail::to($validated['responsavel_email'])->send(
                             new ConfirmationEmail($protocolo, $validated['municipio_nome'])
                         );
-                        Log::info('Email de confirmação enviado para usuário existente', [
+                        Log::info('Email de confirmação enviado para usuário com senha definida', [
                             'protocolo' => $protocolo,
                             'email' => $user->email,
                         ]);

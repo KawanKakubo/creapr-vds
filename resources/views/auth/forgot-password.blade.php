@@ -18,16 +18,16 @@
 <body class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 min-h-screen">
     <nav class="fixed top-0 left-0 right-0 z-50 header-blur shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-14 sm:h-16 md:h-20">
+            <div class="flex justify-between items-center h-22 md:h-26 lg:h-30">
                 <a href="{{ route('home') }}" class="flex items-center transition-opacity hover:opacity-80">
-                    <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-10 sm:h-12 md:h-16 w-auto object-contain">
+                    <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-20 sm:h-24 md:h-28 w-auto object-contain">
                 </a>
                 <a href="{{ route('login') }}" class="px-4 md:px-6 py-2 md:py-2.5 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition text-sm md:text-base">Voltar ao Login</a>
             </div>
         </div>
     </nav>
 
-    <div class="min-h-screen flex items-center justify-center px-4 pt-16 md:pt-20 pb-8">
+    <div class="min-h-screen flex items-center justify-center px-4 pt-28 md:pt-36 lg:pt-40 pb-8">
         <div class="max-w-md w-full">
             <div class="bg-white rounded-xl shadow-2xl p-6 md:p-8">
                 <div class="text-center mb-6">

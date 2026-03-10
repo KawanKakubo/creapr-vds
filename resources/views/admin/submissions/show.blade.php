@@ -11,9 +11,9 @@
     <!-- Header -->
     <nav class="bg-white shadow-lg border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
+            <div class="flex justify-between items-center h-22 md:h-26 lg:h-30">
                 <div class="flex items-center space-x-4">
-                    <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-12 w-auto object-contain">
+                    <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-20 sm:h-24 md:h-28 w-auto object-contain">
                     <div class="border-l border-gray-300 h-10"></div>
                     <div>
                         <p class="text-sm text-gray-600">Manifestação</p>

@@ -17,10 +17,10 @@
     <!-- Navbar -->
     <nav class="bg-white shadow-sm fixed w-full top-0 z-50" x-data="{ mobileMenuOpen: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-14 sm:h-16 md:h-20">
+            <div class="flex justify-between items-center h-22 md:h-26 lg:h-30">
                 <!-- Logo -->
                 <div class="flex items-center space-x-2 md:space-x-3">
-                    <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-10 sm:h-12 md:h-16 w-auto object-contain">
+                    <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-20 sm:h-24 md:h-28 w-auto object-contain">
                     <div class="hidden sm:block w-px h-8 md:h-12 bg-gray-300"></div>
                     <img src="{{ asset('assets/img/logo-crea-pr-preto.png') }}" alt="CREA-PR" class="h-6 sm:h-8 md:h-10 w-auto object-contain">
                 </div>
@@ -77,7 +77,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-16 md:pt-20 pb-8 md:pb-12 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <section class="pt-28 md:pt-36 lg:pt-40 pb-8 md:pb-12 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                 <div>

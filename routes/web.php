@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicFormController;
 use App\Http\Controllers\Admin\AdminSubmissionController;
+use App\Http\Controllers\Admin\AdminEventsController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Auth\AdminLoginController;
@@ -53,6 +54,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('questions', QuestionController::class)->except(['show']);
     Route::post('/questions/reorder', [QuestionController::class, 'reorder'])->name('questions.reorder');
     Route::post('/questions/bulk-toggle', [QuestionController::class, 'bulkToggle'])->name('questions.bulkToggle');
+    
+    // Gerenciamento de Eventos do Programa
+    Route::resource('events', AdminEventsController::class)->except(['show']);
 });
 
 // Rotas do Município (requerem autenticação e role municipality)

@@ -3,414 +3,400 @@
 namespace Database\Seeders;
 
 use App\Models\DiagnosticQuestion;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DiagnosticQuestionsSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        // Limpa perguntas existentes
         DiagnosticQuestion::truncate();
 
-        // ========================================
-        // CATEGORIA: ESTÍMULO (9 perguntas)
-        // ========================================
-        
+        // ESTÍMULO (9 perguntas)
         DiagnosticQuestion::create([
             'category' => 'estimulo',
-            'question' => 'O município possui Lei Municipal de Inovação?',
+            'question' => 'Possui Lei de Inovação?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
             'order' => 1,
             'is_active' => true,
-            'description' => 'Lei que estabelece medidas de incentivo à inovação e à pesquisa científica e tecnológica no ambiente produtivo.'
+            'description' => 'Caso sim, apresente o link da evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estimulo',
-            'question' => 'O município possui política de Governo Digital implantada?',
+            'question' => 'Possui Política de Sandbox regulatório em conformidade com a Lei Complementar 182/2021?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
             'order' => 2,
             'is_active' => true,
-            'description' => 'Política que orienta a digitalização de serviços públicos e transformação digital da gestão municipal.'
+            'description' => 'Caso sim, apresente o link de evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estimulo',
-            'question' => 'Quais ambientes de inovação estão presentes no município?',
-            'type' => 'checkbox',
-            'options' => ['Incubadora', 'Aceleradora', 'Coworking', 'Hub de Inovação', 'Parque Tecnológico', 'Living Lab', 'Nenhum'],
-            'requires_evidence' => false,
+            'question' => 'Possui Política de Governo Digital em conformidade com a Lei 14.129/2021?',
+            'type' => 'yes_no_evidence',
+            'options' => null,
+            'requires_evidence' => true,
             'order' => 3,
             'is_active' => true,
-            'description' => 'Selecione todos os ambientes de inovação presentes ou operantes no município.'
+            'description' => 'Caso sim, apresente o link de evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estimulo',
-            'question' => 'O município possui Fundo Municipal de Inovação?',
+            'question' => 'Já realizou alguma Contratação Pública de Solução Inovadora (CPSI) utilizando a lei complementar 182/2021?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
             'order' => 4,
             'is_active' => true,
-            'description' => 'Fundo específico para financiamento de projetos de inovação e tecnologia.'
+            'description' => 'Caso sim, apresente o link de evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estimulo',
-            'question' => 'O município possui Conselho Municipal de CTI (Ciência, Tecnologia e Inovação)?',
+            'question' => 'Possui Planejamento Estratégico de Longo Prazo (10 anos ou mais)?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
             'order' => 5,
             'is_active' => true,
-            'description' => 'Órgão colegiado consultivo ou deliberativo sobre políticas de CTI no município.'
+            'description' => 'Caso sim, apresente o link de evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estimulo',
-            'question' => 'O município já executou contratos de soluções inovadoras?',
+            'question' => 'Possui Normativa regulamentando a Lei Geral de Proteção de Dados (Lei 13.709/2018)?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
             'order' => 6,
             'is_active' => true,
-            'description' => 'Contratos públicos que envolveram aquisição ou desenvolvimento de soluções tecnológicas inovadoras.'
+            'description' => 'Caso sim, apresente o link com a evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estimulo',
-            'question' => 'Quantas startups ou empresas de tecnologia estão sediadas no município?',
-            'type' => 'multiple_input',
-            'options' => ['Startups', 'Empresas de Software', 'Empresas de Tecnologia'],
-            'requires_evidence' => false,
-            'order' => 7,
-            'is_active' => true,
-            'description' => 'Informe o número aproximado de empresas em cada categoria.'
-        ]);
-
-        DiagnosticQuestion::create([
-            'category' => 'estimulo',
-            'question' => 'O município realizou hackathons ou eventos de inovação nos últimos 2 anos?',
+            'question' => 'O Governo Municipal já realizou algum movimento de inovação (ideathons/hackathons) com algum segmento econômico da cidade?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
-            'order' => 8,
+            'order' => 7,
             'is_active' => true,
-            'description' => 'Eventos que promovam inovação, empreendedorismo ou desenvolvimento tecnológico.'
+            'description' => 'Caso sim, apresente o link com evidências'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estimulo',
-            'question' => 'Descreva as principais iniciativas de estímulo à inovação no município.',
-            'type' => 'text',
-            'options' => null,
+            'question' => 'O Município Possui alguma Startup legalizada?',
+            'type' => 'multiple_input',
+            'options' => ['Nome da Startup', 'Segmento de Atuação'],
             'requires_evidence' => false,
-            'order' => 9,
+            'order' => 8,
             'is_active' => true,
-            'description' => 'Descreva brevemente programas, projetos ou ações desenvolvidas pela gestão municipal.'
+            'description' => 'Caso sim, nome da startup e segmento de atuação (botão de inclusão para incluir várias)'
         ]);
 
-        // ========================================
-        // CATEGORIA: EDUCAÇÃO (11 perguntas)
-        // ========================================
+        DiagnosticQuestion::create([
+            'category' => 'estimulo',
+            'question' => 'O Governo Municipal possui algum programa para oportunidades aos empreendedores locais?',
+            'type' => 'yes_no_evidence',
+            'options' => null,
+            'requires_evidence' => true,
+            'order' => 9,
+            'is_active' => true,
+            'description' => 'Caso sim, apresente o link com evidências'
+        ]);
 
+        // EDUCAÇÃO (11 perguntas)
         DiagnosticQuestion::create([
             'category' => 'educacao',
-            'question' => 'Quantas escolas de ensino fundamental (anos iniciais) existem no município?',
+            'question' => 'Possui alguma instituição de Ensino Técnico na cidade?',
             'type' => 'multiple_input',
-            'options' => ['Municipais', 'Estaduais', 'Particulares'],
+            'options' => ['Nome da Instituição', 'Cursos Ofertados (separados por ;)'],
             'requires_evidence' => false,
             'order' => 1,
             'is_active' => true,
-            'description' => 'Informe o número de escolas por tipo de rede de ensino.'
+            'description' => 'Caso sim, informe nomes de instituições e cursos ofertados (botão de inclusão para várias)'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'educacao',
-            'question' => 'Quantas escolas de ensino fundamental (anos finais) existem no município?',
+            'question' => 'Possui alguma universidade pública com ensino presencial na cidade?',
             'type' => 'multiple_input',
-            'options' => ['Municipais', 'Estaduais', 'Particulares'],
+            'options' => ['Nome da Instituição', 'Cursos Ofertados (separados por ;)'],
             'requires_evidence' => false,
             'order' => 2,
             'is_active' => true,
-            'description' => 'Informe o número de escolas por tipo de rede de ensino.'
+            'description' => 'Caso sim, informe nomes de instituições e cursos ofertados (botão de inclusão para várias)'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'educacao',
-            'question' => 'Quantas escolas de ensino médio existem no município?',
+            'question' => 'Possui alguma universidade privada com ensino presencial na cidade?',
             'type' => 'multiple_input',
-            'options' => ['Estaduais', 'Particulares', 'Técnicas'],
+            'options' => ['Nome da Instituição', 'Cursos Ofertados (separados por ;)'],
             'requires_evidence' => false,
             'order' => 3,
             'is_active' => true,
-            'description' => 'Informe o número de escolas por tipo de rede de ensino.'
+            'description' => 'Caso sim, informe nomes de instituições e cursos ofertados (botão de inclusão para várias)'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'educacao',
-            'question' => 'O município possui instituições de ensino superior presenciais?',
+            'question' => 'O Governo Municipal oferta algum programa para Letramento Digital do cidadão?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
             'order' => 4,
             'is_active' => true,
-            'description' => 'Universidades, faculdades ou institutos federais presentes no município.'
+            'description' => 'Caso sim, apresente o link de evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'educacao',
-            'question' => 'As escolas municipais aplicam conceitos de novos letramentos digitais?',
+            'question' => 'O Governo Municipal oferta algum programa para Letramento em Soft Skills?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
             'order' => 5,
             'is_active' => true,
-            'description' => 'Programas de alfabetização digital, pensamento computacional, robótica educacional, etc.'
+            'description' => 'Caso sim, apresente o link de evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'educacao',
-            'question' => 'O município realizou hackathons ou eventos educacionais sobre tecnologia?',
+            'question' => 'O Governo Municipal oferta algum programa para Letramento em Green Skills?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
             'order' => 6,
             'is_active' => true,
-            'description' => 'Eventos voltados para estudantes sobre programação, inovação ou tecnologia.'
+            'description' => 'Caso sim, apresente o link de evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'educacao',
-            'question' => 'Quais recursos tecnológicos estão disponíveis nas escolas municipais?',
-            'type' => 'checkbox',
-            'options' => ['Laboratórios de Informática', 'Internet de Alta Velocidade', 'Tablets/Chromebooks', 'Lousas Digitais', 'Plataformas de Ensino Online', 'Robótica Educacional', 'Nenhum'],
-            'requires_evidence' => false,
+            'question' => 'O Governo Municipal já realizou movimentos de Inovação (Hackathons/Ideathons) na Educação Básica, seja ela pública ou privada?',
+            'type' => 'yes_no_evidence',
+            'options' => null,
+            'requires_evidence' => true,
             'order' => 7,
             'is_active' => true,
-            'description' => 'Selecione todos os recursos disponíveis nas escolas da rede municipal.'
+            'description' => 'Caso sim, apresente o link com evidências'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'educacao',
-            'question' => 'Os professores recebem capacitação em tecnologias educacionais?',
+            'question' => 'Possui algum programa para gestão de talentos (formar, atrair e reter)?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
             'order' => 8,
             'is_active' => true,
-            'description' => 'Programas de formação continuada sobre uso de tecnologias no ensino.'
+            'description' => 'Caso sim, apresente o link com evidências'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'educacao',
-            'question' => 'O município possui parcerias com instituições de ensino para projetos educacionais?',
+            'question' => 'Faz uso de tecnologia em Sala de Aula na Rede Municipal de Educação?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
             'order' => 9,
             'is_active' => true,
-            'description' => 'Convênios ou parcerias com universidades, institutos ou organizações educacionais.'
+            'description' => 'Caso sim, apresente o link com evidências'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'educacao',
-            'question' => 'Existe um plano municipal de educação que contempla tecnologia e inovação?',
+            'question' => 'Faz uso de métodos ativos em Sala de Aula na Rede Municipal de Educação?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
             'order' => 10,
             'is_active' => true,
-            'description' => 'Plano que estabeleça metas e estratégias para integração da tecnologia na educação.'
+            'description' => 'Caso sim, apresente o link com evidências'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'educacao',
-            'question' => 'Descreva os principais projetos educacionais relacionados à tecnologia.',
-            'type' => 'text',
-            'options' => null,
-            'requires_evidence' => false,
-            'order' => 11,
-            'is_active' => true,
-            'description' => 'Apresente resumidamente os projetos desenvolvidos na área educacional com foco em tecnologia.'
-        ]);
-
-        // ========================================
-        // CATEGORIA: ESTRUTURAS (15 perguntas)
-        // ========================================
-
-        DiagnosticQuestion::create([
-            'category' => 'estruturas',
-            'question' => 'O município possui Plano Diretor atualizado?',
+            'question' => 'A Rede Municipal de Educação aplica STEAM (Ciência, Tecnologia, Engenharia, Artes e Matemática) no processo de aprendizagem do aluno?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
+            'order' => 11,
+            'is_active' => true,
+            'description' => 'Caso sim, apresente o link com evidências'
+        ]);
+
+        // ESTRUTURAS (15 perguntas)
+        DiagnosticQuestion::create([
+            'category' => 'estruturas',
+            'question' => 'Qual o nível de interoperabilidade dos sistemas de gestão?',
+            'type' => 'checkbox',
+            'options' => ['Educação', 'Saúde', 'Todas as demais políticas públicas'],
+            'requires_evidence' => false,
             'order' => 1,
             'is_active' => true,
-            'description' => 'Plano Diretor revisado nos últimos 10 anos conforme Estatuto da Cidade.'
+            'description' => 'Selecione as áreas onde existe interoperabilidade de sistemas'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estruturas',
-            'question' => 'O Plano Diretor contempla conceitos de cidades inteligentes?',
+            'question' => 'Possui ambiente promotores de inovação certificados pela Separtec?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
             'order' => 2,
             'is_active' => true,
-            'description' => 'Diretrizes sobre mobilidade inteligente, infraestrutura digital, IoT, etc.'
+            'description' => 'Caso sim, apresente o link com a evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estruturas',
-            'question' => 'Quais sistemas de monitoramento urbano estão implantados?',
-            'type' => 'checkbox',
-            'options' => ['Câmeras de Segurança', 'Sensores de Tráfego', 'Monitoramento Ambiental', 'Iluminação Inteligente', 'Gestão de Resíduos Inteligente', 'Nenhum'],
-            'requires_evidence' => false,
+            'question' => 'O Governo Municipal possui alguma ferramenta de Gestão de Identidades para promover a interoperabilidade de dados e a individualização das políticas públicas para o cidadão?',
+            'type' => 'yes_no_evidence',
+            'options' => null,
+            'requires_evidence' => true,
             'order' => 3,
             'is_active' => true,
-            'description' => 'Selecione todos os sistemas de monitoramento em operação no município.'
+            'description' => 'Caso sim, apresente o link com a evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estruturas',
-            'question' => 'O município possui cobertura de internet de alta velocidade?',
+            'question' => 'Possui Plano Diretor de Cidade Inteligente?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
             'order' => 4,
             'is_active' => true,
-            'description' => 'Disponibilidade de fibra óptica ou 4G/5G na área urbana.'
+            'description' => 'Caso sim, apresente o link com a evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estruturas',
-            'question' => 'Qual a cobertura percentual de rede de fibra óptica na área urbana?',
-            'type' => 'multiple_input',
-            'options' => ['Percentual de Cobertura (%)'],
-            'requires_evidence' => false,
+            'question' => 'Possui Plano Diretor para Comunidade Inteligente?',
+            'type' => 'yes_no_evidence',
+            'options' => null,
+            'requires_evidence' => true,
             'order' => 5,
             'is_active' => true,
-            'description' => 'Informe o percentual aproximado da área urbana com cobertura de fibra óptica.'
+            'description' => 'Caso sim, apresente o link com a evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estruturas',
-            'question' => 'O município possui Wi-Fi público gratuito?',
+            'question' => 'O município possui algum projeto voltado para Energias Renováveis?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
             'order' => 6,
             'is_active' => true,
-            'description' => 'Pontos de acesso Wi-Fi livre em praças, parques ou prédios públicos.'
+            'description' => 'Caso sim, apresente o link com a evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estruturas',
-            'question' => 'Quais infraestruturas tecnológicas estão disponíveis na gestão pública?',
-            'type' => 'checkbox',
-            'options' => ['Data Center Municipal', 'Nuvem Privada', 'Nuvem Pública', 'Sistemas Integrados de Gestão', 'API de Dados Abertos', 'Plataforma de GIS', 'Nenhum'],
-            'requires_evidence' => false,
+            'question' => 'O município já está fazendo o uso de BIM na elaboração de seus projetos?',
+            'type' => 'yes_no_evidence',
+            'options' => null,
+            'requires_evidence' => true,
             'order' => 7,
             'is_active' => true,
-            'description' => 'Selecione as infraestruturas tecnológicas utilizadas pela prefeitura.'
+            'description' => 'Caso sim, apresente o link com a evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estruturas',
-            'question' => 'O município possui normativa de proteção de dados (LGPD)?',
+            'question' => 'O município possui algum projeto de economia verde?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
             'order' => 8,
             'is_active' => true,
-            'description' => 'Decreto ou normativa municipal sobre tratamento e proteção de dados pessoais.'
+            'description' => 'Caso sim, apresente o link com a evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estruturas',
-            'question' => 'O município possui DPO (Data Protection Officer) designado?',
-            'type' => 'yes_no',
+            'question' => 'O município possui algum projeto de economia azul?',
+            'type' => 'yes_no_evidence',
             'options' => null,
-            'requires_evidence' => false,
+            'requires_evidence' => true,
             'order' => 9,
             'is_active' => true,
-            'description' => 'Encarregado de dados conforme LGPD.'
+            'description' => 'Caso sim, apresente o link com a evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estruturas',
-            'question' => 'Os sistemas da prefeitura são interoperáveis?',
+            'question' => 'O município possui algum projeto de Fazenda/Horta Urbana?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
             'order' => 10,
             'is_active' => true,
-            'description' => 'Sistemas diferentes conseguem trocar informações entre si de forma automatizada.'
+            'description' => 'Caso sim, apresente o link com a evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estruturas',
-            'question' => 'O município utiliza ferramentas de gestão de identidades digitais?',
+            'question' => 'O município possui algum projeto para engajamento digital do cidadão?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
             'order' => 11,
             'is_active' => true,
-            'description' => 'Sistemas de autenticação única (SSO), certificação digital, gov.br, etc.'
+            'description' => 'Caso sim, apresente o link com a evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estruturas',
-            'question' => 'Quais serviços públicos estão digitalizados?',
-            'type' => 'checkbox',
-            'options' => ['Emissão de Certidões Online', 'Pagamento de Tributos Online', 'Agendamento Online', 'Protocolo Digital', 'Ouvidoria Digital', 'Portal de Transparência', 'Nenhum'],
-            'requires_evidence' => false,
+            'question' => 'O governo municipal utiliza IoT (Internet of Things) para controle operacionais da cidade?',
+            'type' => 'yes_no_evidence',
+            'options' => null,
+            'requires_evidence' => true,
             'order' => 12,
             'is_active' => true,
-            'description' => 'Selecione todos os serviços disponíveis online para o cidadão.'
+            'description' => 'Caso sim, apresente o link com a evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estruturas',
-            'question' => 'O município possui Centro de Operações ou similar?',
+            'question' => 'O município possui algum projeto com o uso de beacons para o Turismo Inteligente?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
             'order' => 13,
             'is_active' => true,
-            'description' => 'Centro integrado para monitoramento e gestão de serviços urbanos.'
+            'description' => 'Caso sim, apresente o link com a evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estruturas',
-            'question' => 'O município possui estratégia de transformação digital documentada?',
+            'question' => 'O município possui algum projeto para o fortalecimento do comércio local através do uso de tecnologias?',
             'type' => 'yes_no_evidence',
             'options' => null,
             'requires_evidence' => true,
             'order' => 14,
             'is_active' => true,
-            'description' => 'Plano ou roadmap para digitalização de processos e serviços públicos.'
+            'description' => 'Caso sim, apresente o link com a evidência'
         ]);
 
         DiagnosticQuestion::create([
             'category' => 'estruturas',
-            'question' => 'Descreva a infraestrutura tecnológica mais relevante do município.',
-            'type' => 'text',
+            'question' => 'O município possui algum projeto para a realização de compras públicas inteligentes (que priorize os negócios locais)?',
+            'type' => 'yes_no_evidence',
             'options' => null,
-            'requires_evidence' => false,
+            'requires_evidence' => true,
             'order' => 15,
             'is_active' => true,
-            'description' => 'Apresente resumidamente as principais infraestruturas tecnológicas implantadas.'
+            'description' => 'Caso sim, apresente o link com a evidência'
         ]);
     }
 }

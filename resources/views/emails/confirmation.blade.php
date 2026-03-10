@@ -186,7 +186,7 @@
 
         <div class="footer">
             <p><strong>CREA-PR - Conselho Regional de Engenharia e Agronomia do Paraná</strong></p>
-            <p>Smart Crea Cities - Programa de Maturidade Tecnológica Municipal</p>
+            <p>Smart Crea Cities - Trilha Formativa dos 3'Es</p>
             <p style="margin-top: 10px;">Este é um e-mail automático. Por favor, não responda.</p>
         </div>
     </div>

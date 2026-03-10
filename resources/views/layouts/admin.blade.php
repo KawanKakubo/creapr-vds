@@ -13,10 +13,10 @@
     <!-- Navbar -->
     <nav class="bg-gradient-to-r from-blue-600 to-indigo-600 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
+            <div class="flex justify-between items-center h-22 md:h-26 lg:h-30">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <img src="{{ asset('assets/img/logo-crea-pr-preto.png') }}" alt="CREA-PR" class="h-16 object-contain bg-white rounded-lg px-3 py-2 shadow-md">
+                        <img src="{{ asset('assets/img/logo-crea-pr-preto.png') }}" alt="CREA-PR" class="h-20 sm:h-24 md:h-28 object-contain bg-white rounded-lg px-3 py-2 shadow-md">
                     </div>
                     <div class="ml-4">
                         <h1 class="text-white font-bold text-xl">Painel Administrativo</h1>
