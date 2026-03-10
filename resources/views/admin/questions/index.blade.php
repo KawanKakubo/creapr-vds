@@ -88,6 +88,7 @@
                         <option value="yes_no_evidence" {{ request('type') === 'yes_no_evidence' ? 'selected' : '' }}>Sim/Não + Evidência</option>
                         <option value="checkbox" {{ request('type') === 'checkbox' ? 'selected' : '' }}>Checkbox</option>
                         <option value="multiple_input" {{ request('type') === 'multiple_input' ? 'selected' : '' }}>Múltiplos Inputs</option>
+                        <option value="repeatable_fields" {{ request('type') === 'repeatable_fields' ? 'selected' : '' }}>Campos Repetíveis</option>
                         <option value="text" {{ request('type') === 'text' ? 'selected' : '' }}>Texto</option>
                     </select>
                 </div>

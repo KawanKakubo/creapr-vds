@@ -130,6 +130,7 @@
                         <option value="yes_no_evidence">Sim/Não + Evidência (com campo de texto adicional)</option>
                         <option value="checkbox">Checkbox (múltipla escolha)</option>
                         <option value="multiple_input">Múltiplos Inputs (vários campos de texto)</option>
+                        <option value="repeatable_fields">Campos Repetíveis (botão de adicionar/remover múltiplas entradas)</option>
                         <option value="text">Texto (resposta aberta)</option>
                     </select>
                     @if($question->answers()->count() > 0)

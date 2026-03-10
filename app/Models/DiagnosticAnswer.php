@@ -74,6 +74,28 @@ class DiagnosticAnswer extends Model
                 }
                 break;
 
+            case 'repeatable_fields':
+                // Para campos repetíveis, dá pontos completos se pelo menos UM entry tiver algum campo preenchido
+                // Não importa se adicionou 1 ou 50 instituições, vale o mesmo!
+                if (is_array($this->answer_multiple_input) && count($this->answer_multiple_input) > 0) {
+                    $hasAnyFilledEntry = false;
+                    foreach ($this->answer_multiple_input as $entry) {
+                        if (is_array($entry)) {
+                            // Verifica se algum campo do entry tem valor
+                            foreach ($entry as $value) {
+                                if (!empty($value) && trim($value) !== '') {
+                                    $hasAnyFilledEntry = true;
+                                    break 2; // Sai dos dois loops
+                                }
+                            }
+                        }
+                    }
+                    $this->points_earned = $hasAnyFilledEntry ? $basePoints : 0;
+                } else {
+                    $this->points_earned = 0;
+                }
+                break;
+
             case 'text':
                 // For text answers, give full points if not empty
                 $this->points_earned = !empty($this->answer_text) ? $basePoints : 0;

@@ -92,7 +92,7 @@ class DiagnosticQuestionsSeeder extends Seeder
         DiagnosticQuestion::create([
             'category' => 'estimulo',
             'question' => 'O Município Possui alguma Startup legalizada?',
-            'type' => 'multiple_input',
+            'type' => 'repeatable_fields',
             'options' => ['Nome da Startup', 'Segmento de Atuação'],
             'requires_evidence' => false,
             'order' => 8,
@@ -115,7 +115,7 @@ class DiagnosticQuestionsSeeder extends Seeder
         DiagnosticQuestion::create([
             'category' => 'educacao',
             'question' => 'Possui alguma instituição de Ensino Técnico na cidade?',
-            'type' => 'multiple_input',
+            'type' => 'repeatable_fields',
             'options' => ['Nome da Instituição', 'Cursos Ofertados (separados por ;)'],
             'requires_evidence' => false,
             'order' => 1,
@@ -126,7 +126,7 @@ class DiagnosticQuestionsSeeder extends Seeder
         DiagnosticQuestion::create([
             'category' => 'educacao',
             'question' => 'Possui alguma universidade pública com ensino presencial na cidade?',
-            'type' => 'multiple_input',
+            'type' => 'repeatable_fields',
             'options' => ['Nome da Instituição', 'Cursos Ofertados (separados por ;)'],
             'requires_evidence' => false,
             'order' => 2,
@@ -137,7 +137,7 @@ class DiagnosticQuestionsSeeder extends Seeder
         DiagnosticQuestion::create([
             'category' => 'educacao',
             'question' => 'Possui alguma universidade privada com ensino presencial na cidade?',
-            'type' => 'multiple_input',
+            'type' => 'repeatable_fields',
             'options' => ['Nome da Instituição', 'Cursos Ofertados (separados por ;)'],
             'requires_evidence' => false,
             'order' => 3,
@@ -238,7 +238,21 @@ class DiagnosticQuestionsSeeder extends Seeder
             'category' => 'estruturas',
             'question' => 'Qual o nível de interoperabilidade dos sistemas de gestão?',
             'type' => 'checkbox',
-            'options' => ['Educação', 'Saúde', 'Todas as demais políticas públicas'],
+            'options' => [
+                'Educação', 
+                'Saúde', 
+                'Assistência Social', 
+                'Meio Ambiente', 
+                'Planejamento e Orçamento', 
+                'Finanças e Tributação', 
+                'Recursos Humanos', 
+                'Obras e Infraestrutura',
+                'Transporte e Mobilidade',
+                'Cultura e Turismo',
+                'Segurança Pública',
+                'Agricultura',
+                'Habitação'
+            ],
             'requires_evidence' => false,
             'order' => 1,
             'is_active' => true,

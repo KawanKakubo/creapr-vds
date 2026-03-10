@@ -176,6 +176,48 @@
                                 </div>
                             @endif
 
+                            <!-- REPEATABLE FIELDS Questions -->
+                            @if($question->type === 'repeatable_fields')
+                                <div x-data="repeatableFields_{{ $question->id }}()" class="space-y-4">
+                                    <template x-for="(entry, index) in entries" :key="index">
+                                        <div class="p-4 border-2 border-gray-200 rounded-lg bg-gray-50 relative">
+                                            <!-- Remove Button -->
+                                            <button type="button" 
+                                                    @click="removeEntry(index)"
+                                                    x-show="entries.length > 1"
+                                                    class="absolute top-2 right-2 text-red-600 hover:text-red-800 font-bold text-xl"
+                                                    title="Remover">
+                                                ×
+                                            </button>
+
+                                            <div class="space-y-3">
+                                                @foreach($question->options as $optionKey => $optionLabel)
+                                                    <div>
+                                                        <label class="block text-sm font-semibold text-gray-700 mb-1">
+                                                            {{ $optionLabel }}
+                                                        </label>
+                                                        <input type="text" 
+                                                               placeholder="Digite o valor"
+                                                               :value="entry['{{ $optionKey }}'] || ''"
+                                                               @input="updateEntry(index, '{{ $optionKey }}', $event.target.value)"
+                                                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </template>
+
+                                    <button type="button" 
+                                            @click="addEntry()"
+                                            class="w-full py-3 px-4 border-2 border-dashed border-blue-400 text-blue-600 rounded-lg hover:bg-blue-50 hover:border-blue-600 transition font-semibold flex items-center justify-center gap-2">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                                        </svg>
+                                        Adicionar {{ strtolower(explode(' ', $question->question)[1] ?? 'item') }}
+                                    </button>
+                                </div>
+                            @endif
+
                             <!-- TEXT Questions -->
                             @if($question->type === 'text')
                                 <textarea 
@@ -325,6 +367,10 @@
                         if ((answer.type === 'yes_no' || answer.type === 'yes_no_evidence') && answer.answer) return true;
                         if (answer.type === 'checkbox' && answer.checkboxes && answer.checkboxes.length > 0) return true;
                         if (answer.type === 'multiple_input' && answer.inputs && Object.keys(answer.inputs).length > 0) return true;
+                        if (answer.type === 'repeatable_fields' && answer.inputs && answer.inputs.length > 0) {
+                            // Verifica se pelo menos um entry tem algum valor preenchido
+                            return answer.inputs.some(entry => Object.values(entry).some(v => v && v.trim() !== ''));
+                        }
                         if (answer.type === 'text' && answer.text && answer.text.trim() !== '') return true;
                         return false;
                     }).length;
@@ -399,6 +445,68 @@
                 }
             };
         }
+
+        // Factory function for repeatable fields components
+        @foreach($questions as $question)
+            @if($question->type === 'repeatable_fields')
+        function repeatableFields_{{ $question->id }}() {
+            const diagnosticFormData = Alpine.$data(document.querySelector('[x-data]'));
+            
+            return {
+                entries: [],
+                
+                init() {
+                    // Carrega dados existentes ou inicial com um entry vazio
+                    const existing = @json($existingAnswers[$question->id]->answer_multiple_input ?? []);
+                    
+                    if (Array.isArray(existing) && existing.length > 0) {
+                        this.entries = existing;
+                    } else {
+                        this.entries = [{}]; // Inicia com um campo vazio
+                    }
+                    
+                    this.notifyMain();
+                },
+                
+                addEntry() {
+                    this.entries.push({});
+                    this.notifyMain();
+                },
+                
+                removeEntry(index) {
+                    if (this.entries.length > 1) {
+                        this.entries.splice(index, 1);
+                        this.notifyMain();
+                    }
+                },
+                
+                updateEntry(index, key, value) {
+                    if (!this.entries[index]) {
+                        this.entries[index] = {};
+                    }
+                    this.entries[index][key] = value;
+                    this.notifyMain();
+                },
+                
+                notifyMain() {
+                    // Atualiza o formulário principal
+                    if (!diagnosticFormData.answers[{{ $question->id }}]) {
+                        diagnosticFormData.answers[{{ $question->id }}] = {
+                            type: 'repeatable_fields',
+                            inputs: [],
+                            answer: null,
+                            checkboxes: [],
+                            text: '',
+                            evidence_url: ''
+                        };
+                    }
+                    diagnosticFormData.answers[{{ $question->id }}].inputs = this.entries;
+                    diagnosticFormData.updateAnsweredCount();
+                }
+            };
+        }
+            @endif
+        @endforeach
     </script>
 </body>
 </html>

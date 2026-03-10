@@ -128,6 +128,10 @@ class DiagnosticController extends Controller
                         $answerRecord['answer_multiple_input'] = $answerData['inputs'] ?? [];
                         break;
                     
+                    case 'repeatable_fields':
+                        $answerRecord['answer_multiple_input'] = $answerData['inputs'] ?? [];
+                        break;
+                    
                     case 'text':
                         $answerRecord['answer_text'] = $answerData['text'] ?? null;
                         break;

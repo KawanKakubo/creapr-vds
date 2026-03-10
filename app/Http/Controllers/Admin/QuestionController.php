@@ -57,7 +57,7 @@ class QuestionController extends Controller
         $validated = $request->validate([
             'category' => 'required|in:estimulo,educacao,estruturas',
             'question' => 'required|string|max:1000',
-            'type' => 'required|in:yes_no,yes_no_evidence,checkbox,multiple_input,text',
+            'type' => 'required|in:yes_no,yes_no_evidence,checkbox,multiple_input,repeatable_fields,text',
             'options' => 'nullable|array',
             'options.*' => 'required|string|max:255',
             'requires_evidence' => 'boolean',
@@ -72,9 +72,9 @@ class QuestionController extends Controller
         }
 
         // Validate that checkbox and multiple_input types have options
-        if (in_array($validated['type'], ['checkbox', 'multiple_input'])) {
+        if (in_array($validated['type'], ['checkbox', 'multiple_input', 'repeatable_fields'])) {
             if (empty($validated['options']) || count($validated['options']) < 2) {
-                return back()->withErrors(['options' => 'Tipos checkbox e multiple_input precisam de pelo menos 2 opções.'])->withInput();
+                return back()->withErrors(['options' => 'Tipos checkbox, multiple_input e repeatable_fields precisam de pelo menos 2 opções.'])->withInput();
             }
         }
 
@@ -115,7 +115,7 @@ class QuestionController extends Controller
         $validated = $request->validate([
             'category' => 'required|in:estimulo,educacao,estruturas',
             'question' => 'required|string|max:1000',
-            'type' => 'required|in:yes_no,yes_no_evidence,checkbox,multiple_input,text',
+            'type' => 'required|in:yes_no,yes_no_evidence,checkbox,multiple_input,repeatable_fields,text',
             'options' => 'nullable|array',
             'options.*' => 'required|string|max:255',
             'requires_evidence' => 'boolean',
@@ -130,9 +130,9 @@ class QuestionController extends Controller
         }
 
         // Validate that checkbox and multiple_input types have options
-        if (in_array($validated['type'], ['checkbox', 'multiple_input'])) {
+        if (in_array($validated['type'], ['checkbox', 'multiple_input', 'repeatable_fields'])) {
             if (empty($validated['options']) || count($validated['options']) < 2) {
-                return back()->withErrors(['options' => 'Tipos checkbox e multiple_input precisam de pelo menos 2 opções.'])->withInput();
+                return back()->withErrors(['options' => 'Tipos checkbox, multiple_input e repeatable_fields precisam de pelo menos 2 opções.'])->withInput();
             }
         }
 
