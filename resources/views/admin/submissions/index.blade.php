@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Manifestações | Smart Crea Cities</title>
+    <title>ManifestaÃ§Ãµes | Smart Crea Cities</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    @include('partials.favicons')
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
@@ -21,7 +22,7 @@
                 </div>
                 <div class="flex items-center space-x-4">
                     <a href="{{ route('admin.dashboard') }}" class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
-                        ← Dashboard
+                        â† Dashboard
                     </a>
                     <div class="text-right">
                         <p class="text-sm text-gray-600">{{ Auth::user()->name }}</p>
@@ -41,11 +42,11 @@
     <div class="max-w-7xl mx-auto px-4 py-8">
         <div class="mb-8 flex items-center justify-between">
             <div>
-                <h1 class="text-3xl font-bold text-gray-900 mb-2">Manifestações de Interesse</h1>
-                <p class="text-gray-600">Gerencie e analise as submissões dos municípios</p>
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">ManifestaÃ§Ãµes de Interesse</h1>
+                <p class="text-gray-600">Gerencie e analise as submissÃµes dos municÃ­pios</p>
             </div>
             <a href="{{ route('admin.submissoes.export', request()->query()) }}" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg">
-                📥 Exportar CSV
+                ðŸ“¥ Exportar CSV
             </a>
         </div>
 
@@ -65,8 +66,8 @@
             <h2 class="text-lg font-bold text-gray-900 mb-4">Filtros</h2>
             <form method="GET" action="{{ route('admin.submissoes.index') }}" class="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Município</label>
-                    <input type="text" name="municipio" value="{{ request('municipio') }}" placeholder="Nome do município" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">MunicÃ­pio</label>
+                    <input type="text" name="municipio" value="{{ request('municipio') }}" placeholder="Nome do municÃ­pio" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                 </div>
                 
                 <div>
@@ -74,7 +75,7 @@
                     <select name="status" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         <option value="">Todos</option>
                         <option value="pending" {{ request('status') === 'pending' ? 'selected' : '' }}>Pendente</option>
-                        <option value="under_review" {{ request('status') === 'under_review' ? 'selected' : '' }}>Em Análise</option>
+                        <option value="under_review" {{ request('status') === 'under_review' ? 'selected' : '' }}>Em AnÃ¡lise</option>
                         <option value="approved" {{ request('status') === 'approved' ? 'selected' : '' }}>Aprovado</option>
                         <option value="rejected" {{ request('status') === 'rejected' ? 'selected' : '' }}>Rejeitado</option>
                     </select>
@@ -95,7 +96,7 @@
                     <select name="mais_engenharia" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         <option value="">Todos</option>
                         <option value="sim" {{ request('mais_engenharia') === 'sim' ? 'selected' : '' }}>Sim</option>
-                        <option value="nao" {{ request('mais_engenharia') === 'nao' ? 'selected' : '' }}>Não</option>
+                        <option value="nao" {{ request('mais_engenharia') === 'nao' ? 'selected' : '' }}>NÃ£o</option>
                     </select>
                 </div>
                 
@@ -110,21 +111,21 @@
             </form>
         </div>
 
-        <!-- Tabela de Submissões -->
+        <!-- Tabela de SubmissÃµes -->
         <div class="bg-white rounded-xl shadow-md overflow-hidden">
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Protocolo</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Município</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">MunicÃ­pio</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Regional</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">População</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">PopulaÃ§Ã£o</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mais Eng.</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Score</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">AÃ§Ãµes</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -146,7 +147,7 @@
                                 @if($sub->faz_parte_mais_engenharia)
                                     <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Sim</span>
                                 @else
-                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800">Não</span>
+                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800">NÃ£o</span>
                                 @endif
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
@@ -155,7 +156,7 @@
                                 @elseif($sub->status === 'approved')
                                     <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Aprovado</span>
                                 @elseif($sub->status === 'under_review')
-                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">Em Análise</span>
+                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">Em AnÃ¡lise</span>
                                 @elseif($sub->status === 'rejected')
                                     <span class="px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">Rejeitado</span>
                                 @endif
@@ -172,7 +173,7 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm">
                                 <a href="{{ route('admin.submissoes.show', $sub) }}" class="text-blue-600 hover:text-blue-800 font-semibold">
-                                    Ver Detalhes →
+                                    Ver Detalhes â†’
                                 </a>
                             </td>
                         </tr>
@@ -182,8 +183,8 @@
                                 <svg class="w-12 h-12 mx-auto text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                                 </svg>
-                                <p class="text-lg font-semibold">Nenhuma manifestação encontrada</p>
-                                <p class="text-sm">Tente ajustar os filtros ou aguarde novas submissões</p>
+                                <p class="text-lg font-semibold">Nenhuma manifestaÃ§Ã£o encontrada</p>
+                                <p class="text-sm">Tente ajustar os filtros ou aguarde novas submissÃµes</p>
                             </td>
                         </tr>
                         @endforelse
@@ -191,7 +192,7 @@
                 </table>
             </div>
 
-            <!-- Paginação -->
+            <!-- PaginaÃ§Ã£o -->
             @if($submissions->hasPages())
             <div class="bg-white px-4 py-3 border-t border-gray-200">
                 {{ $submissions->links() }}
@@ -201,3 +202,4 @@
     </div>
 </body>
 </html>
+

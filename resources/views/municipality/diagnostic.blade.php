@@ -1,11 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Diagnóstico {{ ucfirst($category) }} | Smart Crea Cities</title>
+    <title>DiagnÃ³stico {{ ucfirst($category) }} | Smart Crea Cities</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    @include('partials.favicons')
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
@@ -21,20 +22,20 @@
                     <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-20 sm:h-24 md:h-28 w-auto object-contain">
                     <div class="border-l border-gray-300 h-10"></div>
                     <div>
-                        <p class="text-sm text-gray-600">Diagnóstico</p>
+                        <p class="text-sm text-gray-600">DiagnÃ³stico</p>
                         <p class="font-bold text-blue-900">{{ ucfirst($category) }}</p>
                     </div>
                 </div>
                 <div class="text-right">
                     <p class="text-sm font-semibold text-gray-900">{{ $submission->municipio_nome }}</p>
-                    <p class="text-xs text-gray-500">{{ $questions->count() }} perguntas • 100 pontos</p>
+                    <p class="text-xs text-gray-500">{{ $questions->count() }} perguntas â€¢ 100 pontos</p>
                 </div>
             </div>
         </div>
     </nav>
 
     <div class="max-w-4xl mx-auto px-4 py-8" x-data="diagnosticForm()">
-        <!-- Cabeçalho -->
+        <!-- CabeÃ§alho -->
         <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
             <div class="flex items-center space-x-4 mb-4">
                 @if($category === 'estimulo')
@@ -59,8 +60,8 @@
                     </div>
                 @endif
                 <div>
-                    <h1 class="text-3xl font-bold text-gray-900">Diagnóstico de {{ ucfirst($category) }}</h1>
-                    <p class="text-gray-600">Responda as perguntas para avaliar a maturidade do município</p>
+                    <h1 class="text-3xl font-bold text-gray-900">DiagnÃ³stico de {{ ucfirst($category) }}</h1>
+                    <p class="text-gray-600">Responda as perguntas para avaliar a maturidade do municÃ­pio</p>
                 </div>
             </div>
 
@@ -77,7 +78,7 @@
             </div>
         </div>
 
-        <!-- Formulário -->
+        <!-- FormulÃ¡rio -->
         <form @submit.prevent="submitDiagnostic">
             @foreach($questions as $index => $question)
                 <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
@@ -118,13 +119,13 @@
                                                x-model="selected"
                                                @change="updateAnswer({{ $question->id }}, '{{ $question->type }}', 'no')"
                                                class="w-4 h-4 text-red-600">
-                                        <span class="ml-3 font-semibold text-gray-900">Não</span>
+                                        <span class="ml-3 font-semibold text-gray-900">NÃ£o</span>
                                     </label>
 
                                     @if($question->requires_evidence)
                                         <div x-show="selected === 'yes'" x-transition class="mt-3">
                                             <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                                Link de Evidência *
+                                                Link de EvidÃªncia *
                                             </label>
                                             <input type="url" 
                                                    placeholder="https://exemplo.com/documento.pdf"
@@ -187,7 +188,7 @@
                                                     x-show="entries.length > 1"
                                                     class="absolute top-2 right-2 text-red-600 hover:text-red-800 font-bold text-xl"
                                                     title="Remover">
-                                                ×
+                                                Ã—
                                             </button>
 
                                             <div class="space-y-3">
@@ -231,7 +232,7 @@
                 </div>
             @endforeach
 
-            <!-- Botões de Ação -->
+            <!-- BotÃµes de AÃ§Ã£o -->
             <div class="bg-white rounded-xl shadow-lg p-6 flex justify-between items-center">
                 <button type="button"
                         @click="saveAndExit()"
@@ -244,7 +245,7 @@
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                     </svg>
-                    Finalizar Diagnóstico
+                    Finalizar DiagnÃ³stico
                 </button>
             </div>
         </form>
@@ -382,7 +383,7 @@
                     
                     // Salva respostas parciais e redireciona
                     if (Object.keys(this.answers).length === 0) {
-                        // Se não há respostas, apenas volta para o dashboard
+                        // Se nÃ£o hÃ¡ respostas, apenas volta para o dashboard
                         window.location.href = '{{ route("municipality.dashboard") }}';
                         return;
                     }
@@ -395,7 +396,7 @@
                         },
                         body: JSON.stringify({ 
                             answers: this.answers,
-                            partial: true // Indica que é salvamento parcial
+                            partial: true // Indica que Ã© salvamento parcial
                         })
                     })
                     .then(response => response.json())
@@ -411,12 +412,12 @@
                 },
                 
                 submitDiagnostic() {
-                    console.log('Finalizando diagnóstico:', this.answers);
+                    console.log('Finalizando diagnÃ³stico:', this.answers);
                     console.log('Total de respostas:', Object.keys(this.answers).length);
                     console.log('Respostas contadas:', this.answeredCount);
                     
                     if (this.answeredCount < this.totalQuestions) {
-                        if (!confirm(`Você respondeu ${this.answeredCount} de ${this.totalQuestions} perguntas. Deseja continuar mesmo assim?`)) {
+                        if (!confirm(`VocÃª respondeu ${this.answeredCount} de ${this.totalQuestions} perguntas. Deseja continuar mesmo assim?`)) {
                             return;
                         }
                     }
@@ -432,7 +433,7 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            alert(`Diagnóstico concluído! Pontuação: ${data.score} pontos`);
+                            alert(`DiagnÃ³stico concluÃ­do! PontuaÃ§Ã£o: ${data.score} pontos`);
                             window.location.href = data.redirect;
                         } else {
                             alert('Erro: ' + data.message);
@@ -440,7 +441,7 @@
                     })
                     .catch(error => {
                         console.error('Erro:', error);
-                        alert('Erro ao enviar diagnóstico. Tente novamente.');
+                        alert('Erro ao enviar diagnÃ³stico. Tente novamente.');
                     });
                 }
             };
@@ -489,7 +490,7 @@
                 },
                 
                 notifyMain() {
-                    // Atualiza o formulário principal
+                    // Atualiza o formulÃ¡rio principal
                     if (!diagnosticFormData.answers[{{ $question->id }}]) {
                         diagnosticFormData.answers[{{ $question->id }}] = {
                             type: 'repeatable_fields',
@@ -510,3 +511,4 @@
     </script>
 </body>
 </html>
+

@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manifestação Aprovada - Smart Crea Cities</title>
+    <title>ManifestaÃ§Ã£o Aprovada - Smart Crea Cities</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -121,7 +121,7 @@
             position: relative;
         }
         .checklist li:before {
-            content: "✓";
+            content: "âœ“";
             position: absolute;
             left: 0;
             color: #16a34a;
@@ -137,72 +137,74 @@
             color: #64748b;
         }
     </style>
+    @include('partials.favicons')
 </head>
 <body>
     <div class="container">
         <div class="header">
             <div class="logo">Smart Crea Cities</div>
-            <p style="color: #64748b; margin: 5px 0 0 0;">CREA-PR - Conselho Regional de Engenharia e Agronomia do Paraná</p>
+            <p style="color: #64748b; margin: 5px 0 0 0;">CREA-PR - Conselho Regional de Engenharia e Agronomia do ParanÃ¡</p>
         </div>
 
         <div class="success-badge">
-            <h1>🎉 Parabéns!</h1>
-            <p><strong>Sua manifestação foi aprovada!</strong></p>
-            <p style="font-size: 14px; margin-top: 10px;">Município: {{ $submission->municipio_nome }}</p>
+            <h1>ðŸŽ‰ ParabÃ©ns!</h1>
+            <p><strong>Sua manifestaÃ§Ã£o foi aprovada!</strong></p>
+            <p style="font-size: 14px; margin-top: 10px;">MunicÃ­pio: {{ $submission->municipio_nome }}</p>
             <p style="font-size: 14px;">Protocolo: {{ $submission->protocolo }}</p>
         </div>
 
-        <p>Olá,</p>
+        <p>OlÃ¡,</p>
         
-        <p>É com grande satisfação que informamos que a manifestação de interesse do município <strong>{{ $submission->municipio_nome }}</strong> foi <strong style="color: #16a34a;">APROVADA</strong> pelo CREA-PR!</p>
+        <p>Ã‰ com grande satisfaÃ§Ã£o que informamos que a manifestaÃ§Ã£o de interesse do municÃ­pio <strong>{{ $submission->municipio_nome }}</strong> foi <strong style="color: #16a34a;">APROVADA</strong> pelo CREA-PR!</p>
 
-        <p>Agora você tem acesso liberado para realizar os diagnósticos de maturidade nos <strong>3 E's</strong>:</p>
+        <p>Agora vocÃª tem acesso liberado para realizar os diagnÃ³sticos de maturidade nos <strong>3 E's</strong>:</p>
 
         <div class="diagnostic-cards">
             <div class="diagnostic-card estimulo">
-                <h3><span class="icon">⚡</span> Estímulo</h3>
-                <p>Avalie o ecossistema de inovação e empreendedorismo do município</p>
+                <h3><span class="icon">âš¡</span> EstÃ­mulo</h3>
+                <p>Avalie o ecossistema de inovaÃ§Ã£o e empreendedorismo do municÃ­pio</p>
             </div>
             
             <div class="diagnostic-card educacao">
-                <h3><span class="icon">🎓</span> Educação</h3>
-                <p>Analise a infraestrutura educacional e capacitação tecnológica</p>
+                <h3><span class="icon">ðŸŽ“</span> EducaÃ§Ã£o</h3>
+                <p>Analise a infraestrutura educacional e capacitaÃ§Ã£o tecnolÃ³gica</p>
             </div>
             
             <div class="diagnostic-card estruturas">
-                <h3><span class="icon">🏛️</span> Estruturas</h3>
-                <p>Mapeie a infraestrutura tecnológica e serviços digitais</p>
+                <h3><span class="icon">ðŸ›ï¸</span> Estruturas</h3>
+                <p>Mapeie a infraestrutura tecnolÃ³gica e serviÃ§os digitais</p>
             </div>
         </div>
 
         <div style="text-align: center;">
-            <a href="{{ url('/municipality/dashboard') }}" class="button">Acessar Dashboard →</a>
+            <a href="{{ url('/municipality/dashboard') }}" class="button">Acessar Dashboard â†’</a>
         </div>
 
         <div class="info-box">
-            <h2>📝 Próximos Passos</h2>
+            <h2>ðŸ“ PrÃ³ximos Passos</h2>
             <ul class="checklist">
                 <li>Acesse o dashboard da plataforma</li>
-                <li>Complete o cadastro do Comitê Smart Crea (até 5 membros)</li>
-                <li>Realize os diagnósticos dos 3 E's</li>
-                <li>Acompanhe sua pontuação em tempo real</li>
-                <li>Receba recomendações personalizadas</li>
+                <li>Complete o cadastro do ComitÃª Smart Crea (atÃ© 5 membros)</li>
+                <li>Realize os diagnÃ³sticos dos 3 E's</li>
+                <li>Acompanhe sua pontuaÃ§Ã£o em tempo real</li>
+                <li>Receba recomendaÃ§Ãµes personalizadas</li>
             </ul>
         </div>
 
-        <p><strong>Importante:</strong> Os diagnósticos podem ser realizados de forma gradual. Você pode salvar o progresso e continuar depois.</p>
+        <p><strong>Importante:</strong> Os diagnÃ³sticos podem ser realizados de forma gradual. VocÃª pode salvar o progresso e continuar depois.</p>
 
-        <p>Cada diagnóstico possui um conjunto de perguntas que ajudarão a identificar o nível de maturidade tecnológica do município e apontarão oportunidades de desenvolvimento.</p>
+        <p>Cada diagnÃ³stico possui um conjunto de perguntas que ajudarÃ£o a identificar o nÃ­vel de maturidade tecnolÃ³gica do municÃ­pio e apontarÃ£o oportunidades de desenvolvimento.</p>
 
-        <p>Em caso de dúvidas durante o preenchimento, entre em contato com nossa equipe técnica.</p>
+        <p>Em caso de dÃºvidas durante o preenchimento, entre em contato com nossa equipe tÃ©cnica.</p>
 
         <p style="margin-top: 25px;"><strong>Sucesso na jornada rumo a uma cidade mais inteligente e conectada!</strong></p>
 
         <div class="footer">
-            <p><strong>CREA-PR - Conselho Regional de Engenharia e Agronomia do Paraná</strong></p>
+            <p><strong>CREA-PR - Conselho Regional de Engenharia e Agronomia do ParanÃ¡</strong></p>
             <p>Smart Crea Cities - Trilha Formativa dos 3E's</p>
-            <p style="margin-top: 10px;">Este é um e-mail automático. Por favor, não responda.</p>
+            <p style="margin-top: 10px;">Este Ã© um e-mail automÃ¡tico. Por favor, nÃ£o responda.</p>
         </div>
     </div>
 </body>
 </html>
+

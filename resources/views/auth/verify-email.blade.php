@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
@@ -14,6 +14,7 @@
             -webkit-backdrop-filter: blur(10px);
         }
     </style>
+    @include('partials.favicons')
 </head>
 <body class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 min-h-screen">
     <nav class="fixed top-0 left-0 right-0 z-50 header-blur shadow-md">
@@ -42,7 +43,7 @@
                         </svg>
                     </div>
                     <h1 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Verificar E-mail</h1>
-                    <p class="text-sm text-gray-600">Obrigado por se cadastrar! Antes de começar, você poderia verificar seu endereço de e-mail clicando no link que acabamos de enviar para você? Se você não recebeu o e-mail, teremos prazer em enviar outro.</p>
+                    <p class="text-sm text-gray-600">Obrigado por se cadastrar! Antes de comeÃ§ar, vocÃª poderia verificar seu endereÃ§o de e-mail clicando no link que acabamos de enviar para vocÃª? Se vocÃª nÃ£o recebeu o e-mail, teremos prazer em enviar outro.</p>
                 </div>
 
                 @if (session('status') == 'verification-link-sent')
@@ -51,7 +52,7 @@
                             <svg class="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
-                            <p class="text-sm">Um novo link de verificação foi enviado para o endereço de e-mail que você forneceu durante o cadastro.</p>
+                            <p class="text-sm">Um novo link de verificaÃ§Ã£o foi enviado para o endereÃ§o de e-mail que vocÃª forneceu durante o cadastro.</p>
                         </div>
                     </div>
                 @endif
@@ -59,7 +60,7 @@
                 <div class="space-y-4">
                     <form method="POST" action="{{ route('verification.send') }}">
                         @csrf
-                        <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg transform hover:scale-[1.02] transition-all shadow-lg">Reenviar E-mail de Verificação</button>
+                        <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg transform hover:scale-[1.02] transition-all shadow-lg">Reenviar E-mail de VerificaÃ§Ã£o</button>
                     </form>
 
                     <form method="POST" action="{{ route('logout') }}">
@@ -74,15 +75,16 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                         <div class="text-sm text-blue-800">
-                            <strong>Dica:</strong> Verifique também sua pasta de spam ou lixo eletrônico. Às vezes, e-mails de verificação podem acabar lá.
+                            <strong>Dica:</strong> Verifique tambÃ©m sua pasta de spam ou lixo eletrÃ´nico. Ã€s vezes, e-mails de verificaÃ§Ã£o podem acabar lÃ¡.
                         </div>
                     </div>
                 </div>
             </div>
             <div class="text-center mt-6">
-                <p class="text-sm text-gray-600">© {{ date('Y') }} Smart Crea Cities - CREA-PR</p>
+                <p class="text-sm text-gray-600">Â© {{ date('Y') }} Smart Crea Cities - CREA-PR</p>
             </div>
         </div>
     </div>
 </body>
 </html>
+

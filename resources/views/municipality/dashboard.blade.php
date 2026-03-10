@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
@@ -19,6 +19,7 @@
             animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
     </style>
+    @include('partials.favicons')
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
@@ -29,7 +30,7 @@
                     <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-20 sm:h-24 md:h-28 w-auto object-contain">
                     <div class="border-l border-gray-300 h-10"></div>
                     <div>
-                        <p class="text-sm text-gray-600">Município</p>
+                        <p class="text-sm text-gray-600">MunicÃ­pio</p>
                         <p class="font-bold text-blue-900">{{ $submission->municipio_nome }}</p>
                     </div>
                 </div>
@@ -50,7 +51,7 @@
     </nav>
 
     <div class="max-w-7xl mx-auto px-4 py-8">
-        <!-- Status da Manifestação -->
+        <!-- Status da ManifestaÃ§Ã£o -->
         <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
             <div class="flex items-center justify-between">
                 <div>
@@ -63,7 +64,7 @@
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
                             </svg>
-                            EM ANÁLISE
+                            EM ANÃLISE
                         </span>
                     @elseif($submission->status === 'approved')
                         <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-bold bg-green-100 text-green-800">
@@ -78,7 +79,7 @@
                                 <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
                                 <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            EM SELEÇÃO
+                            EM SELEÃ‡ÃƒO
                         </span>
                     @endif
                 </div>
@@ -108,9 +109,9 @@
             </div>
         @endif
 
-        <!-- Diagnósticos - 3 Gauge Charts -->
+        <!-- DiagnÃ³sticos - 3 Gauge Charts -->
         <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <h2 class="text-2xl font-bold text-gray-900 mb-6">Diagnóstico da Trilha Formativa dos 3'Es</h2>
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">DiagnÃ³stico da Trilha Formativa dos 3'Es</h2>
             
             @if(!$submission->isApproved())
                 <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-6">
@@ -119,21 +120,21 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
                         </svg>
                         <div>
-                            <p class="font-semibold text-yellow-800">Aguardando Aprovação</p>
-                            <p class="text-sm text-yellow-700">Os diagnósticos estarão disponíveis após aprovação da manifestação pelo CREA-PR.</p>
+                            <p class="font-semibold text-yellow-800">Aguardando AprovaÃ§Ã£o</p>
+                            <p class="text-sm text-yellow-700">Os diagnÃ³sticos estarÃ£o disponÃ­veis apÃ³s aprovaÃ§Ã£o da manifestaÃ§Ã£o pelo CREA-PR.</p>
                         </div>
                     </div>
                 </div>
             @endif
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Gauge 1: Estímulo -->
+                <!-- Gauge 1: EstÃ­mulo -->
                 <div class="text-center">
                     <div class="gauge-container">
                         <canvas id="gaugeEstimulo"></canvas>
                     </div>
-                    <h3 class="text-xl font-bold text-blue-900 mt-4 mb-2">Estímulo</h3>
-                    <p class="text-sm text-gray-600 mb-4">Fomento à Inovação</p>
+                    <h3 class="text-xl font-bold text-blue-900 mt-4 mb-2">EstÃ­mulo</h3>
+                    <p class="text-sm text-gray-600 mb-4">Fomento Ã  InovaÃ§Ã£o</p>
                     
                     @if($submission->isApproved())
                         @if($diagnosticStatus['estimulo']['concluido'])
@@ -141,17 +142,17 @@
                                 <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                                 </svg>
-                                Concluído
+                                ConcluÃ­do
                             </span>
                         @elseif($diagnosticStatus['estimulo']['iniciado'])
                             <a href="{{ route('municipality.diagnostic.estimulo') }}" 
                                class="inline-flex items-center px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition font-semibold text-sm">
-                                Continuar Diagnóstico
+                                Continuar DiagnÃ³stico
                             </a>
                         @else
                             <a href="{{ route('municipality.diagnostic.estimulo') }}" 
                                class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold text-sm">
-                                Iniciar Diagnóstico
+                                Iniciar DiagnÃ³stico
                             </a>
                         @endif
                     @else
@@ -164,13 +165,13 @@
                     @endif
                 </div>
 
-                <!-- Gauge 2: Educação -->
+                <!-- Gauge 2: EducaÃ§Ã£o -->
                 <div class="text-center">
                     <div class="gauge-container">
                         <canvas id="gaugeEducacao"></canvas>
                     </div>
-                    <h3 class="text-xl font-bold text-green-900 mt-4 mb-2">Educação</h3>
-                    <p class="text-sm text-gray-600 mb-4">Capacitação Tecnológica</p>
+                    <h3 class="text-xl font-bold text-green-900 mt-4 mb-2">EducaÃ§Ã£o</h3>
+                    <p class="text-sm text-gray-600 mb-4">CapacitaÃ§Ã£o TecnolÃ³gica</p>
                     
                     @if($submission->isApproved())
                         @if($diagnosticStatus['educacao']['concluido'])
@@ -178,17 +179,17 @@
                                 <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                                 </svg>
-                                Concluído
+                                ConcluÃ­do
                             </span>
                         @elseif($diagnosticStatus['educacao']['iniciado'])
                             <a href="{{ route('municipality.diagnostic.educacao') }}" 
                                class="inline-flex items-center px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition font-semibold text-sm">
-                                Continuar Diagnóstico
+                                Continuar DiagnÃ³stico
                             </a>
                         @else
                             <a href="{{ route('municipality.diagnostic.educacao') }}" 
                                class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition font-semibold text-sm">
-                                Iniciar Diagnóstico
+                                Iniciar DiagnÃ³stico
                             </a>
                         @endif
                     @else
@@ -207,7 +208,7 @@
                         <canvas id="gaugeEstruturas"></canvas>
                     </div>
                     <h3 class="text-xl font-bold text-purple-900 mt-4 mb-2">Estruturas</h3>
-                    <p class="text-sm text-gray-600 mb-4">Infraestrutura Tecnológica</p>
+                    <p class="text-sm text-gray-600 mb-4">Infraestrutura TecnolÃ³gica</p>
                     
                     @if($submission->isApproved())
                         @if($diagnosticStatus['estruturas']['concluido'])
@@ -215,17 +216,17 @@
                                 <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                                 </svg>
-                                Concluído
+                                ConcluÃ­do
                             </span>
                         @elseif($diagnosticStatus['estruturas']['iniciado'])
                             <a href="{{ route('municipality.diagnostic.estruturas') }}" 
                                class="inline-flex items-center px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition font-semibold text-sm">
-                                Continuar Diagnóstico
+                                Continuar DiagnÃ³stico
                             </a>
                         @else
                             <a href="{{ route('municipality.diagnostic.estruturas') }}" 
                                class="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-semibold text-sm">
-                                Iniciar Diagnóstico
+                                Iniciar DiagnÃ³stico
                             </a>
                         @endif
                     @else
@@ -243,24 +244,24 @@
             @if($submission->isApproved() && ($diagnosticStatus['estimulo']['concluido'] || $diagnosticStatus['educacao']['concluido'] || $diagnosticStatus['estruturas']['concluido']))
                 <div class="mt-8 text-center">
                     <div class="inline-block bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 border-2 border-blue-200">
-                        <p class="text-sm text-gray-600 mb-1">Pontuação Total</p>
+                        <p class="text-sm text-gray-600 mb-1">PontuaÃ§Ã£o Total</p>
                         <p class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                             {{ $diagnosticStatus['estimulo']['score'] + $diagnosticStatus['educacao']['score'] + $diagnosticStatus['estruturas']['score'] }}
                         </p>
-                        <p class="text-sm text-gray-500 mt-1">de 300 pontos possíveis</p>
+                        <p class="text-sm text-gray-500 mt-1">de 300 pontos possÃ­veis</p>
                     </div>
                 </div>
             @endif
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <!-- Calendário de Eventos -->
+            <!-- CalendÃ¡rio de Eventos -->
             <div class="bg-white rounded-xl shadow-lg p-6">
                 <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
                     <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
-                    Calendário do Programa
+                    CalendÃ¡rio do Programa
                 </h3>
 
                 @if($upcomingEvents->count() > 0)
@@ -283,7 +284,7 @@
                                         </span>
                                         @endif
                                         @if($event->location)
-                                        <span class="text-gray-400">•</span>
+                                        <span class="text-gray-400">â€¢</span>
                                         <span class="flex items-center gap-1 truncate">
                                             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
@@ -306,19 +307,19 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                         </svg>
                         <p class="font-semibold">Em breve</p>
-                        <p class="text-sm">Novos eventos serão publicados aqui</p>
+                        <p class="text-sm">Novos eventos serÃ£o publicados aqui</p>
                     </div>
                 @endif
             </div>
 
-            <!-- Comitê Smart Crea Cities -->
+            <!-- ComitÃª Smart Crea Cities -->
             <div class="bg-white rounded-xl shadow-lg p-6" x-data="committeeManager()">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-xl font-bold text-gray-900 flex items-center">
                         <svg class="w-6 h-6 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                         </svg>
-                        Comitê Smart Crea ({{ $committeeMembers->count() }}/5)
+                        ComitÃª Smart Crea ({{ $committeeMembers->count() }}/5)
                     </h3>
                     @if($committeeMembers->count() < 5)
                         <button @click="showModal = true" class="text-sm bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition font-semibold">
@@ -350,7 +351,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                         </svg>
                         <p class="font-semibold mb-2">Nenhum membro cadastrado</p>
-                        <p class="text-sm">O comitê deve ser composto por 5 membros</p>
+                        <p class="text-sm">O comitÃª deve ser composto por 5 membros</p>
                     </div>
                 @endif
 
@@ -359,7 +360,7 @@
                     <div class="flex items-center justify-center min-h-screen px-4">
                         <div @click="showModal = false" class="fixed inset-0 bg-black opacity-50"></div>
                         <div class="relative bg-white rounded-xl shadow-2xl max-w-md w-full p-6">
-                            <h4 class="text-xl font-bold text-gray-900 mb-4">Adicionar Membro do Comitê</h4>
+                            <h4 class="text-xl font-bold text-gray-900 mb-4">Adicionar Membro do ComitÃª</h4>
                             <form @submit.prevent="submitMember" class="space-y-4">
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-1">Nome Completo *</label>
@@ -371,7 +372,7 @@
                                 </div>
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-1">E-mail *</label>
-                                    <input type="email" x-model="form.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Digite um email válido" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
+                                    <input type="email" x-model="form.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Digite um email vÃ¡lido" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
                                     <p class="text-xs text-gray-500 mt-1">Ex: nome@exemplo.com</p>
                                 </div>
                                 <div>
@@ -383,7 +384,7 @@
                                     <input type="text" x-model="form.cargo" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-1">Órgão *</label>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-1">Ã“rgÃ£o *</label>
                                     <input type="text" x-model="form.orgao" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
                                 </div>
                                 <div class="flex space-x-3 mt-6">
@@ -401,14 +402,14 @@
             </div>
         </div>
 
-        <!-- Repositório de Documentos -->
+        <!-- RepositÃ³rio de Documentos -->
         <div id="repositorio-documentos" class="bg-white rounded-xl shadow-lg p-6 mt-8">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-xl font-bold text-gray-900 flex items-center">
                     <svg class="w-6 h-6 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                     </svg>
-                    Repositório de Documentos
+                    RepositÃ³rio de Documentos
                 </h3>
             </div>
 
@@ -443,14 +444,14 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                     </svg>
                     <p class="font-semibold">Em breve</p>
-                    <p class="text-sm">Documentos e templates serão disponibilizados aqui</p>
+                    <p class="text-sm">Documentos e templates serÃ£o disponibilizados aqui</p>
                 </div>
             @endif
         </div>
     </div>
 
     <script>
-        // Configuração dos Gauge Charts
+        // ConfiguraÃ§Ã£o dos Gauge Charts
         const gaugeConfig = (score, color) => ({
             type: 'doughnut',
             data: {
@@ -494,7 +495,7 @@
         new Chart(document.getElementById('gaugeEducacao'), gaugeConfig({{ $diagnosticStatus['educacao']['score'] }}, '#16a34a'));
         new Chart(document.getElementById('gaugeEstruturas'), gaugeConfig({{ $diagnosticStatus['estruturas']['score'] }}, '#9333ea'));
 
-        // Alpine.js - Gerenciador de Comitê
+        // Alpine.js - Gerenciador de ComitÃª
         function committeeManager() {
             return {
                 showModal: false,
@@ -506,7 +507,7 @@
                     cargo: '',
                     orgao: ''
                 },
-                // Máscara de CPF: 000.000.000-00
+                // MÃ¡scara de CPF: 000.000.000-00
                 maskCPF(event) {
                     let value = event.target.value.replace(/\D/g, '');
                     if (value.length > 11) value = value.slice(0, 11);
@@ -521,7 +522,7 @@
                         this.form.cpf = value;
                     }
                 },
-                // Máscara de Telefone: (00) 00000-0000 ou (00) 0000-0000
+                // MÃ¡scara de Telefone: (00) 00000-0000 ou (00) 0000-0000
                 maskPhone(event) {
                     let value = event.target.value.replace(/\D/g, '');
                     if (value.length > 11) value = value.slice(0, 11);
@@ -546,21 +547,21 @@
                 submitMember() {
                     // Validar email
                     if (!this.validateEmail(this.form.email)) {
-                        alert('Por favor, digite um email válido.');
+                        alert('Por favor, digite um email vÃ¡lido.');
                         return;
                     }
                     
-                    // Validar CPF (mínimo 11 dígitos)
+                    // Validar CPF (mÃ­nimo 11 dÃ­gitos)
                     const cpfDigits = this.form.cpf.replace(/\D/g, '');
                     if (cpfDigits.length !== 11) {
-                        alert('Por favor, digite um CPF válido com 11 dígitos.');
+                        alert('Por favor, digite um CPF vÃ¡lido com 11 dÃ­gitos.');
                         return;
                     }
                     
-                    // Validar telefone (mínimo 10 dígitos)
+                    // Validar telefone (mÃ­nimo 10 dÃ­gitos)
                     const phoneDigits = this.form.telefone.replace(/\D/g, '');
                     if (phoneDigits.length < 10) {
-                        alert('Por favor, digite um telefone válido com DDD.');
+                        alert('Por favor, digite um telefone vÃ¡lido com DDD.');
                         return;
                     }
                     
@@ -580,7 +581,7 @@
                     });
                 },
                 deleteMember(id) {
-                    if (confirm('Deseja remover este membro do comitê?')) {
+                    if (confirm('Deseja remover este membro do comitÃª?')) {
                         fetch(`/municipality/committee/${id}`, {
                             method: 'DELETE',
                             headers: {
@@ -600,3 +601,4 @@
     </script>
 </body>
 </html>
+

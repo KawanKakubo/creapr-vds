@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
@@ -6,6 +6,7 @@
     <title>Dashboard Admin | Smart Crea Cities</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    @include('partials.favicons')
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
@@ -22,11 +23,11 @@
                 </div>
                 <div class="flex items-center space-x-4">
                     <a href="{{ route('admin.submissoes.index') }}" class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
-                        Submissões
+                        SubmissÃµes
                     </a>
                     <span class="text-gray-300">|</span>
                     <a href="{{ route('admin.questions.index') }}" class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
-                        Questões
+                        QuestÃµes
                     </a>
                     <span class="text-gray-300">|</span>
                     <a href="{{ route('admin.events.index') }}" class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
@@ -34,7 +35,7 @@
                     </a>
                     <span class="text-gray-300">|</span>
                     <a href="{{ route('admin.repository.index') }}" class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
-                        Repositório
+                        RepositÃ³rio
                     </a>
                     <div class="text-right">
                         <p class="text-sm text-gray-600">{{ Auth::user()->name }}</p>
@@ -52,19 +53,19 @@
     </nav>
 
     <div class="max-w-7xl mx-auto px-4 py-8">
-        <!-- Título -->
+        <!-- TÃ­tulo -->
         <div class="mb-8">
             <h1 class="text-3xl font-bold text-gray-900 mb-2">Dashboard - Smart Crea Cities</h1>
-            <p class="text-gray-600">Visão geral da Trilha Formativa dos 3E's</p>
+            <p class="text-gray-600">VisÃ£o geral da Trilha Formativa dos 3E's</p>
         </div>
 
-        <!-- Cards de Estatísticas -->
+        <!-- Cards de EstatÃ­sticas -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <!-- Total de Submissões -->
+            <!-- Total de SubmissÃµes -->
             <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-500">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-sm text-gray-600 font-medium">Total de Manifestações</p>
+                        <p class="text-sm text-gray-600 font-medium">Total de ManifestaÃ§Ãµes</p>
                         <p class="text-3xl font-bold text-blue-900 mt-2">{{ $totalSubmissoes }}</p>
                     </div>
                     <div class="bg-blue-100 rounded-full p-3">
@@ -79,7 +80,7 @@
             <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-yellow-500">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-sm text-gray-600 font-medium">Aguardando Análise</p>
+                        <p class="text-sm text-gray-600 font-medium">Aguardando AnÃ¡lise</p>
                         <p class="text-3xl font-bold text-yellow-900 mt-2">{{ $pendentes }}</p>
                     </div>
                     <div class="bg-yellow-100 rounded-full p-3">
@@ -105,11 +106,11 @@
                 </div>
             </div>
 
-            <!-- Diagnósticos Completos -->
+            <!-- DiagnÃ³sticos Completos -->
             <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-purple-500">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-sm text-gray-600 font-medium">Diagnósticos Completos</p>
+                        <p class="text-sm text-gray-600 font-medium">DiagnÃ³sticos Completos</p>
                         <p class="text-3xl font-bold text-purple-900 mt-2">{{ $diagnosticosCompletos }}</p>
                     </div>
                     <div class="bg-purple-100 rounded-full p-3">
@@ -121,7 +122,7 @@
             </div>
         </div>
 
-        <!-- Mais Engenharia e Médias -->
+        <!-- Mais Engenharia e MÃ©dias -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
             <!-- Mais Engenharia -->
             <div class="bg-white rounded-xl shadow-md p-6">
@@ -135,19 +136,19 @@
                         <div class="bg-green-500 h-3 rounded-full" style="width: {{ $totalSubmissoes > 0 ? ($maisEngenharia / $totalSubmissoes) * 100 : 0 }}%"></div>
                     </div>
                     <div class="flex items-center justify-between text-sm">
-                        <span class="text-gray-600">Não Participantes</span>
+                        <span class="text-gray-600">NÃ£o Participantes</span>
                         <span class="font-semibold text-gray-700">{{ $naoMaisEngenharia }}</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Médias de Pontuação -->
+            <!-- MÃ©dias de PontuaÃ§Ã£o -->
             <div class="bg-white rounded-xl shadow-md p-6">
-                <h2 class="text-xl font-bold text-gray-900 mb-4">Médias de Pontuação (0-100)</h2>
+                <h2 class="text-xl font-bold text-gray-900 mb-4">MÃ©dias de PontuaÃ§Ã£o (0-100)</h2>
                 <div class="space-y-4">
                     <div>
                         <div class="flex items-center justify-between mb-1">
-                            <span class="text-sm text-gray-700">Estímulo</span>
+                            <span class="text-sm text-gray-700">EstÃ­mulo</span>
                             <span class="font-bold text-blue-600">{{ number_format($mediaPontuacaoEstimulo, 1) }}</span>
                         </div>
                         <div class="w-full bg-gray-200 rounded-full h-2">
@@ -156,7 +157,7 @@
                     </div>
                     <div>
                         <div class="flex items-center justify-between mb-1">
-                            <span class="text-sm text-gray-700">Educação</span>
+                            <span class="text-sm text-gray-700">EducaÃ§Ã£o</span>
                             <span class="font-bold text-green-600">{{ number_format($mediaPontuacaoEducacao, 1) }}</span>
                         </div>
                         <div class="w-full bg-gray-200 rounded-full h-2">
@@ -176,27 +177,27 @@
             </div>
         </div>
 
-        <!-- Gráficos -->
+        <!-- GrÃ¡ficos -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-            <!-- Status das Submissões -->
+            <!-- Status das SubmissÃµes -->
             <div class="bg-white rounded-xl shadow-md p-6">
-                <h2 class="text-xl font-bold text-gray-900 mb-4">Status das Manifestações</h2>
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Status das ManifestaÃ§Ãµes</h2>
                 <canvas id="statusChart"></canvas>
             </div>
 
-            <!-- Distribuição por Regional -->
+            <!-- DistribuiÃ§Ã£o por Regional -->
             <div class="bg-white rounded-xl shadow-md p-6">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">Top 5 Regionais</h2>
                 <canvas id="regionalChart"></canvas>
             </div>
         </div>
 
-        <!-- Próximos Eventos -->
+        <!-- PrÃ³ximos Eventos -->
         <div class="bg-white rounded-xl shadow-md p-6 mb-8">
             <div class="flex items-center justify-between mb-4">
-                <h2 class="text-xl font-bold text-gray-900">Próximos Eventos do Programa</h2>
+                <h2 class="text-xl font-bold text-gray-900">PrÃ³ximos Eventos do Programa</h2>
                 <a href="{{ route('admin.events.index') }}" class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
-                    Gerenciar Eventos →
+                    Gerenciar Eventos â†’
                 </a>
             </div>
             
@@ -216,7 +217,7 @@
                                 <span class="text-sm text-gray-600">{{ \Carbon\Carbon::parse($event->event_time)->format('H:i') }}</span>
                                 @endif
                                 @if($event->location)
-                                <span class="text-sm text-gray-400">•</span>
+                                <span class="text-sm text-gray-400">â€¢</span>
                                 <span class="text-sm text-gray-600">{{ $event->location }}</span>
                                 @endif
                             </div>
@@ -235,25 +236,25 @@
                 </svg>
                 <p class="font-medium">Nenhum evento programado</p>
                 <a href="{{ route('admin.events.create') }}" class="text-blue-600 hover:text-blue-800 font-semibold text-sm mt-2 inline-block">
-                    Criar primeiro evento →
+                    Criar primeiro evento â†’
                 </a>
             </div>
             @endif
         </div>
 
-        <!-- Últimas Submissões -->
+        <!-- Ãšltimas SubmissÃµes -->
         <div class="bg-white rounded-xl shadow-md p-6">
-            <h2 class="text-xl font-bold text-gray-900 mb-4">Últimas Manifestações</h2>
+            <h2 class="text-xl font-bold text-gray-900 mb-4">Ãšltimas ManifestaÃ§Ãµes</h2>
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Protocolo</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Município</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">MunicÃ­pio</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Regional</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">AÃ§Ãµes</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -274,7 +275,7 @@
                                 @elseif($sub->status === 'approved')
                                     <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Aprovado</span>
                                 @elseif($sub->status === 'under_review')
-                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">Em Análise</span>
+                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">Em AnÃ¡lise</span>
                                 @elseif($sub->status === 'rejected')
                                     <span class="px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">Rejeitado</span>
                                 @endif
@@ -284,7 +285,7 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm">
                                 <a href="{{ route('admin.submissoes.show', $sub) }}" class="text-blue-600 hover:text-blue-800 font-semibold">
-                                    Ver Detalhes →
+                                    Ver Detalhes â†’
                                 </a>
                             </td>
                         </tr>
@@ -294,7 +295,7 @@
             </div>
             <div class="mt-4 text-center">
                 <a href="{{ route('admin.submissoes.index') }}" class="text-blue-600 hover:text-blue-800 font-semibold">
-                    Ver Todas as Manifestações →
+                    Ver Todas as ManifestaÃ§Ãµes â†’
                 </a>
             </div>
         </div>
@@ -306,7 +307,7 @@
         new Chart(statusCtx, {
             type: 'doughnut',
             data: {
-                labels: ['Pendentes', 'Aprovadas', 'Em Análise', 'Rejeitadas'],
+                labels: ['Pendentes', 'Aprovadas', 'Em AnÃ¡lise', 'Rejeitadas'],
                 datasets: [{
                     data: [{{ $pendentes }}, {{ $aprovadas }}, {{ $emAnalise }}, {{ $rejeitadas }}],
                     backgroundColor: ['#eab308', '#22c55e', '#3b82f6', '#ef4444'],
@@ -329,7 +330,7 @@
             data: {
                 labels: {!! json_encode($porRegional->take(5)->pluck('regional_creapr')) !!},
                 datasets: [{
-                    label: 'Manifestações',
+                    label: 'ManifestaÃ§Ãµes',
                     data: {!! json_encode($porRegional->take(5)->pluck('total')) !!},
                     backgroundColor: '#3b82f6',
                 }]
@@ -354,3 +355,4 @@
     </script>
 </body>
 </html>
+

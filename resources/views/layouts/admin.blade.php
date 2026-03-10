@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +8,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    @include('partials.favicons')
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
@@ -26,12 +27,12 @@
                 <div class="flex items-center space-x-4">
                     <a href="{{ route('admin.dashboard') }}" 
                         class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
-                        Submissões
+                        SubmissÃµes
                     </a>
                     <span class="text-gray-300">|</span>
                     <a href="{{ route('admin.questions.index') }}" 
                         class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
-                        Questões
+                        QuestÃµes
                     </a>
                     <span class="text-gray-300">|</span>
                     <a href="{{ route('admin.events.index') }}" 
@@ -41,7 +42,7 @@
                     <span class="text-gray-300">|</span>
                     <a href="{{ route('admin.repository.index') }}" 
                         class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
-                        Repositório
+                        RepositÃ³rio
                     </a>
                     
                     @auth
@@ -61,10 +62,11 @@
         </div>
     </nav>
 
-    <!-- Conteúdo -->
+    <!-- ConteÃºdo -->
     <main>
         @yield('content')
     </main>
 
 </body>
 </html>
+

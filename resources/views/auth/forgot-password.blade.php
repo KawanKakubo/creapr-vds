@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
@@ -14,6 +14,7 @@
             -webkit-backdrop-filter: blur(10px);
         }
     </style>
+    @include('partials.favicons')
 </head>
 <body class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 min-h-screen">
     <nav class="fixed top-0 left-0 right-0 z-50 header-blur shadow-md">
@@ -62,13 +63,14 @@
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
-                    <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-4 rounded-lg transform hover:scale-[1.02] transition-all shadow-lg">Enviar Link de Recuperação</button>
+                    <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-4 rounded-lg transform hover:scale-[1.02] transition-all shadow-lg">Enviar Link de RecuperaÃ§Ã£o</button>
                 </form>
             </div>
             <div class="text-center mt-6">
-                <p class="text-sm text-gray-600">© {{ date('Y') }} Smart Crea Cities - CREA-PR</p>
+                <p class="text-sm text-gray-600">Â© {{ date('Y') }} Smart Crea Cities - CREA-PR</p>
             </div>
         </div>
     </div>
 </body>
 </html>
+

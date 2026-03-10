@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -126,31 +126,32 @@
             font-size: 13px;
         }
     </style>
+    @include('partials.favicons')
 </head>
 <body>
     <div class="container">
         <div class="header">
             <div class="logo">Smart Crea Cities</div>
-            <p style="color: #64748b; margin: 5px 0 0 0;">CREA-PR - Conselho Regional de Engenharia e Agronomia do Paraná</p>
+            <p style="color: #64748b; margin: 5px 0 0 0;">CREA-PR - Conselho Regional de Engenharia e Agronomia do ParanÃ¡</p>
         </div>
 
-        <h1>🎉 Bem-vindo ao Smart Crea Cities!</h1>
+        <h1>ðŸŽ‰ Bem-vindo ao Smart Crea Cities!</h1>
         
-        <p>Olá,</p>
+        <p>OlÃ¡,</p>
         
-        <p>A manifestação de interesse do município <strong>{{ $municipioNome }}</strong> foi registrada com sucesso!</p>
+        <p>A manifestaÃ§Ã£o de interesse do municÃ­pio <strong>{{ $municipioNome }}</strong> foi registrada com sucesso!</p>
         
-        <p>Como seu município faz parte do programa <strong>Mais Engenharia</strong>, criamos seu acesso à plataforma Smart Crea Cities.</p>
+        <p>Como seu municÃ­pio faz parte do programa <strong>Mais Engenharia</strong>, criamos seu acesso Ã  plataforma Smart Crea Cities.</p>
 
         <div class="credentials-box">
-            <p style="font-weight: bold; margin-bottom: 15px; color: #2563eb;">📋 PROTOCOLO E CREDENCIAIS DE ACESSO</p>
+            <p style="font-weight: bold; margin-bottom: 15px; color: #2563eb;">ðŸ“‹ PROTOCOLO E CREDENCIAIS DE ACESSO</p>
             <p><strong>Protocolo:</strong> <span class="credential-value">{{ $protocol }}</span></p>
             <p><strong>E-mail:</strong> <span class="credential-value">{{ $user->email }}</span></p>
             <p><strong>Senha:</strong> <span class="credential-value">{{ $temporaryPassword }}</span></p>
         </div>
 
         <div class="warning">
-            ⚠️ <strong>Importante:</strong> Esta é uma senha temporária. Você será solicitado a alterá-la no primeiro acesso por motivos de segurança.
+            âš ï¸ <strong>Importante:</strong> Esta Ã© uma senha temporÃ¡ria. VocÃª serÃ¡ solicitado a alterÃ¡-la no primeiro acesso por motivos de seguranÃ§a.
         </div>
 
         <div style="text-align: center;">
@@ -158,12 +159,12 @@
         </div>
 
         <div class="steps">
-            <h2>📝 Próximos Passos</h2>
+            <h2>ðŸ“ PrÃ³ximos Passos</h2>
             
             <div class="step">
                 <div class="step-number">1</div>
                 <div class="step-text">
-                    <strong>Faça seu primeiro acesso</strong><br>
+                    <strong>FaÃ§a seu primeiro acesso</strong><br>
                     Use as credenciais acima para entrar na plataforma e altere sua senha.
                 </div>
             </div>
@@ -171,35 +172,36 @@
             <div class="step">
                 <div class="step-number">2</div>
                 <div class="step-text">
-                    <strong>Aguarde a aprovação do CREA-PR</strong><br>
-                    Nossa equipe irá analisar sua manifestação e aprovar o acesso aos diagnósticos.
+                    <strong>Aguarde a aprovaÃ§Ã£o do CREA-PR</strong><br>
+                    Nossa equipe irÃ¡ analisar sua manifestaÃ§Ã£o e aprovar o acesso aos diagnÃ³sticos.
                 </div>
             </div>
             
             <div class="step">
                 <div class="step-number">3</div>
                 <div class="step-text">
-                    <strong>Forme o Comitê Smart Crea</strong><br>
-                    Cadastre até 5 membros representantes de diferentes áreas do município.
+                    <strong>Forme o ComitÃª Smart Crea</strong><br>
+                    Cadastre atÃ© 5 membros representantes de diferentes Ã¡reas do municÃ­pio.
                 </div>
             </div>
             
             <div class="step">
                 <div class="step-number">4</div>
                 <div class="step-text">
-                    <strong>Realize os diagnósticos</strong><br>
-                    Responda aos questionários dos 3 E's: Estímulo, Educação e Estruturas.
+                    <strong>Realize os diagnÃ³sticos</strong><br>
+                    Responda aos questionÃ¡rios dos 3 E's: EstÃ­mulo, EducaÃ§Ã£o e Estruturas.
                 </div>
             </div>
         </div>
 
-        <p>Em caso de dúvidas, entre em contato com o CREA-PR através dos nossos canais oficiais.</p>
+        <p>Em caso de dÃºvidas, entre em contato com o CREA-PR atravÃ©s dos nossos canais oficiais.</p>
 
         <div class="footer">
-            <p><strong>CREA-PR - Conselho Regional de Engenharia e Agronomia do Paraná</strong></p>
+            <p><strong>CREA-PR - Conselho Regional de Engenharia e Agronomia do ParanÃ¡</strong></p>
             <p>Smart Crea Cities - Trilha Formativa dos 3E's</p>
-            <p style="margin-top: 10px;">Este é um e-mail automático. Por favor, não responda.</p>
+            <p style="margin-top: 10px;">Este Ã© um e-mail automÃ¡tico. Por favor, nÃ£o responda.</p>
         </div>
     </div>
 </body>
 </html>
+

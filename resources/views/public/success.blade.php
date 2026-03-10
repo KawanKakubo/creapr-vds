@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Manifestação Registrada | Smart Crea Cities</title>
+    <title>ManifestaÃ§Ã£o Registrada | Smart Crea Cities</title>
     <link href="https://fonts.bunny.net/css?family=inter:300,400,600,700,800,900" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -14,6 +14,7 @@
             -webkit-backdrop-filter: blur(10px);
         }
     </style>
+    @include('partials.favicons')
 </head>
 <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
     <!-- Header - Mesma da home/manifestacao -->
@@ -27,7 +28,7 @@
                          class="h-20 sm:h-24 md:h-28 w-auto object-contain">
                 </a>
                 
-                <!-- Botões Desktop -->
+                <!-- BotÃµes Desktop -->
                 <div class="hidden md:flex items-center space-x-4">
                     <a href="{{ route('login') }}" 
                        class="nav-btn px-6 py-2.5 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition shadow-md">
@@ -35,11 +36,11 @@
                     </a>
                     <a href="{{ route('home') }}" 
                        class="nav-btn px-6 py-2.5 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition">
-                        Voltar ao Início
+                        Voltar ao InÃ­cio
                     </a>
                 </div>
                 
-                <!-- Botões Mobile -->
+                <!-- BotÃµes Mobile -->
                 <div class="flex md:hidden items-center space-x-2">
                     <a href="{{ route('login') }}" 
                        class="p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
@@ -68,15 +69,15 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                         </svg>
                     </div>
-                    <h1 class="text-xl sm:text-2xl font-bold text-blue-900 mb-2">Manifestação Concluída!</h1>
-                    <p class="text-sm text-gray-600">Seu município foi registrado no programa Smart Crea Cities</p>
+                    <h1 class="text-xl sm:text-2xl font-bold text-blue-900 mb-2">ManifestaÃ§Ã£o ConcluÃ­da!</h1>
+                    <p class="text-sm text-gray-600">Seu municÃ­pio foi registrado no programa Smart Crea Cities</p>
                 </div>
 
                 <!-- Protocolo -->
                 <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
                     <div class="flex items-center justify-center">
                         <div class="text-center">
-                            <p class="text-sm text-blue-800 font-semibold mb-1">Protocolo da Manifestação</p>
+                            <p class="text-sm text-blue-800 font-semibold mb-1">Protocolo da ManifestaÃ§Ã£o</p>
                             <p class="text-3xl font-bold text-blue-900">{{ $submission->protocolo }}</p>
                         </div>
                     </div>
@@ -90,7 +91,7 @@
                         </svg>
                         <div>
                             <h3 class="text-base font-bold text-yellow-900 mb-1">Suas Credenciais de Acesso</h3>
-                            <p class="text-xs text-yellow-800">Um email com suas credenciais foi enviado para você.</p>
+                            <p class="text-xs text-yellow-800">Um email com suas credenciais foi enviado para vocÃª.</p>
                         </div>
                     </div>
 
@@ -103,18 +104,18 @@
                         </div>
 
                         <div>
-                            <label class="block text-xs font-semibold text-gray-600 mb-1">Senha Temporária</label>
+                            <label class="block text-xs font-semibold text-gray-600 mb-1">Senha TemporÃ¡ria</label>
                             <div class="bg-gray-50 p-3 rounded-lg">
-                                <p class="text-sm text-gray-600">A senha temporária foi enviada para seu email</p>
+                                <p class="text-sm text-gray-600">A senha temporÃ¡ria foi enviada para seu email</p>
                             </div>
-                            <p class="text-xs text-gray-500 mt-2">⚠️ Você será solicitado a alterar esta senha no primeiro acesso</p>
+                            <p class="text-xs text-gray-500 mt-2">âš ï¸ VocÃª serÃ¡ solicitado a alterar esta senha no primeiro acesso</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Próximos Passos -->
+                <!-- PrÃ³ximos Passos -->
                 <div class="mb-6">
-                    <h3 class="text-base font-bold text-gray-900 mb-3">Próximos Passos</h3>
+                    <h3 class="text-base font-bold text-gray-900 mb-3">PrÃ³ximos Passos</h3>
                     <div class="space-y-3">
                         <div class="flex items-start">
                             <div class="flex-shrink-0 bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm mr-3">1</div>
@@ -122,20 +123,20 @@
                         </div>
                         <div class="flex items-start">
                             <div class="flex-shrink-0 bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm mr-3">2</div>
-                            <p class="text-sm text-gray-700 pt-1">Altere sua senha temporária para uma senha segura</p>
+                            <p class="text-sm text-gray-700 pt-1">Altere sua senha temporÃ¡ria para uma senha segura</p>
                         </div>
                         <div class="flex items-start">
                             <div class="flex-shrink-0 bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm mr-3">3</div>
-                            <p class="text-sm text-gray-700 pt-1">Acompanhe o status da sua manifestação no dashboard</p>
+                            <p class="text-sm text-gray-700 pt-1">Acompanhe o status da sua manifestaÃ§Ã£o no dashboard</p>
                         </div>
                         <div class="flex items-start">
                             <div class="flex-shrink-0 bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm mr-3">4</div>
-                            <p class="text-sm text-gray-700 pt-1">Aguarde a aprovação para iniciar os diagnósticos de maturidade</p>
+                            <p class="text-sm text-gray-700 pt-1">Aguarde a aprovaÃ§Ã£o para iniciar os diagnÃ³sticos de maturidade</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Botão de Acesso -->
+                <!-- BotÃ£o de Acesso -->
                 <div class="text-center">
                     <a href="{{ route('login') }}" 
                        class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-bold text-sm shadow-lg hover:from-blue-700 hover:to-indigo-700 transition">
@@ -144,12 +145,12 @@
                         </svg>
                         Acessar a Plataforma
                     </a>
-                    <p class="text-sm text-gray-500 mt-4">Já pode fazer login usando as credenciais acima</p>
+                    <p class="text-sm text-gray-500 mt-4">JÃ¡ pode fazer login usando as credenciais acima</p>
                 </div>
             </div>
 
         @else
-            <!-- FLUXO SIMPLES: Apenas Confirmação -->
+            <!-- FLUXO SIMPLES: Apenas ConfirmaÃ§Ã£o -->
             <div class="bg-white rounded-xl shadow-2xl p-6 md:p-8">
                 <div class="text-center mb-6">
                     <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -157,7 +158,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
                     </div>
-                    <h1 class="text-xl sm:text-2xl font-bold text-blue-900 mb-2">Manifestação Registrada!</h1>
+                    <h1 class="text-xl sm:text-2xl font-bold text-blue-900 mb-2">ManifestaÃ§Ã£o Registrada!</h1>
                     <p class="text-sm text-gray-600">Obrigado pelo interesse no Smart Crea Cities</p>
                 </div>
 
@@ -165,7 +166,7 @@
                 <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
                     <div class="flex items-center justify-center">
                         <div class="text-center">
-                            <p class="text-xs text-blue-800 font-semibold mb-1">Protocolo da Manifestação</p>
+                            <p class="text-xs text-blue-800 font-semibold mb-1">Protocolo da ManifestaÃ§Ã£o</p>
                             <p class="text-xl sm:text-2xl font-bold text-blue-900">{{ $submission->protocolo }}</p>
                         </div>
                     </div>
@@ -174,9 +175,9 @@
                 <!-- Mensagem -->
                 <div class="bg-gray-50 rounded-xl p-4 mb-6">
                     <p class="text-sm text-gray-700 text-center leading-relaxed">
-                        Sua manifestação de interesse foi registrada com sucesso. <br>
-                        Como seu município não faz parte do programa <strong>"Mais Engenharia"</strong>, 
-                        entraremos em contato caso surjam novas oportunidades de participação.
+                        Sua manifestaÃ§Ã£o de interesse foi registrada com sucesso. <br>
+                        Como seu municÃ­pio nÃ£o faz parte do programa <strong>"Mais Engenharia"</strong>, 
+                        entraremos em contato caso surjam novas oportunidades de participaÃ§Ã£o.
                     </p>
                 </div>
 
@@ -190,16 +191,16 @@
                         </div>
                         <div class="flex items-start">
                             <div class="flex-shrink-0 bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm mr-3">2</div>
-                            <p class="text-sm text-gray-700 pt-1">Você receberá um e-mail de confirmação com o número do protocolo</p>
+                            <p class="text-sm text-gray-700 pt-1">VocÃª receberÃ¡ um e-mail de confirmaÃ§Ã£o com o nÃºmero do protocolo</p>
                         </div>
                         <div class="flex items-start">
                             <div class="flex-shrink-0 bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm mr-3">3</div>
-                            <p class="text-sm text-gray-700 pt-1">Entraremos em contato caso surjam novas oportunidades de participação</p>
+                            <p class="text-sm text-gray-700 pt-1">Entraremos em contato caso surjam novas oportunidades de participaÃ§Ã£o</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Botão Voltar -->
+                <!-- BotÃ£o Voltar -->
                 <div class="text-center">
                     <a href="{{ route('home') }}" 
                        class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg font-bold text-sm shadow-lg hover:bg-blue-700 transition">
@@ -209,12 +210,13 @@
             </div>
         @endif
 
-        <!-- Informações de Contato -->
+        <!-- InformaÃ§Ãµes de Contato -->
         <div class="mt-8 text-center">
             <p class="text-gray-600 text-sm">
-                Dúvidas? Entre em contato: <a href="mailto:smartcreacities@crea-pr.org.br" class="text-blue-600 hover:underline">smartcreacities@crea-pr.org.br</a>
+                DÃºvidas? Entre em contato: <a href="mailto:smartcreacities@crea-pr.org.br" class="text-blue-600 hover:underline">smartcreacities@crea-pr.org.br</a>
             </p>
         </div>
     </div>
 </body>
 </html>
+

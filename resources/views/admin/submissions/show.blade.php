@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
@@ -6,6 +6,7 @@
     <title>Detalhes: {{ $submission->municipio_nome }} | Smart Crea Cities</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    @include('partials.favicons')
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
@@ -16,13 +17,13 @@
                     <img src="{{ asset('assets/img/card-smart-crea-cities-negativo.png') }}" alt="Smart Crea Cities" class="h-20 sm:h-24 md:h-28 w-auto object-contain">
                     <div class="border-l border-gray-300 h-10"></div>
                     <div>
-                        <p class="text-sm text-gray-600">Manifestação</p>
+                        <p class="text-sm text-gray-600">ManifestaÃ§Ã£o</p>
                         <p class="font-bold text-blue-900">{{ $submission->municipio_nome }}</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
                     <a href="{{ route('admin.submissoes.index') }}" class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
-                        ← Voltar para Lista
+                        â† Voltar para Lista
                     </a>
                     <div class="text-right">
                         <p class="text-sm text-gray-600">{{ Auth::user()->name }}</p>
@@ -51,7 +52,7 @@
             </div>
         @endif
 
-        <!-- Cabeçalho -->
+        <!-- CabeÃ§alho -->
         <div class="bg-white rounded-xl shadow-md p-6 mb-8">
             <div class="flex items-center justify-between">
                 <div>
@@ -65,7 +66,7 @@
                     @elseif($submission->status === 'approved')
                         <span class="px-4 py-2 text-sm font-bold rounded-full bg-green-100 text-green-800">APROVADO</span>
                     @elseif($submission->status === 'under_review')
-                        <span class="px-4 py-2 text-sm font-bold rounded-full bg-blue-100 text-blue-800">EM ANÁLISE</span>
+                        <span class="px-4 py-2 text-sm font-bold rounded-full bg-blue-100 text-blue-800">EM ANÃLISE</span>
                     @elseif($submission->status === 'rejected')
                         <span class="px-4 py-2 text-sm font-bold rounded-full bg-red-100 text-red-800">REJEITADO</span>
                     @endif
@@ -75,17 +76,17 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <!-- Coluna Principal --><div class="lg:col-span-2 space-y-8">
-                <!-- Informações do Município -->
+                <!-- InformaÃ§Ãµes do MunicÃ­pio -->
                 <div class="bg-white rounded-xl shadow-md p-6">
                     <h2 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
                         <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                         </svg>
-                        Informações do Município
+                        InformaÃ§Ãµes do MunicÃ­pio
                     </h2>
                     <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <p class="text-sm text-gray-600">População</p>
+                            <p class="text-sm text-gray-600">PopulaÃ§Ã£o</p>
                             <p class="font-semibold text-gray-900">{{ number_format($submission->habitantes_num, 0, ',', '.') }} habitantes</p>
                         </div>
                         <div>
@@ -93,7 +94,7 @@
                             <p class="font-semibold text-gray-900">{{ $submission->regional_creapr }}</p>
                         </div>
                         <div class="col-span-2">
-                            <p class="text-sm text-gray-600">Setores Econômicos</p>
+                            <p class="text-sm text-gray-600">Setores EconÃ´micos</p>
                             <div class="flex flex-wrap gap-2 mt-1">
                                 @php
                                     $setores = $submission->setores_economicos;
@@ -111,13 +112,13 @@
                             <p class="text-sm text-gray-600">Secretarias</p>
                             <ul class="mt-1 text-sm text-gray-900 space-y-1">
                                 @if($submission->secretaria_inovacao)
-                                    <li>• Inovação: {{ $submission->secretaria_inovacao }}</li>
+                                    <li>â€¢ InovaÃ§Ã£o: {{ $submission->secretaria_inovacao }}</li>
                                 @endif
                                 @if($submission->secretaria_tecnologia_smart)
-                                    <li>• Tecnologia/Smart: {{ $submission->secretaria_tecnologia_smart }}</li>
+                                    <li>â€¢ Tecnologia/Smart: {{ $submission->secretaria_tecnologia_smart }}</li>
                                 @endif
                                 @if($submission->secretaria_engenharia)
-                                    <li>• Engenharia: {{ $submission->secretaria_engenharia }}</li>
+                                    <li>â€¢ Engenharia: {{ $submission->secretaria_engenharia }}</li>
                                 @endif
                             </ul>
                         </div>
@@ -129,12 +130,12 @@
                     <h2 class="text-xl font-bold text-gray-900 mb-4">Programa Mais Engenharia</h2>
                     @if($submission->faz_parte_mais_engenharia)
                         <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-4">
-                            <p class="font-semibold text-green-800">✓ Município faz parte do programa Mais Engenharia</p>
+                            <p class="font-semibold text-green-800">âœ“ MunicÃ­pio faz parte do programa Mais Engenharia</p>
                         </div>
                         
                         @if($submission->responsavel_nome)
                             <div class="mt-4">
-                                <h3 class="font-semibold text-gray-900 mb-3">Responsável</h3>
+                                <h3 class="font-semibold text-gray-900 mb-3">ResponsÃ¡vel</h3>
                                 <div class="grid grid-cols-2 gap-4">
                                     <div>
                                         <p class="text-sm text-gray-600">Nome</p>
@@ -153,11 +154,11 @@
                                         <p class="font-semibold text-gray-900">{{ $submission->responsavel_telefone }}</p>
                                     </div>
                                     <div>
-                                        <p class="text-sm text-gray-600">Órgão</p>
+                                        <p class="text-sm text-gray-600">Ã“rgÃ£o</p>
                                         <p class="font-semibold text-gray-900">{{ $submission->responsavel_orgao }}</p>
                                     </div>
                                     <div>
-                                        <p class="text-sm text-gray-600">Função</p>
+                                        <p class="text-sm text-gray-600">FunÃ§Ã£o</p>
                                         <p class="font-semibold text-gray-900">{{ $submission->responsavel_funcao }}</p>
                                     </div>
                                 </div>
@@ -181,16 +182,16 @@
                         @endif
                     @else
                         <div class="bg-gray-50 border-l-4 border-gray-400 p-4">
-                            <p class="font-semibold text-gray-700">Município NÃO faz parte do programa Mais Engenharia</p>
+                            <p class="font-semibold text-gray-700">MunicÃ­pio NÃƒO faz parte do programa Mais Engenharia</p>
                             <p class="text-sm text-gray-600 mt-1">Aguardando futuro contato do CREA-PR</p>
                         </div>
                     @endif
                 </div>
 
-                <!-- Comitê Smart Crea -->
+                <!-- ComitÃª Smart Crea -->
                 @if($submission->committeeMembers->count() > 0)
                 <div class="bg-white rounded-xl shadow-md p-6">
-                    <h2 class="text-xl font-bold text-gray-900 mb-4">Comitê Smart Crea ({{ $submission->committeeMembers->count() }}/5)</h2>
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">ComitÃª Smart Crea ({{ $submission->committeeMembers->count() }}/5)</h2>
                     <div class="space-y-3">
                         @foreach($submission->committeeMembers as $member)
                             <div class="border border-gray-200 rounded-lg p-4">
@@ -198,7 +199,7 @@
                                 <div class="grid grid-cols-2 gap-2 mt-2 text-sm text-gray-600">
                                     <p>Email: {{ $member->email }}</p>
                                     <p>Telefone: {{ $member->telefone }}</p>
-                                    <p>Órgão: {{ $member->orgao }}</p>
+                                    <p>Ã“rgÃ£o: {{ $member->orgao }}</p>
                                     <p>Cargo: {{ $member->cargo }}</p>
                                 </div>
                             </div>
@@ -207,37 +208,37 @@
                 </div>
                 @endif
 
-                <!-- Diagnósticos -->
+                <!-- DiagnÃ³sticos -->
                 <div class="bg-white rounded-xl shadow-md p-6">
-                    <h2 class="text-xl font-bold text-gray-900 mb-4">Diagnósticos de Maturidade</h2>
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">DiagnÃ³sticos de Maturidade</h2>
                     
                     <div class="grid grid-cols-3 gap-4">
-                        <!-- Estímulo -->
+                        <!-- EstÃ­mulo -->
                         <div class="text-center p-4 bg-blue-50 rounded-lg">
-                            <p class="text-sm text-gray-600">Estímulo</p>
+                            <p class="text-sm text-gray-600">EstÃ­mulo</p>
                             <p class="text-3xl font-bold text-blue-600 mt-2">{{ $submission->pontuacao_estimulo ?? 0 }}</p>
                             <p class="text-xs text-gray-500 mt-1">
                                 @if($submission->diagnostico_estimulo_concluido_em)
-                                    Concluído em {{ $submission->diagnostico_estimulo_concluido_em->format('d/m/Y') }}
+                                    ConcluÃ­do em {{ $submission->diagnostico_estimulo_concluido_em->format('d/m/Y') }}
                                 @elseif($submission->diagnostico_estimulo_iniciado_em)
                                     Iniciado
                                 @else
-                                    Não iniciado
+                                    NÃ£o iniciado
                                 @endif
                             </p>
                         </div>
 
-                        <!-- Educação -->
+                        <!-- EducaÃ§Ã£o -->
                         <div class="text-center p-4 bg-green-50 rounded-lg">
-                            <p class="text-sm text-gray-600">Educação</p>
+                            <p class="text-sm text-gray-600">EducaÃ§Ã£o</p>
                             <p class="text-3xl font-bold text-green-600 mt-2">{{ $submission->pontuacao_educacao ?? 0 }}</p>
                             <p class="text-xs text-gray-500 mt-1">
                                 @if($submission->diagnostico_educacao_concluido_em)
-                                    Concluído em {{ $submission->diagnostico_educacao_concluido_em->format('d/m/Y') }}
+                                    ConcluÃ­do em {{ $submission->diagnostico_educacao_concluido_em->format('d/m/Y') }}
                                 @elseif($submission->diagnostico_educacao_iniciado_em)
                                     Iniciado
                                 @else
-                                    Não iniciado
+                                    NÃ£o iniciado
                                 @endif
                             </p>
                         </div>
@@ -248,11 +249,11 @@
                             <p class="text-3xl font-bold text-purple-600 mt-2">{{ $submission->pontuacao_estruturas ?? 0 }}</p>
                             <p class="text-xs text-gray-500 mt-1">
                                 @if($submission->diagnostico_estruturas_concluido_em)
-                                    Concluído em {{ $submission->diagnostico_estruturas_concluido_em->format('d/m/Y') }}
+                                    ConcluÃ­do em {{ $submission->diagnostico_estruturas_concluido_em->format('d/m/Y') }}
                                 @elseif($submission->diagnostico_estruturas_iniciado_em)
                                     Iniciado
                                 @else
-                                    Não iniciado
+                                    NÃ£o iniciado
                                 @endif
                             </p>
                         </div>
@@ -278,7 +279,7 @@
                         $answersByCategory = $submission->diagnosticAnswers->groupBy('category');
                     @endphp
 
-                    @foreach(['estimulo' => 'Estímulo', 'educacao' => 'Educação', 'estruturas' => 'Estruturas'] as $categoryKey => $categoryName)
+                    @foreach(['estimulo' => 'EstÃ­mulo', 'educacao' => 'EducaÃ§Ã£o', 'estruturas' => 'Estruturas'] as $categoryKey => $categoryName)
                         @if(isset($answersByCategory[$categoryKey]) && $answersByCategory[$categoryKey]->count() > 0)
                             <div class="mb-6 border-t pt-6 first:border-t-0 first:pt-0">
                                 <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
@@ -308,9 +309,9 @@
                                                     <div class="flex items-center">
                                                         <span class="text-sm text-gray-600 mr-2">Resposta:</span>
                                                         @if($answer->answer_yes_no === 'yes')
-                                                            <span class="px-3 py-1 bg-green-100 text-green-800 text-sm font-semibold rounded-full">✓ Sim</span>
+                                                            <span class="px-3 py-1 bg-green-100 text-green-800 text-sm font-semibold rounded-full">âœ“ Sim</span>
                                                         @elseif($answer->answer_yes_no === 'no')
-                                                            <span class="px-3 py-1 bg-red-100 text-red-800 text-sm font-semibold rounded-full">✗ Não</span>
+                                                            <span class="px-3 py-1 bg-red-100 text-red-800 text-sm font-semibold rounded-full">âœ— NÃ£o</span>
                                                         @endif
                                                     </div>
                                                     
@@ -319,7 +320,7 @@
                                                             <svg class="w-4 h-4 mr-1 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
                                                             </svg>
-                                                            <span class="text-gray-600 mr-2">Evidência:</span>
+                                                            <span class="text-gray-600 mr-2">EvidÃªncia:</span>
                                                             <a href="{{ $answer->evidence_url }}" target="_blank" class="text-blue-600 hover:underline truncate max-w-md">
                                                                 {{ $answer->evidence_url }}
                                                             </a>
@@ -328,7 +329,7 @@
 
                                                 @elseif($answer->question->type === 'checkbox')
                                                     <div>
-                                                        <span class="text-sm text-gray-600">Opções selecionadas:</span>
+                                                        <span class="text-sm text-gray-600">OpÃ§Ãµes selecionadas:</span>
                                                         <div class="flex flex-wrap gap-2 mt-2">
                                                             @if(is_array($answer->answer_checkboxes))
                                                                 @foreach($answer->answer_checkboxes as $option)
@@ -365,8 +366,8 @@
                                             
                                             <div class="mt-3 pt-3 border-t border-gray-100">
                                                 <p class="text-xs text-gray-500">
-                                                    ID da Questão: {{ $answer->question->id }} • 
-                                                    Tipo: {{ $answer->question->type }} • 
+                                                    ID da QuestÃ£o: {{ $answer->question->id }} â€¢ 
+                                                    Tipo: {{ $answer->question->type }} â€¢ 
                                                     Peso: {{ $answer->question->weight }}
                                                 </p>
                                             </div>
@@ -380,10 +381,10 @@
                 @endif
             </div>
 
-            <!-- Coluna Lateral - Painel de Revisão -->
+            <!-- Coluna Lateral - Painel de RevisÃ£o -->
             <div class="lg:col-span-1">
                 <div class="bg-white rounded-xl shadow-md p-6 sticky top-8">
-                    <h2 class="text-xl font-bold text-gray-900 mb-4">Painel de Revisão</h2>
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">Painel de RevisÃ£o</h2>
                     
                     <form method="POST" action="{{ route('admin.submissoes.updateStatus', $submission) }}" x-data="{ status: '{{ $submission->status }}' }">
                         @csrf
@@ -393,37 +394,37 @@
                             <label class="block text-sm font-medium text-gray-700 mb-2">Alterar Status</label>
                             <select name="status" x-model="status" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 <option value="pending">Pendente</option>
-                                <option value="under_review">Em Análise</option>
+                                <option value="under_review">Em AnÃ¡lise</option>
                                 <option value="approved">Aprovado</option>
                                 <option value="rejected">Rejeitado</option>
                             </select>
                         </div>
 
                         <div class="mb-4">
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Observações</label>
-                            <textarea name="observacao" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Adicione observações sobre esta manifestação...">{{ $submission->status_observacao }}</textarea>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">ObservaÃ§Ãµes</label>
+                            <textarea name="observacao" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Adicione observaÃ§Ãµes sobre esta manifestaÃ§Ã£o...">{{ $submission->status_observacao }}</textarea>
                         </div>
 
                         <!-- Avisos -->
                         <div x-show="status === 'approved'" class="bg-green-50 border-l-4 border-green-400 p-4 mb-4">
-                            <p class="text-sm text-green-800 font-semibold">✓ Ao aprovar, o município poderá acessar os diagnósticos</p>
+                            <p class="text-sm text-green-800 font-semibold">âœ“ Ao aprovar, o municÃ­pio poderÃ¡ acessar os diagnÃ³sticos</p>
                             @if($submission->user)
-                                <p class="text-xs text-green-700 mt-1">Email de aprovação será enviado para: {{ $submission->user->email }}</p>
+                                <p class="text-xs text-green-700 mt-1">Email de aprovaÃ§Ã£o serÃ¡ enviado para: {{ $submission->user->email }}</p>
                             @endif
                         </div>
 
                         <div x-show="status === 'rejected'" class="bg-red-50 border-l-4 border-red-400 p-4 mb-4">
-                            <p class="text-sm text-red-800 font-semibold">⚠ Ao rejeitar, o município não terá acesso à plataforma</p>
+                            <p class="text-sm text-red-800 font-semibold">âš  Ao rejeitar, o municÃ­pio nÃ£o terÃ¡ acesso Ã  plataforma</p>
                         </div>
 
                         <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200">
-                            Salvar Alterações
+                            Salvar AlteraÃ§Ãµes
                         </button>
                     </form>
 
                     @if($submission->status_observacao)
                         <div class="mt-6 pt-6 border-t border-gray-200">
-                            <h3 class="font-semibold text-gray-900 mb-2">Observações Anteriores</h3>
+                            <h3 class="font-semibold text-gray-900 mb-2">ObservaÃ§Ãµes Anteriores</h3>
                             <p class="text-sm text-gray-600 bg-gray-50 p-3 rounded">{{ $submission->status_observacao }}</p>
                         </div>
                     @endif
@@ -433,3 +434,4 @@
     </div>
 </body>
 </html>
+
