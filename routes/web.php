@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 
 // Página inicial - Landing Page com Vídeo
 Route::get('/', function () {
-    return view('landing');
+    return view('landing-v2');
 })->name('home');
 
 // Rotas Públicas - Formulário de Manifestação de Interesse
