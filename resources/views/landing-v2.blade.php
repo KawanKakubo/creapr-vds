@@ -121,12 +121,11 @@
             transform: translateY(-2px);
         }
 
-        /* Header glassmorphism sobre a hero */
-        .header-glass {
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        /* Header verde com acabamento profissional */
+        .header-green-pro {
+            background: linear-gradient(180deg, #20e15d 0%, #1ed65a 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 24px rgba(32, 225, 93, 0.22);
         }
 
         /* Nav link style */
@@ -177,36 +176,33 @@
     @include('partials.favicons')
 </head>
 <body class="antialiased overflow-x-hidden">
-    <!-- Header transparente integrado à hero -->
-    <nav class="absolute top-0 w-full z-50 header-glass">
+    <!-- Header verde -->
+    <nav class="fixed top-0 w-full z-50 header-green-pro">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-22 md:h-26 lg:h-30">
-                <!-- Logo negativa em fundo escuro -->
+                <!-- Logo oficial -->
                 <div class="flex items-center gap-3 md:gap-4">
-                    <img src="{{ asset('assets/img/smart-crea-cities-negativo.png') }}"
+                    <img src="{{ asset('assets/img/smart-crea-cities.png') }}"
                          alt="Smart CREAPR Cities"
                          class="h-20 sm:h-24 md:h-28 w-auto object-contain">
-                    <p class="hidden lg:block text-white/80 text-sm leading-tight max-w-[145px]">
-                        Soluções para as cidades do futuro.
-                    </p>
                 </div>
 
                 <!-- Botões Desktop -->
                 <div class="hidden md:flex items-center gap-6">
                     <a href="{{ asset('assets/pdfs/Smart_Crea_Cities_2026_Regulamento_Termo_Manual_COMPLETO.pdf') }}"
                        target="_blank"
-                       class="nav-btn text-white px-2 py-3 font-medium text-sm hover:text-[#20e15d] flex items-center gap-2">
+                              class="nav-btn text-slate-900 px-2 py-3 font-semibold text-sm hover:text-slate-700 flex items-center gap-2">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
                         Regulamento
                     </a>
                     <a href="{{ route('login') }}"
-                       class="nav-btn text-white px-2 py-3 font-medium text-sm hover:text-[#20e15d]">
+                       class="nav-btn text-slate-900 px-2 py-3 font-semibold text-sm hover:text-slate-700">
                         Login
                     </a>
                     <a href="{{ route('manifestacao.show') }}"
-                       class="border border-[#20e15d] text-[#20e15d] px-6 py-3 rounded-lg font-bold text-sm hover:bg-[#20e15d]/15 transition-all shadow-lg hover:shadow-xl whitespace-nowrap">
+                       class="bg-slate-900 text-white px-6 py-3 rounded-lg font-bold text-sm hover:bg-slate-800 transition-all shadow-lg hover:shadow-xl whitespace-nowrap">
                         Manifestar Interesse
                     </a>
                 </div>
@@ -215,17 +211,17 @@
                 <div class="flex md:hidden items-center gap-1.5">
                     <a href="{{ asset('assets/pdfs/Smart_Crea_Cities_2026_Regulamento_Termo_Manual_COMPLETO.pdf') }}"
                        target="_blank"
-                       class="text-white px-2.5 py-2.5 rounded-lg font-semibold text-xs hover:text-[#20e15d] transition-all flex items-center">
+                              class="text-slate-900 px-2.5 py-2.5 rounded-lg font-semibold text-xs hover:text-slate-700 transition-all flex items-center">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
                     </a>
                     <a href="{{ route('login') }}"
-                       class="text-white px-3 py-2.5 rounded-lg font-semibold text-xs hover:text-[#20e15d] transition-all">
+                       class="text-slate-900 px-3 py-2.5 rounded-lg font-semibold text-xs hover:text-slate-700 transition-all">
                         Login
                     </a>
                     <a href="{{ route('manifestacao.show') }}"
-                       class="border border-[#20e15d] text-[#20e15d] px-3 py-2.5 rounded-lg font-semibold text-xs whitespace-nowrap">
+                       class="bg-slate-900 text-white px-3 py-2.5 rounded-lg font-semibold text-xs whitespace-nowrap">
                         Manifestar
                     </a>
                 </div>
@@ -254,7 +250,7 @@
 
                 <!-- Título Principal -->
                 <h1 class="hero-title text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-white mb-3 md:mb-5 animate-fade-in-up">
-                    <span class="font-semibold">Smart</span> <span class="font-extrabold">CREAPR</span> <span class="font-semibold">Cities</span>
+                    <span class="font-semibold">Smart</span> <span class="font-extrabold">CREA-PR</span> <span class="font-semibold">Cities</span>
                 </h1>
 
                 <!-- Subtítulo -->
