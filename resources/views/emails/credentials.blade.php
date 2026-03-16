@@ -194,7 +194,7 @@
             </div>
         </div>
 
-        <p>Em caso de dúvidas, entre em contato com o CREA-PR através dos nossos canais oficiais.</p>
+        <p>Em caso de dúvidas, entre em contato com o CREA-PR através do e-mail: <a href="mailto:cidadesinteligentes@crea-pr.org.br">cidadesinteligentes@crea-pr.org.br</a>.</p>
 
         <div class="footer">
             <p><strong>CREA-PR - Conselho Regional de Engenharia e Agronomia do Paraná</strong></p>

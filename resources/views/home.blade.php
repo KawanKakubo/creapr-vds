@@ -536,6 +536,11 @@
                         <li>e Agronomia do Paraná</li>
                         <li class="pt-1 md:pt-2">Autarquia Federal</li>
                         <li class="pt-1 md:pt-2">
+                            <a href="mailto:cidadesinteligentes@crea-pr.org.br" class="hover:text-white transition">
+                                cidadesinteligentes@crea-pr.org.br
+                            </a>
+                        </li>
+                        <li class="pt-1 md:pt-2">
                             <a href="https://crea-pr.org.br" target="_blank" class="hover:text-white transition">
                                 www.crea-pr.org.br
                             </a>

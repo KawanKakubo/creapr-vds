@@ -172,7 +172,7 @@
                 <span class="info-icon">📞</span>
                 <div>
                     <strong>Dúvidas</strong><br>
-                    Em caso de dúvidas, entre em contato através dos nossos canais oficiais.
+                    Em caso de dúvidas, entre em contato através do e-mail: <a href="mailto:cidadesinteligentes@crea-pr.org.br">cidadesinteligentes@crea-pr.org.br</a>.
                 </div>
             </div>
         </div>

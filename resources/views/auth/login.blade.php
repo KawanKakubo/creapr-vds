@@ -170,6 +170,9 @@
                 <p class="text-sm text-gray-600">
                     © {{ date('Y') }} Smart Crea Cities - CREA-PR
                 </p>
+                <p class="text-sm text-gray-500 mt-2">
+                    Dúvidas? <a href="mailto:cidadesinteligentes@crea-pr.org.br" class="text-blue-600 hover:underline">cidadesinteligentes@crea-pr.org.br</a>
+                </p>
             </div>
         </div>
     </div>

@@ -213,7 +213,7 @@
         <!-- Informações de Contato -->
         <div class="mt-8 text-center">
             <p class="text-gray-600 text-sm">
-                Dúvidas? Entre em contato: <a href="mailto:smartcreacities@crea-pr.org.br" class="text-blue-600 hover:underline">smartcreacities@crea-pr.org.br</a>
+                Dúvidas? Entre em contato: <a href="mailto:cidadesinteligentes@crea-pr.org.br" class="text-blue-600 hover:underline">cidadesinteligentes@crea-pr.org.br</a>
             </p>
         </div>
     </div>

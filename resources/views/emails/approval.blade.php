@@ -195,7 +195,7 @@
 
         <p>Cada diagnóstico possui um conjunto de perguntas que ajudarão a identificar o nível de maturidade tecnológica do município e apontarão oportunidades de desenvolvimento.</p>
 
-        <p>Em caso de dúvidas durante o preenchimento, entre em contato com nossa equipe técnica.</p>
+        <p>Em caso de dúvidas durante o preenchimento, entre em contato com nossa equipe técnica através do e-mail: <a href="mailto:cidadesinteligentes@crea-pr.org.br">cidadesinteligentes@crea-pr.org.br</a>.</p>
 
         <p style="margin-top: 25px;"><strong>Sucesso na jornada rumo a uma cidade mais inteligente e conectada!</strong></p>
 
