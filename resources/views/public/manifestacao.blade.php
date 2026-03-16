@@ -60,6 +60,52 @@
         .nav-btn:hover::after {
             width: 100%;
         }
+
+        .wait-orb {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wait-orb::after {
+            content: '';
+            position: absolute;
+            inset: -35%;
+            background: conic-gradient(from 0deg, transparent 0deg, rgba(59, 130, 246, 0.15) 120deg, rgba(251, 191, 36, 0.3) 210deg, transparent 320deg);
+            animation: orbit 2.4s linear infinite;
+        }
+
+        .wait-dot {
+            width: 0.65rem;
+            height: 0.65rem;
+            border-radius: 9999px;
+            animation: wait-bounce 1.1s infinite ease-in-out;
+        }
+
+        .wait-dot:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .wait-dot:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        @keyframes orbit {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes wait-bounce {
+            0%, 80%, 100% {
+                transform: translateY(0) scale(0.9);
+                opacity: 0.45;
+            }
+
+            40% {
+                transform: translateY(-6px) scale(1);
+                opacity: 1;
+            }
+        }
     </style>
     @include('partials.favicons')
 </head>
@@ -121,6 +167,70 @@
 
     <!-- Formulário Multi-Step -->
     <div class="max-w-4xl mx-auto px-4 pt-28 md:pt-36 lg:pt-40 pb-8" x-data="manifestacaoForm()">
+        <div x-show="isSubmitting"
+             x-transition.opacity
+             class="fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/55 px-4 backdrop-blur-sm"
+             style="display: none;">
+            <div class="w-full max-w-2xl overflow-hidden rounded-[2rem] bg-slate-950 text-white shadow-2xl ring-1 ring-white/10">
+                <div class="relative overflow-hidden px-6 py-8 sm:px-8">
+                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.32),_transparent_42%),radial-gradient(circle_at_bottom_right,_rgba(251,191,36,0.18),_transparent_30%)]"></div>
+
+                    <div class="relative">
+                        <div class="flex items-start gap-4 sm:gap-5">
+                            <div class="wait-orb flex h-16 w-16 items-center justify-center rounded-full bg-white/8 ring-1 ring-white/10">
+                                <div class="relative z-10 flex h-11 w-11 items-center justify-center rounded-full bg-slate-900">
+                                    <svg class="h-6 w-6 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="min-w-0 flex-1">
+                                <p class="text-xs font-semibold uppercase tracking-[0.32em] text-blue-200/80" x-text="waitLabel"></p>
+                                <h2 class="mt-2 text-2xl font-black leading-tight sm:text-3xl" x-text="waitTitle"></h2>
+                                <p class="mt-3 max-w-xl text-sm leading-6 text-slate-200" x-text="waitDescription"></p>
+
+                                <div class="mt-5 flex items-center gap-2">
+                                    <span class="wait-dot bg-blue-300"></span>
+                                    <span class="wait-dot bg-amber-300"></span>
+                                    <span class="wait-dot bg-white"></span>
+                                    <span class="ml-2 text-xs font-medium text-slate-300" x-text="waitDurationText()"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 grid gap-3 sm:grid-cols-3">
+                            <template x-for="(item, index) in waitChecklist" :key="item.title">
+                                <div class="rounded-2xl border px-4 py-4 transition duration-500"
+                                     :class="waitStepClass(index)">
+                                    <div class="flex items-center justify-between gap-3">
+                                        <p class="text-sm font-semibold" x-text="item.title"></p>
+                                        <span class="flex h-7 w-7 items-center justify-center rounded-full border text-xs font-bold"
+                                              :class="waitBadgeClass(index)">
+                                            <template x-if="waitStepState(index) === 'done'">
+                                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                                                </svg>
+                                            </template>
+                                            <template x-if="waitStepState(index) !== 'done'">
+                                                <span x-text="index + 1"></span>
+                                            </template>
+                                        </span>
+                                    </div>
+                                    <p class="mt-2 text-xs leading-5 text-slate-300" x-text="item.description"></p>
+                                </div>
+                            </template>
+                        </div>
+
+                        <div class="mt-6 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200">
+                            <span class="font-semibold text-white">Não feche esta página.</span>
+                            <span x-text="isMaisEngenharia() ? ' Estamos criando o acesso e preparando o envio das credenciais.' : ' Estamos registrando a manifestação e preparando a confirmação.'"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Indicadores de Step -->
         <div class="mb-6">
             <div class="flex justify-between items-center">
@@ -145,7 +255,9 @@
         </div>
 
         <!-- Formulário -->
-        <form @submit.prevent="submitForm" class="bg-white rounded-xl shadow-2xl p-6 md:p-8">
+          <form @submit.prevent="submitForm"
+              :class="isSubmitting ? 'pointer-events-none select-none opacity-75' : ''"
+              class="bg-white rounded-xl shadow-2xl p-6 md:p-8 transition-opacity duration-200">
             <!-- STEP 1: Dados do Município -->
             <div x-show="currentStep === 1" x-transition>
                 <h2 class="text-xl sm:text-2xl font-bold text-blue-900 mb-2">Dados do Município</h2>
@@ -439,20 +551,28 @@
             <div class="flex justify-between mt-12 pt-8 border-t border-gray-200">
                 <button type="button" @click="previousStep" 
                         x-show="currentStep > 1"
+                        :disabled="isSubmitting"
                         class="px-8 py-3 border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition font-semibold">
                     ← Voltar
                 </button>
 
                 <button type="button" @click="nextStep" 
                         x-show="!isLastStep()"
+                        :disabled="isSubmitting"
                         class="ml-auto px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold shadow-lg">
                     Próximo →
                 </button>
 
                 <button type="button" @click="submitForm"
                         x-show="isLastStep()"
-                        class="ml-auto px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition font-semibold shadow-lg">
-                    Enviar Manifestação
+                        :disabled="isSubmitting"
+                        :class="isSubmitting ? 'cursor-wait bg-slate-700 hover:bg-slate-700' : 'bg-green-600 hover:bg-green-700'"
+                        class="ml-auto inline-flex items-center gap-3 px-8 py-3 text-white rounded-lg transition font-semibold shadow-lg disabled:opacity-100">
+                    <svg x-show="isSubmitting" class="h-5 w-5 animate-spin" fill="none" viewBox="0 0 24 24" style="display: none;">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-90" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                    </svg>
+                    <span x-text="isSubmitting ? 'Processando envio...' : 'Enviar Manifestação'"></span>
                 </button>
             </div>
         </form>
@@ -463,6 +583,12 @@
             return {
                 currentStep: 1,
                 newSetor: '',
+                isSubmitting: false,
+                waitElapsedSeconds: 0,
+                waitTimer: null,
+                waitLabel: 'Enviando manifestação',
+                waitTitle: 'Estamos preparando sua confirmação.',
+                waitDescription: 'Validando os dados informados para concluir o registro com segurança.',
                 steps: [
                     { title: 'Município' },
                     { title: 'Responsável' },
@@ -489,6 +615,54 @@
                     prefeito_cpf: '',
                     prefeito_telefone: '',
                     prefeito_mandato: ''
+                },
+                waitMessages: {
+                    standard: [
+                        {
+                            label: 'Enviando manifestação',
+                            title: 'Estamos registrando sua manifestação.',
+                            description: 'Validando os dados do município e organizando o protocolo de inscrição.'
+                        },
+                        {
+                            label: 'Quase lá',
+                            title: 'Estamos consolidando as informações.',
+                            description: 'Fazendo as últimas verificações antes de liberar sua confirmação.'
+                        },
+                        {
+                            label: 'Finalizando',
+                            title: 'Seu protocolo está sendo preparado.',
+                            description: 'A próxima tela será aberta automaticamente assim que tudo estiver concluído.'
+                        }
+                    ],
+                    maisEngenharia: [
+                        {
+                            label: 'Enviando manifestação',
+                            title: 'Estamos criando o acesso do município.',
+                            description: 'Registrando a manifestação e preparando o ambiente inicial da plataforma Smart Crea Cities.'
+                        },
+                        {
+                            label: 'Preparando credenciais',
+                            title: 'Estamos organizando o primeiro acesso.',
+                            description: 'Validando o responsável, vinculando o município e montando as credenciais temporárias.'
+                        },
+                        {
+                            label: 'Quase pronto',
+                            title: 'Estamos concluindo a liberação inicial.',
+                            description: 'Esse fluxo leva alguns segundos a mais porque inclui criação de acesso e confirmação por e-mail.'
+                        }
+                    ]
+                },
+                waitChecklists: {
+                    standard: [
+                        { title: 'Recebimento', description: 'Os dados enviados estão sendo conferidos.' },
+                        { title: 'Protocolo', description: 'Gerando o identificador único da manifestação.' },
+                        { title: 'Confirmação', description: 'Preparando a tela final com o resumo do envio.' }
+                    ],
+                    maisEngenharia: [
+                        { title: 'Manifestação', description: 'Registrando os dados básicos do município.' },
+                        { title: 'Acesso', description: 'Criando ou vinculando o usuário responsável.' },
+                        { title: 'Credenciais', description: 'Preparando a confirmação e o primeiro acesso.' }
+                    ]
                 },
                 
                 addSetor() {
@@ -592,8 +766,108 @@
                 isLastStep() {
                     return this.currentStep === 4;
                 },
+
+                isMaisEngenharia() {
+                    return this.formData.faz_parte_mais_engenharia === 'true';
+                },
+
+                currentWaitMessageIndex() {
+                    return Math.min(Math.floor(this.waitElapsedSeconds / 3), this.currentWaitMessages().length - 1);
+                },
+
+                currentWaitMessages() {
+                    return this.isMaisEngenharia() ? this.waitMessages.maisEngenharia : this.waitMessages.standard;
+                },
+
+                get waitChecklist() {
+                    return this.isMaisEngenharia() ? this.waitChecklists.maisEngenharia : this.waitChecklists.standard;
+                },
+
+                syncWaitContent() {
+                    const message = this.currentWaitMessages()[this.currentWaitMessageIndex()];
+                    this.waitLabel = message.label;
+                    this.waitTitle = message.title;
+                    this.waitDescription = message.description;
+                },
+
+                waitStepState(index) {
+                    const activeIndex = Math.min(Math.floor(this.waitElapsedSeconds / 2), this.waitChecklist.length - 1);
+
+                    if (index < activeIndex) {
+                        return 'done';
+                    }
+
+                    if (index === activeIndex) {
+                        return 'active';
+                    }
+
+                    return 'idle';
+                },
+
+                waitStepClass(index) {
+                    const state = this.waitStepState(index);
+
+                    if (state === 'done') {
+                        return 'border-emerald-400/35 bg-emerald-400/12';
+                    }
+
+                    if (state === 'active') {
+                        return 'border-blue-300/40 bg-blue-400/10 shadow-[0_0_0_1px_rgba(147,197,253,0.08)]';
+                    }
+
+                    return 'border-white/10 bg-white/[0.03]';
+                },
+
+                waitBadgeClass(index) {
+                    const state = this.waitStepState(index);
+
+                    if (state === 'done') {
+                        return 'border-emerald-300/50 bg-emerald-400 text-slate-950';
+                    }
+
+                    if (state === 'active') {
+                        return 'border-blue-200/50 bg-blue-300/20 text-blue-100';
+                    }
+
+                    return 'border-white/15 bg-transparent text-slate-300';
+                },
+
+                waitDurationText() {
+                    if (this.waitElapsedSeconds < 1) {
+                        return 'Iniciando agora';
+                    }
+
+                    if (this.waitElapsedSeconds === 1) {
+                        return '1 segundo';
+                    }
+
+                    return `${this.waitElapsedSeconds} segundos`;
+                },
+
+                startSubmittingState() {
+                    this.stopSubmittingState();
+                    this.isSubmitting = true;
+                    this.waitElapsedSeconds = 0;
+                    this.syncWaitContent();
+                    this.waitTimer = setInterval(() => {
+                        this.waitElapsedSeconds += 1;
+                        this.syncWaitContent();
+                    }, 1000);
+                },
+
+                stopSubmittingState() {
+                    this.isSubmitting = false;
+                    if (this.waitTimer) {
+                        clearInterval(this.waitTimer);
+                        this.waitTimer = null;
+                    }
+                },
                 
                 submitForm() {
+                    if (this.isSubmitting) {
+                        return;
+                    }
+
                     // Validação completa de todos os campos obrigatórios
                     
                     // Step 1: Município
@@ -685,6 +959,8 @@
                         this.currentStep = 4;
                         return;
                     }
+
+                    this.startSubmittingState();
                     
                     // Enviar dados via AJAX
                     fetch('{{ route("manifestacao.store") }}', {
@@ -710,10 +986,12 @@
                         if (data.success) {
                             window.location.href = data.redirect;
                         } else {
+                            this.stopSubmittingState();
                             alert(data.message || 'Erro ao processar formulário.');
                         }
                     })
                     .catch(error => {
+                        this.stopSubmittingState();
                         console.error('Erro:', error);
                         alert(error.message || 'Erro ao enviar manifestação. Por favor, tente novamente.');
                     });

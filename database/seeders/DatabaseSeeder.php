@@ -27,9 +27,6 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Criar usuário município de teste com submissão
-        $this->call(TestMunicipalitySeeder::class);
-
         // Popular perguntas diagnósticas
         $this->call(DiagnosticQuestionsSeeder::class);
     }

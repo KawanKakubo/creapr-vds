@@ -143,14 +143,11 @@ class PublicFormController extends Controller
                 if ($user) {
                     // Usuário já existe - verifica se precisa resetar senha
                     if ($user->is_temporary_password || $user->must_change_password) {
-                        // Usuário tem senha temporária - gera nova senha e reenvia
+                        // Usuário tem senha temporária - gera nova senha mas SÓ salva após email ser enviado
                         $temporaryPassword = Str::random(12) . rand(10, 99);
-                        $user->password = Hash::make($temporaryPassword);
-                        $user->is_temporary_password = true;
-                        $user->must_change_password = true;
-                        $user->save();
+                        $newPasswordHash = Hash::make($temporaryPassword);
                         
-                        Log::info('Senha temporária regenerada para usuário existente', [
+                        Log::info('Senha temporária gerada para usuário existente (aguardando envio de email)', [
                             'protocolo' => $protocolo,
                             'user_id' => $user->id,
                             'email' => $user->email,
@@ -197,11 +194,26 @@ class PublicFormController extends Controller
                         Mail::to($validated['responsavel_email'])->send(
                             new CredentialsEmail($user, $temporaryPassword, $protocolo, $validated['municipio_nome'])
                         );
-                        Log::info('Email de credenciais enviado', [
-                            'protocolo' => $protocolo,
-                            'email' => $user->email,
-                            'is_new_user' => $isNewUser,
-                        ]);
+
+                        // Só atualiza a senha no BD após o email ser enviado com sucesso
+                        // (evita que falha de email bloqueie o usuário com uma senha desconhecida)
+                        if (isset($newPasswordHash)) {
+                            $user->password = $newPasswordHash;
+                            $user->is_temporary_password = true;
+                            $user->must_change_password = true;
+                            $user->save();
+                            Log::info('Senha temporária regenerada e email enviado com sucesso', [
+                                'protocolo' => $protocolo,
+                                'user_id' => $user->id,
+                                'email' => $user->email,
+                            ]);
+                        } else {
+                            Log::info('Email de credenciais enviado para novo usuário', [
+                                'protocolo' => $protocolo,
+                                'email' => $user->email,
+                                'is_new_user' => $isNewUser,
+                            ]);
+                        }
                     } else {
                         // Usuário existente com senha própria - envia apenas confirmação
                         Mail::to($validated['responsavel_email'])->send(
