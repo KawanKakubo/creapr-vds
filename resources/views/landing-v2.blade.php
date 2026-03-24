@@ -296,26 +296,36 @@
     </section>
 
     <!-- Realização e Apoio -->
-    <section class="bg-slate-950 py-14 md:py-20">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <p class="text-gray-400 text-xs md:text-sm uppercase mb-10 md:mb-14" style="letter-spacing: 0.32em; opacity: 0.7;">
-                Realização e Apoio
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-10 sm:gap-16 md:gap-20">
-                <!-- CREA-PR — logo negativa (branca) min 140px -->
-                <div class="flex items-center justify-center w-[220px] md:w-[260px]">
-                    <img src="{{ asset('assets/img/logo-crea-pr-preto.png') }}"
-                         alt="CREA-PR"
-                         class="w-full h-auto">
+    <section class="bg-slate-950 py-12 md:py-20">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24">
+                <!-- CREA-PR -->
+                <div class="flex flex-col items-center flex-1">
+                    <p class="text-gray-400 text-xs md:text-sm uppercase mb-6 md:mb-8" style="letter-spacing: 0.25em; opacity: 0.7;">
+                        Realização
+                    </p>
+                    <div class="h-20 flex items-center justify-center">
+                        <img src="{{ asset('assets/img/logo-crea-pr-preto.png') }}"
+                             alt="CREA-PR"
+                             class="h-full w-auto object-contain">
+                    </div>
                 </div>
-                <!-- Separador vertical -->
-                <div class="hidden sm:block w-px h-16 md:h-20 bg-white/10"></div>
-                <div class="block sm:hidden w-20 h-px bg-white/10"></div>
-                <!-- Assaí — logo negativa (branca) min 200px -->
-                <div class="flex items-center justify-center w-[220px] md:w-[260px]">
-                    <img src="{{ asset('assets/img/logomarca-negativo.png') }}"
-                         alt="Município de Assaí"
-                         class="w-full h-auto">
+
+                <!-- Separador -->
+                <div class="hidden md:block w-px h-32 bg-white/10"></div>
+                <div class="block md:hidden w-32 h-px bg-white/10"></div>
+
+                <!-- Assaí -->
+                <div class="flex flex-col items-center flex-1">
+                    <p class="text-gray-400 text-xs md:text-sm uppercase mb-6 md:mb-8" style="letter-spacing: 0.25em; opacity: 0.7;">
+                        Apoio e Metodologia
+                    </p>
+                    <div class="h-20 flex items-center justify-center gap-4">
+                        <span class="text-gray-500 text-sm md:text-md italic font-medium">Powered by</span>
+                        <img src="{{ asset('assets/img/logomarca-negativo.png') }}"
+                             alt="Município de Assaí"
+                             class="h-full w-auto object-contain">
+                    </div>
                 </div>
             </div>
         </div>

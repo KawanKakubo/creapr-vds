@@ -17,17 +17,14 @@ class DatabaseSeeder extends Seeder
     {
         // Criar usuário admin do sistema (se não existir)
         User::firstOrCreate(
-            ['email' => 'admin@crea-pr.org.br'],
+            ['email' => 'kawanhrs@gmail.com'],
             [
-                'name' => 'Admin CREA-PR',
-                'password' => bcrypt('admin123'),
+                'name' => 'Kawan Harshe Kakubo',
+                'password' => bcrypt('kawan1203'),
                 'role' => 'admin',
                 'is_temporary_password' => false,
                 'must_change_password' => false,
             ]
         );
-
-        // Popular perguntas diagnósticas
-        $this->call(DiagnosticQuestionsSeeder::class);
     }
 }
